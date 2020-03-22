@@ -22,8 +22,8 @@ class controlPID:
 		u=np.zeros(5)
 		
 		kp=1
-		ki=0
-		kd=1
+		ki=1
+		kd=0.1
 		t=0.01
 		
 		pid=PIDRegulator(kp,ki,kd)
@@ -43,13 +43,10 @@ class controlPID:
 		u[3]=-cmd_acc[2]
 		u[4]=-cmd_acc[0]
 		
-		msg=Float64MultiArray
+		msg=Float64MultiArray()
 		msg.data=u
 		pub_acc.publish(msg)
-		print" Done one iteration"
-
-	#def PID:
-
+		print self.cur_pos
 
 	def vel_callback(self, msg):
 		self.cur_vel = np.array([msg.bi_x_axis, msg.bi_y_axis, msg.bi_z_axis])
