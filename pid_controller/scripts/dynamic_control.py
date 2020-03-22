@@ -7,42 +7,48 @@ from geometry_msgs.msg import Pose
 from underwater_sensor_msgs.msg import DVL  
 from PID import PIDRegulator
 
-def main(self):
-	rospy.init_node('Controller', anonymous=True)
-	
-	self.ref=np.zeroes(3)
-	self.cur_pos=np.zeroes(3)
-	self.cur_vel=np.zeroes(3)
-	self.u=np.zeroes(3)
-	
-	kp=1
-	ki=0
-	kd=1
-	t=0.01
-	
-	self.ref[0]=int(input("Enter x co-ordinate"))
-	self.ref[1]=int(input("Enter y co-ordinate"))
-	self.ref[2]=int(input("Enter z co-ordinate"))
-	
-	self.pid=PIDRegulator(kp,ki,kd)
-	
-	self.sub_pose=rospy.Subscriber('g500/pose',Pose,pose_callback)
-	self.sub_vel=rospy.Subscriber('g500/dvl',DVL,vel_callback)
-	self.pub_acc=rospy.Publisher('g500/thruster_input', Float64MultiArray, queue_size=10)
-	 
-	e_pos=self.ref-self.cur_pos
-	cmd_vel=pid.regulate(e_pos,t)
-	e_vel=cmd_vel-self.cur_vel
-	cmd_acc=pid.regulate(e_vel,t)
-	self.pub_acc.publish(cmd_acc)
-	
-def vel_callback(self, msg):
-        self.cur_vel = numpy.array([msg.bi_x_axis, msg.bi_y_axis, msg.bi_z_axis])
+class controlPID:	
+	def __init__(self):
+		self.cur_pos=np.zeros(3)
+		self.cur_vel=np.zeros(3)
+		
+	def update(self):
+		rospy.init_node('Controller', anonymous=True)
+		
+		ref=np.zeros(3)
+		
+		
+		kp=1
+		ki=0
+		kd=1
+		t=0.01
+		
+		ref[0]=int(input("Enter x co-ordinate"))
+		ref[1]=int(input("Enter y co-ordinate"))
+		ref[2]=int(input("Enter z co-ordinate"))
+		
+		pid=PIDRegulator(kp,ki,kd)
+		
+		sub_pose=rospy.Subscriber('g500/pose',Pose,self.pose_callback)
+		sub_vel=rospy.Subscriber('g500/dvl',DVL,self.vel_callback)
+		pub_acc=rospy.Publisher('g500/thruster_input', Float64MultiArray, queue_size=10)
+		 
+		e_pos=ref-self.cur_pos
+		cmd_vel=pid.regulate(e_pos,t)
+		e_vel=cmd_vel-self.cur_vel
+		cmd_acc=pid.regulate(e_vel,t)
+		pub_acc.publish(cmd_acc)
 
-def pose_callback(self,msg):
-	p=msg.Point
-	self.cur_pos=numpy.array([p.x, p.y, p.z])
+	#def PID:
 
-if __name__=='__main__':
-	print 'Controller node:'
-	main()
+
+	def vel_callback(self, msg):
+		self.cur_vel = numpy.array([msg.bi_x_axis, msg.bi_y_axis, msg.bi_z_axis])
+
+	def pose_callback(self,msg):
+		p=msg.Point
+		self.cur_pos=numpy.array([p.x, p.y, p.z])
+
+cnt=controlPID()
+print "Controller Node:"
+cnt.update()
