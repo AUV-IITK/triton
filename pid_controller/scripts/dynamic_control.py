@@ -5,6 +5,8 @@ import rospy
 from std_msgs.msg import Float64MultiArray
 from geometry_msgs.msg import Pose
 from underwater_sensor_msgs.msg import DVL  
+from visualization_msgs.msg import Marker
+from underwater_sensor_msgs.srv import SpawnMarker, SpawnMarkerRequest
 from PID import PIDRegulator
 
 class controlPID:	
@@ -55,13 +57,37 @@ class controlPID:
 		p=msg.position
 		self.cur_pos=np.array([p.x, p.y, p.z])
 
+#rospy.wait_for_service('SpawnMarker')
+request = rospy.ServiceProxy('uwsim_marker', SpawnMarker)
+
+msg=Marker()
+msg.type=2
+msg.scale.x=0.15
+msg.scale.y=0.15
+msg.scale.z=0.15
+msg.pose.position.x=0
+msg.pose.position.y=0
+msg.pose.position.z=0
+msg.pose.orientation.x=0
+msg.pose.orientation.y=0
+msg.pose.orientation.z=0
+msg.color.r=1
+msg.color.g=0
+msg.color.b=0
+msg.color.a=1
+
+req=SpawnMarkerRequest(msg)
+request(req)
 
 print "Controller Node:"
 rospy.init_node('Controller', anonymous=True)
+
 x=int(input("Enter x co-ordinate"))
 y=int(input("Enter y co-ordinate"))
 z=int(input("Enter z co-ordinate"))
+
 cnt=controlPID(x,y,z)
+
 while not rospy.is_shutdown():
 	cnt.update()
 	rospy.Rate(100).sleep()
