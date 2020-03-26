@@ -24,3 +24,4 @@ roslaunch underwater_vehicle_dynamics UWSim_g500_dynamics.launch
 ```bash
 ./uwsim-controls/pid_controller/scripts/dynamic_control.py
 ```
+**Remove the underwater_simulation package from src folder after cloning**
