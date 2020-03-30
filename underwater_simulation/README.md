@@ -11,7 +11,10 @@ http://www.irs.uji.es/uwsim/wiki/index.php?title=Main_Page
 - Prats, M.; Perez, J.; Fernandez, J.J.; Sanz, P.J., "An open source tool for simulation and supervision of underwater intervention missions", 2012 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), pp. 2577-2582, 7-12 Oct. 2012
 - Centelles, D.; Soriano-Asensi, A.; Martí, J.V.; Marín, R.; Sanz, P.J. Underwater Wireless Communications for Cooperative Robotics with UWSim-NET. Appl. Sci. 2019, 9, 3526.
 
+
 ### Issues
+**If this repository has been cloned outside the underwater_simulation package originally installed,then replace the  original folder with the underwater_simulation folder in this repository.<br>**
+**Change the root path of uwsim folder in "SimulatorConfig.h" as per yours.**
 
 #### Exception GeographicLib::GeographicErr when starting uwsim
 
@@ -37,5 +40,6 @@ Run the following commands to fix it:
   chmod u+x install_geographiclib_datasets.sh
   sudo ./install_geographiclib_datasets.sh
 ```
+
 
 
