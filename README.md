@@ -1,9 +1,12 @@
 
 # Triton: Software Stack
 
+[![Build Status](https://travis-ci.org/AUV-IITK/triton.svg?branch=master)](https://travis-ci.org/AUV-IITK/triton)
+
+
 The structure of this repository will follow the broadly be like that of Anahita, but with some changes. 
 
-To run this repository:
+# To run this repository:
 
 ### Create a catkin worspace following the guidelines given here
 ```
@@ -23,7 +26,7 @@ cd ~/auv_ws/src
 git clone https://github.com/AUV-IITK/underwater_simulation
 cd ~/auv_ws/
 rosdep install --from-paths src --ignore-src --rosdistro melodic -y
-catkin build install -j2
+catkin build -j2
 ```
 
 ### Clone this repository to your catkin workspace
