@@ -1,0 +1,110 @@
+\hypertarget{md_mapping_README_autotoc_md48}{}\doxysection{Overview}\label{md_mapping_README_autotoc_md48}
+This is a template\+: replace, remove, and add where required. Describe here what this package does and what it\textquotesingle{}s meant for in a few sentences.
+
+{\bfseries{Keywords\+:}} example, package, template\hypertarget{md_mapping_README_autotoc_md49}{}\doxysubsection{License}\label{md_mapping_README_autotoc_md49}
+The source code is released under a \href{ros_package_template/LICENSE}{\texttt{ B\+SD 3-\/Clause license}}.
+
+$\ast$$\ast$\+Author\+: Péter Fankhauser~\newline
+ Affiliation\+: \href{https://www.anybotics.com/}{\texttt{ A\+N\+Ybotics}}~\newline
+ Maintainer\+: Péter Fankhauser, \href{mailto:pfankhauser@anybotics.com}{\texttt{ pfankhauser@anybotics.\+com}}$\ast$$\ast$
+
+The P\+A\+C\+K\+A\+GE N\+A\+ME package has been tested under \href{http://www.ros.org}{\texttt{ R\+OS}} Indigo and Ubuntu 14.\+04. This is research code, expect that it changes often and any fitness for a particular purpose is disclaimed.
+
+\href{http://rsl-ci.ethz.ch/job/ros_best_practices/}{\texttt{ }}
+
+\hypertarget{md_mapping_README_autotoc_md50}{}\doxysubsection{Publications}\label{md_mapping_README_autotoc_md50}
+If you use this work in an academic context, please cite the following publication(s)\+:
+
+
+\begin{DoxyItemize}
+\item P. Fankhauser, M. Bloesch, C. Gehring, M. Hutter, and R. Siegwart\+: {\bfseries{P\+A\+P\+ER T\+I\+T\+LE}}. I\+E\+E\+E/\+R\+SJ International Conference on Intelligent Robots and Systems (I\+R\+OS), 2015. (\href{http://dx.doi.org/10.3929/ethz-a-010173654}{\texttt{ P\+DF}}) \begin{DoxyVerb}  @inproceedings{Fankhauser2015,
+      author = {Fankhauser, P\'{e}ter and Hutter, Marco},
+      booktitle = {IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+      title = {{PAPER TITLE}},
+      publisher = {IEEE},
+      year = {2015}
+  }
+\end{DoxyVerb}
+
+\end{DoxyItemize}\hypertarget{md_mapping_README_autotoc_md51}{}\doxysection{Installation}\label{md_mapping_README_autotoc_md51}
+\hypertarget{md_mapping_README_autotoc_md52}{}\doxysubsection{Installation from Packages}\label{md_mapping_README_autotoc_md52}
+To install all packages from the this repository as Debian packages use \begin{DoxyVerb}sudo apt-get install ros-indigo-...
+\end{DoxyVerb}
+\hypertarget{md_mapping_README_autotoc_md53}{}\doxysubsection{Building from Source}\label{md_mapping_README_autotoc_md53}
+\hypertarget{md_mapping_README_autotoc_md54}{}\doxysubsubsection{Dependencies}\label{md_mapping_README_autotoc_md54}
+
+\begin{DoxyItemize}
+\item \href{http://wiki.ros.org}{\texttt{ Robot Operating System (R\+OS)}} (middleware for robotics),
+\item \mbox{[}Eigen\mbox{]} (linear algebra library)
+\end{DoxyItemize}\hypertarget{md_mapping_README_autotoc_md55}{}\doxysubsubsection{Building}\label{md_mapping_README_autotoc_md55}
+To build from source, clone the latest version from this repository into your catkin workspace and compile the package using \begin{DoxyVerb}cd catkin_workspace/src
+git clone https://github.com/ethz-asl/ros_package_template.git
+cd ../
+rosdep install --from-paths . --ignore-src
+catkin_make
+\end{DoxyVerb}
+\hypertarget{md_mapping_README_autotoc_md56}{}\doxysubsection{Unit Tests}\label{md_mapping_README_autotoc_md56}
+Run the unit tests with \begin{DoxyVerb}catkin_make run_tests_ros_package_template
+\end{DoxyVerb}
+\hypertarget{md_mapping_README_autotoc_md57}{}\doxysection{Usage}\label{md_mapping_README_autotoc_md57}
+Describe the quickest way to run this software, for example\+:
+
+Run the main node with \begin{DoxyVerb}roslaunch ros_package_template ros_package_template.launch
+\end{DoxyVerb}
+\hypertarget{md_mapping_README_autotoc_md58}{}\doxysection{Config files}\label{md_mapping_README_autotoc_md58}
+Config file folder/set 1
+
+
+\begin{DoxyItemize}
+\item {\bfseries{config\+\_\+file\+\_\+1.\+yaml}} Shortly explain the content of this config file
+\end{DoxyItemize}
+
+Config file folder/set 2
+
+
+\begin{DoxyItemize}
+\item $\ast$$\ast$...$\ast$$\ast$
+\end{DoxyItemize}\hypertarget{md_mapping_README_autotoc_md59}{}\doxysection{Launch files}\label{md_mapping_README_autotoc_md59}
+
+\begin{DoxyItemize}
+\item {\bfseries{launch\+\_\+file\+\_\+1.\+launch\+:}} shortly explain what is launched (e.\+g standard simulation, simulation with gdb,...)
+
+Argument set 1
+\begin{DoxyItemize}
+\item $\ast$$\ast${\ttfamily argument\+\_\+1}$\ast$$\ast$ Short description (e.\+g. as commented in launch file). Default\+: {\ttfamily default\+\_\+value}.
+\end{DoxyItemize}
+
+Argument set 2
+\begin{DoxyItemize}
+\item $\ast$$\ast${\ttfamily ...}$\ast$$\ast$
+\end{DoxyItemize}
+\item $\ast$$\ast$...$\ast$$\ast$
+\end{DoxyItemize}\hypertarget{md_mapping_README_autotoc_md60}{}\doxysection{Nodes}\label{md_mapping_README_autotoc_md60}
+\hypertarget{md_mapping_README_autotoc_md61}{}\doxysubsection{ros\+\_\+package\+\_\+template}\label{md_mapping_README_autotoc_md61}
+Reads temperature measurements and computed the average.\hypertarget{md_mapping_README_autotoc_md62}{}\doxysubsubsection{Subscribed Topics}\label{md_mapping_README_autotoc_md62}
+
+\begin{DoxyItemize}
+\item $\ast$$\ast${\ttfamily /temperature}$\ast$$\ast$ (\href{http://docs.ros.org/api/sensor_msgs/html/msg/Temperature.html}{\texttt{ sensor\+\_\+msgs/\+Temperature}})
+
+The temperature measurements from which the average is computed.
+\end{DoxyItemize}\hypertarget{md_mapping_README_autotoc_md63}{}\doxysubsubsection{Published Topics}\label{md_mapping_README_autotoc_md63}
+...\hypertarget{md_mapping_README_autotoc_md64}{}\doxysubsubsection{Services}\label{md_mapping_README_autotoc_md64}
+
+\begin{DoxyItemize}
+\item $\ast$$\ast${\ttfamily get\+\_\+average}$\ast$$\ast$ (\href{http://docs.ros.org/api/std_srvs/html/srv/Trigger.html}{\texttt{ std\+\_\+srvs/\+Trigger}})
+
+Returns information about the current average. For example, you can trigger the computation from the console with \begin{DoxyVerb}rosservice call /ros_package_template/get_average
+\end{DoxyVerb}
+
+\end{DoxyItemize}\hypertarget{md_mapping_README_autotoc_md65}{}\doxysubsubsection{Parameters}\label{md_mapping_README_autotoc_md65}
+
+\begin{DoxyItemize}
+\item $\ast$$\ast${\ttfamily subscriber\+\_\+topic}$\ast$$\ast$ (string, default\+: \char`\"{}/temperature\char`\"{})
+
+The name of the input topic.
+\item $\ast$$\ast${\ttfamily cache\+\_\+size}$\ast$$\ast$ (int, default\+: 200, min\+: 0, max\+: 1000)
+
+The size of the cache.
+\end{DoxyItemize}\hypertarget{md_mapping_README_autotoc_md66}{}\doxysubsection{N\+O\+D\+E\+\_\+\+B\+\_\+\+N\+A\+ME}\label{md_mapping_README_autotoc_md66}
+...\hypertarget{md_mapping_README_autotoc_md67}{}\doxysection{Bugs \& Feature Requests}\label{md_mapping_README_autotoc_md67}
+Please report bugs and request features using the \href{https://github.com/ethz-asl/ros_best_practices/issues}{\texttt{ Issue Tracker}}. 
