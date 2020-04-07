@@ -4,15 +4,32 @@
 #include "sensor_msgs/image_encodings.h"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
-
-static const std::string OPENCV_WINDOW = "Image window";
-
+#include <vector>
+#include <iostream> 
+#include <bits/stdc++.h> 
+#include <std_msgs/Float32MultiArray.h>
+static const std::string OPENCV_WINDOW = "Image window1";
+using namespace cv;
+using namespace std;
+int maxContourId(vector <vector<Point>> contours) {
+    double maxArea = 0;
+    int maxAreaContourId = -1;
+    for (int j = 0; j < contours.size(); j++) {
+        double newArea = contourArea(contours.at(j));
+        if (newArea > maxArea) {
+            maxArea = newArea;
+            maxAreaContourId = j;
+        } 
+    } 
+    return maxAreaContourId;
+}
 class ImageConverter
 {
   ros::NodeHandle nh_;
   image_transport::ImageTransport it_;
   image_transport::Subscriber image_sub_;
-  image_transport::Publisher image_pub_;
+  ros::Publisher image_pub_;
+  //image_transport::Publisher image_pub_;
 
 public:
   ImageConverter()
@@ -21,14 +38,14 @@ public:
     // Subscrive to input video feed and publish output video feed
     image_sub_ = it_.subscribe("/g500/camera1", 1,
       &ImageConverter::imageCb, this);
-    image_pub_ = it_.advertise("/image_converter/output_video", 1);
+    image_pub_ = nh_.advertise<std_msgs::Float32MultiArray>("/image_converter/output_video", 100);
 
-    cv::namedWindow(OPENCV_WINDOW);
+    namedWindow(OPENCV_WINDOW);
   }
 
   ~ImageConverter()
   {
-    cv::destroyWindow(OPENCV_WINDOW);
+    destroyWindow(OPENCV_WINDOW);
   }
 
   void imageCb(const sensor_msgs::ImageConstPtr& msg)
@@ -43,23 +60,47 @@ public:
       ROS_ERROR("cv_bridge exception: %s", e.what());
       return;
     }
-
-    // Draw an example circle on the video stream
-    if (cv_ptr->image.rows > 60 && cv_ptr->image.cols > 60)
-      cv::circle(cv_ptr->image, cv::Point(50, 50), 10, CV_RGB(255,0,0));
-
+    Mat graymat;
+    Mat threshed,res;
+    vector<vector<Point> > contours;
+    cvtColor(cv_ptr->image,graymat,cv::COLOR_BGR2GRAY);
+    threshold(graymat,threshed, 150,255 , THRESH_BINARY);
+    findContours( threshed, contours, RETR_TREE, CHAIN_APPROX_SIMPLE );
+    int i = maxContourId(contours);	
+    vector<Point> ans;
+    Point2f center;
+    std_msgs::Float32MultiArray ret;
+    //ret.layout.dim[0].label = "result";
+    //ret.layout.dim[0].size = 1;
+    //ret.layout.dim[0].stride = 1;
+    //ret.layout.data_offset = 0;
+    //ret.data = (float *)malloc(sizeof(float)*8);
+    ret.data.clear();
+    float radius;
+    approxPolyDP( contours[i], ans, 10, true);
+    minEnclosingCircle(ans, center, radius);
+    if(radius > 3)
+	circle( cv_ptr->image, center, radius, Scalar(0,0,255), 3, LINE_AA);
     // Update GUI Window
-    cv::imshow(OPENCV_WINDOW, cv_ptr->image);
-    cv::waitKey(3);
+    imshow(OPENCV_WINDOW, cv_ptr->image);
+    waitKey(3);
 
     // Output modified video stream
-    image_pub_.publish(cv_ptr->toImageMsg());
+    ret.data.push_back(radius);
+    //std_msgs::Float32 x,y;
+    ret.data.push_back(center.x);
+    ret.data.push_back(center.y); 
+    image_pub_.publish(ret);
+
   }
 };
 
 int main(int argc, char** argv)
 {
+  
+
   ros::init(argc, argv, "image_converter");
+  
   ImageConverter ic;
   ros::spin();
   return 0;
