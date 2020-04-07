@@ -76,7 +76,7 @@ Describe the quickest way to run this software, for example:
 
 Run the main node with
 
-	roslaunch ros_package_template ros_package_template.launch
+	rosrun vision_pipline detect
 
 ## Config files
 
