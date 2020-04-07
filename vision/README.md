@@ -76,7 +76,7 @@ Describe the quickest way to run this software, for example:
 
 Run the main node with
 
-	rosrun vision_pipline detect
+	rosrun vision_pipeline detect
 
 ## Config files
 
