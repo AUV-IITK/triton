@@ -77,11 +77,21 @@ public:
     //ret.data = (float *)malloc(sizeof(float)*8);
     ret.data.clear();
     float radius;
-    approxPolyDP( contours[i], ans, 10, true);
-    minEnclosingCircle(ans, center, radius);
-    if(radius > 3)
-	circle( cv_ptr->image, center, radius, Scalar(0,0,255), 3, LINE_AA);
-    // Update GUI Window
+    if(i>-1)
+    {
+    	approxPolyDP( contours[i], ans, 10, true);
+    	minEnclosingCircle(ans, center, radius);
+    	if(radius > 3)
+		circle( cv_ptr->image, center, radius, Scalar(0,0,255), 3, LINE_AA);
+    }
+
+    else
+    {
+	radius = -1;
+	center.x = -1;
+	center.y = -1;
+    }
+	// Update GUI Window
     imshow(OPENCV_WINDOW, cv_ptr->image);
     waitKey(3);
 
