@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(bridge)
+project(vision_pipeline)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -209,9 +209,9 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(bridge src/bridge.cpp)
-target_link_libraries(bridge ${catkin_LIBRARIES})
+add_executable(detect src/detect.cpp)
+target_link_libraries(detect ${catkin_LIBRARIES})
 
 find_package(OpenCV)
 include_directories(${OpenCV_INCLUDE_DIRS})
-target_link_libraries(bridge ${OpenCV_LIBRARIES})
+target_link_libraries(detect ${OpenCV_LIBRARIES})
