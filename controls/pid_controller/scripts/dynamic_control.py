@@ -9,6 +9,12 @@ from visualization_msgs.msg import Marker
 from underwater_sensor_msgs.srv import SpawnMarker, SpawnMarkerRequest
 from PID import PIDRegulator
 
+## \class controlPID
+#  \brief This is a class for PID controller
+#
+#  Takes x,y,z co-ordinates as arguments.
+#  Invoke update() function for thruster control
+# 	
 class controlPID:	
 	def __init__(self,x,y,z):
 		self.cur_pos=np.array([0,0,0])
@@ -19,7 +25,10 @@ class controlPID:
 		self.u=np.zeros(5)
 		
 		
-
+	## This function publish acceleration for each thruster on /g500/thrusters_input.
+	#  It subscribes from /g500/dvl to get velocity and /g500/pose to get veloctiy
+	#  and use cascaded PID controller to move the bot to desired co-ordinates
+	# 
 	def update(self):
 
 		sub_pose=rospy.Subscriber('g500/pose',Pose,self.pose_callback,queue_size=1)
@@ -65,7 +74,7 @@ class controlPID:
 		for i in range(3):
 			self.cur_pos[i]=round(self.cur_pos[i],1)
 		
-		
+	
 print "Controller Node:"
 rospy.init_node('Controller', anonymous=True)
 
