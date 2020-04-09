@@ -11,74 +11,61 @@ from PID import PIDRegulator
 
 class controlPID:	
 	def __init__(self,x,y,z):
-		self.cur_pos=np.zeros(3)
-		self.cur_vel=np.zeros(3)
-		self.ref=np.zeros(3)
-		self.ref[0]=x
-		self.ref[1]=y
-		self.ref[2]=z
+		self.cur_pos=np.array([0,0,0])
+		self.cur_vel=np.array([0,0,0])
+		self.ref=np.array([x,y,z])
+		self.pidp=PIDRegulator(0.75,0,0)
+		self.pidv=PIDRegulator(1,0,0)
+		self.u=np.zeros(5)
 		
+		
+
 	def update(self):
-		
-		ref=np.zeros(3)
-		u=np.zeros(5)
-		
-		kp=1
-		ki=1
-		kd=0.1
-		t=0.01
-		
-		pid=PIDRegulator(kp,ki,kd)
-		
-		sub_pose=rospy.Subscriber('g500/pose',Pose,self.pose_callback)
+
+		sub_pose=rospy.Subscriber('g500/pose',Pose,self.pose_callback,queue_size=1)
 		sub_vel=rospy.Subscriber('g500/dvl',DVL,self.vel_callback)
-		pub_acc=rospy.Publisher('g500/thrusters_input', Float64MultiArray, queue_size=10)
-		 
-		e_pos=self.ref-self.cur_pos
-		cmd_vel=pid.regulate(e_pos,t)
-		e_vel=cmd_vel-self.cur_vel
-		cmd_acc=pid.regulate(e_vel,t)
+		pub_acc=rospy.Publisher('g500/thrusters_input', Float64MultiArray, queue_size=1000)
 		
-		u[0]=-cmd_acc[1]
-		u[1]=-cmd_acc[1]
-		u[2]=-cmd_acc[2]
-		u[3]=-cmd_acc[2]
-		u[4]=-cmd_acc[0]
+		e_pos=np.zeros(3)
+		e_vel=np.zeros(3)
+		cmd_vel=np.zeros(3)
+		cmd_acc=np.zeros(3)
+		dt=0.01
+		#cascaded PID-controller
+		for i in range(3):
+			e_pos[i]=self.ref[i]-self.cur_pos[i]
+			cmd_vel[i]=self.pidp.regulate(e_pos[i],dt)
+			e_vel[i]=cmd_vel[i]-self.cur_vel[i]
+			cmd_acc[i]=self.pidv.regulate(e_vel[i],dt)
+			
+		self.u[0]=-cmd_acc[1]
+		self.u[1]=-cmd_acc[1]
+		self.u[2]=-cmd_acc[2]
+		self.u[3]=-cmd_acc[2]
+		self.u[4]=-cmd_acc[0]
 		
 		msg=Float64MultiArray()
-		msg.data=u
+		msg.data=self.u
 		pub_acc.publish(msg)
-		print self.cur_pos
-
+		print cmd_acc
+		
+		
+	#velocity subscriber callback
 	def vel_callback(self, msg):
-		self.cur_vel = np.array([msg.bi_x_axis, msg.bi_y_axis, msg.bi_z_axis])
-
+		self.cur_vel =np.array([msg.bi_x_axis, msg.bi_y_axis, msg.bi_z_axis])
+		#rounding of velocity to one decimal place to neglect disturbances
+		for i in range(3):
+			self.cur_vel[i]=round(self.cur_vel[i],1)
+			
+			
+	#postion subscriber callback	
 	def pose_callback(self,msg):
-		p=msg.position
-		self.cur_pos=np.array([p.x, p.y, p.z])
-
-#rospy.wait_for_service('SpawnMarker')
-request = rospy.ServiceProxy('uwsim_marker', SpawnMarker)
-
-msg=Marker()
-msg.type=2
-msg.scale.x=0.15
-msg.scale.y=0.15
-msg.scale.z=0.15
-msg.pose.position.x=0
-msg.pose.position.y=0
-msg.pose.position.z=0
-msg.pose.orientation.x=0
-msg.pose.orientation.y=0
-msg.pose.orientation.z=0
-msg.color.r=1
-msg.color.g=0
-msg.color.b=0
-msg.color.a=1
-
-req=SpawnMarkerRequest(msg)
-request(req)
-
+		self.cur_pos=np.array([msg.position.x, msg.position.y, msg.position.z])
+		#rounding of velocity to one decimal place to neglect disturbances
+		for i in range(3):
+			self.cur_pos[i]=round(self.cur_pos[i],1)
+		
+		
 print "Controller Node:"
 rospy.init_node('Controller', anonymous=True)
 
