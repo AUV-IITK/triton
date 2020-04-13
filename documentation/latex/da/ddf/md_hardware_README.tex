@@ -1,7 +1,7 @@
-\hypertarget{md_hardware_README_autotoc_md27}{}\doxysection{Overview}\label{md_hardware_README_autotoc_md27}
+\hypertarget{md_hardware_README_autotoc_md31}{}\doxysection{Overview}\label{md_hardware_README_autotoc_md31}
 This is a template\+: replace, remove, and add where required. Describe here what this package does and what it\textquotesingle{}s meant for in a few sentences.
 
-{\bfseries{Keywords\+:}} example, package, template\hypertarget{md_hardware_README_autotoc_md28}{}\doxysubsection{License}\label{md_hardware_README_autotoc_md28}
+{\bfseries{Keywords\+:}} example, package, template\hypertarget{md_hardware_README_autotoc_md32}{}\doxysubsection{License}\label{md_hardware_README_autotoc_md32}
 The source code is released under a \href{ros_package_template/LICENSE}{\texttt{ B\+SD 3-\/Clause license}}.
 
 $\ast$$\ast$\+Author\+: Péter Fankhauser~\newline
@@ -12,7 +12,7 @@ The P\+A\+C\+K\+A\+GE N\+A\+ME package has been tested under \href{http://www.ro
 
 \href{http://rsl-ci.ethz.ch/job/ros_best_practices/}{\texttt{ }}
 
-\hypertarget{md_hardware_README_autotoc_md29}{}\doxysubsection{Publications}\label{md_hardware_README_autotoc_md29}
+\hypertarget{md_hardware_README_autotoc_md33}{}\doxysubsection{Publications}\label{md_hardware_README_autotoc_md33}
 If you use this work in an academic context, please cite the following publication(s)\+:
 
 
@@ -26,32 +26,32 @@ If you use this work in an academic context, please cite the following publicati
   }
 \end{DoxyVerb}
 
-\end{DoxyItemize}\hypertarget{md_hardware_README_autotoc_md30}{}\doxysection{Installation}\label{md_hardware_README_autotoc_md30}
-\hypertarget{md_hardware_README_autotoc_md31}{}\doxysubsection{Installation from Packages}\label{md_hardware_README_autotoc_md31}
+\end{DoxyItemize}\hypertarget{md_hardware_README_autotoc_md34}{}\doxysection{Installation}\label{md_hardware_README_autotoc_md34}
+\hypertarget{md_hardware_README_autotoc_md35}{}\doxysubsection{Installation from Packages}\label{md_hardware_README_autotoc_md35}
 To install all packages from the this repository as Debian packages use \begin{DoxyVerb}sudo apt-get install ros-indigo-...
 \end{DoxyVerb}
-\hypertarget{md_hardware_README_autotoc_md32}{}\doxysubsection{Building from Source}\label{md_hardware_README_autotoc_md32}
-\hypertarget{md_hardware_README_autotoc_md33}{}\doxysubsubsection{Dependencies}\label{md_hardware_README_autotoc_md33}
+\hypertarget{md_hardware_README_autotoc_md36}{}\doxysubsection{Building from Source}\label{md_hardware_README_autotoc_md36}
+\hypertarget{md_hardware_README_autotoc_md37}{}\doxysubsubsection{Dependencies}\label{md_hardware_README_autotoc_md37}
 
 \begin{DoxyItemize}
 \item \href{http://wiki.ros.org}{\texttt{ Robot Operating System (R\+OS)}} (middleware for robotics),
 \item \mbox{[}Eigen\mbox{]} (linear algebra library)
-\end{DoxyItemize}\hypertarget{md_hardware_README_autotoc_md34}{}\doxysubsubsection{Building}\label{md_hardware_README_autotoc_md34}
+\end{DoxyItemize}\hypertarget{md_hardware_README_autotoc_md38}{}\doxysubsubsection{Building}\label{md_hardware_README_autotoc_md38}
 To build from source, clone the latest version from this repository into your catkin workspace and compile the package using \begin{DoxyVerb}cd catkin_workspace/src
 git clone https://github.com/ethz-asl/ros_package_template.git
 cd ../
 rosdep install --from-paths . --ignore-src
 catkin_make
 \end{DoxyVerb}
-\hypertarget{md_hardware_README_autotoc_md35}{}\doxysubsection{Unit Tests}\label{md_hardware_README_autotoc_md35}
+\hypertarget{md_hardware_README_autotoc_md39}{}\doxysubsection{Unit Tests}\label{md_hardware_README_autotoc_md39}
 Run the unit tests with \begin{DoxyVerb}catkin_make run_tests_ros_package_template
 \end{DoxyVerb}
-\hypertarget{md_hardware_README_autotoc_md36}{}\doxysection{Usage}\label{md_hardware_README_autotoc_md36}
+\hypertarget{md_hardware_README_autotoc_md40}{}\doxysection{Usage}\label{md_hardware_README_autotoc_md40}
 Describe the quickest way to run this software, for example\+:
 
 Run the main node with \begin{DoxyVerb}roslaunch ros_package_template ros_package_template.launch
 \end{DoxyVerb}
-\hypertarget{md_hardware_README_autotoc_md37}{}\doxysection{Config files}\label{md_hardware_README_autotoc_md37}
+\hypertarget{md_hardware_README_autotoc_md41}{}\doxysection{Config files}\label{md_hardware_README_autotoc_md41}
 Config file folder/set 1
 
 
@@ -64,7 +64,7 @@ Config file folder/set 2
 
 \begin{DoxyItemize}
 \item $\ast$$\ast$...$\ast$$\ast$
-\end{DoxyItemize}\hypertarget{md_hardware_README_autotoc_md38}{}\doxysection{Launch files}\label{md_hardware_README_autotoc_md38}
+\end{DoxyItemize}\hypertarget{md_hardware_README_autotoc_md42}{}\doxysection{Launch files}\label{md_hardware_README_autotoc_md42}
 
 \begin{DoxyItemize}
 \item {\bfseries{launch\+\_\+file\+\_\+1.\+launch\+:}} shortly explain what is launched (e.\+g standard simulation, simulation with gdb,...)
@@ -79,16 +79,16 @@ Argument set 2
 \item $\ast$$\ast${\ttfamily ...}$\ast$$\ast$
 \end{DoxyItemize}
 \item $\ast$$\ast$...$\ast$$\ast$
-\end{DoxyItemize}\hypertarget{md_hardware_README_autotoc_md39}{}\doxysection{Nodes}\label{md_hardware_README_autotoc_md39}
-\hypertarget{md_hardware_README_autotoc_md40}{}\doxysubsection{ros\+\_\+package\+\_\+template}\label{md_hardware_README_autotoc_md40}
-Reads temperature measurements and computed the average.\hypertarget{md_hardware_README_autotoc_md41}{}\doxysubsubsection{Subscribed Topics}\label{md_hardware_README_autotoc_md41}
+\end{DoxyItemize}\hypertarget{md_hardware_README_autotoc_md43}{}\doxysection{Nodes}\label{md_hardware_README_autotoc_md43}
+\hypertarget{md_hardware_README_autotoc_md44}{}\doxysubsection{ros\+\_\+package\+\_\+template}\label{md_hardware_README_autotoc_md44}
+Reads temperature measurements and computed the average.\hypertarget{md_hardware_README_autotoc_md45}{}\doxysubsubsection{Subscribed Topics}\label{md_hardware_README_autotoc_md45}
 
 \begin{DoxyItemize}
 \item $\ast$$\ast${\ttfamily /temperature}$\ast$$\ast$ (\href{http://docs.ros.org/api/sensor_msgs/html/msg/Temperature.html}{\texttt{ sensor\+\_\+msgs/\+Temperature}})
 
 The temperature measurements from which the average is computed.
-\end{DoxyItemize}\hypertarget{md_hardware_README_autotoc_md42}{}\doxysubsubsection{Published Topics}\label{md_hardware_README_autotoc_md42}
-...\hypertarget{md_hardware_README_autotoc_md43}{}\doxysubsubsection{Services}\label{md_hardware_README_autotoc_md43}
+\end{DoxyItemize}\hypertarget{md_hardware_README_autotoc_md46}{}\doxysubsubsection{Published Topics}\label{md_hardware_README_autotoc_md46}
+...\hypertarget{md_hardware_README_autotoc_md47}{}\doxysubsubsection{Services}\label{md_hardware_README_autotoc_md47}
 
 \begin{DoxyItemize}
 \item $\ast$$\ast${\ttfamily get\+\_\+average}$\ast$$\ast$ (\href{http://docs.ros.org/api/std_srvs/html/srv/Trigger.html}{\texttt{ std\+\_\+srvs/\+Trigger}})
@@ -96,7 +96,7 @@ The temperature measurements from which the average is computed.
 Returns information about the current average. For example, you can trigger the computation from the console with \begin{DoxyVerb}rosservice call /ros_package_template/get_average
 \end{DoxyVerb}
 
-\end{DoxyItemize}\hypertarget{md_hardware_README_autotoc_md44}{}\doxysubsubsection{Parameters}\label{md_hardware_README_autotoc_md44}
+\end{DoxyItemize}\hypertarget{md_hardware_README_autotoc_md48}{}\doxysubsubsection{Parameters}\label{md_hardware_README_autotoc_md48}
 
 \begin{DoxyItemize}
 \item $\ast$$\ast${\ttfamily subscriber\+\_\+topic}$\ast$$\ast$ (string, default\+: \char`\"{}/temperature\char`\"{})
@@ -105,6 +105,6 @@ The name of the input topic.
 \item $\ast$$\ast${\ttfamily cache\+\_\+size}$\ast$$\ast$ (int, default\+: 200, min\+: 0, max\+: 1000)
 
 The size of the cache.
-\end{DoxyItemize}\hypertarget{md_hardware_README_autotoc_md45}{}\doxysubsection{N\+O\+D\+E\+\_\+\+B\+\_\+\+N\+A\+ME}\label{md_hardware_README_autotoc_md45}
-...\hypertarget{md_hardware_README_autotoc_md46}{}\doxysection{Bugs \& Feature Requests}\label{md_hardware_README_autotoc_md46}
+\end{DoxyItemize}\hypertarget{md_hardware_README_autotoc_md49}{}\doxysubsection{N\+O\+D\+E\+\_\+\+B\+\_\+\+N\+A\+ME}\label{md_hardware_README_autotoc_md49}
+...\hypertarget{md_hardware_README_autotoc_md50}{}\doxysection{Bugs \& Feature Requests}\label{md_hardware_README_autotoc_md50}
 Please report bugs and request features using the \href{https://github.com/ethz-asl/ros_best_practices/issues}{\texttt{ Issue Tracker}}. 

@@ -1,0 +1,10 @@
+The Kalman Filter is implemented for robot localization. The package used is robot\+\_\+localization. To get the filtered odometry message follow the given steps\+:-\/
+
+
+\begin{DoxyEnumerate}
+\item Run the uwsim simulation using \$rosrun uwsim uwsim
+\item Run the \mbox{\hyperlink{odom-message-generator_8py_source}{odom-\/message-\/generator.\+py}} node by the command \$rosrun my\+\_\+odom \mbox{\hyperlink{odom-message-generator_8py_source}{odom-\/message-\/generator.\+py}}
+\item Run the robot localization ekf node to start the ekf node. \$ roslaunch robot\+\_\+localization/launch/ekf\+\_\+template.\+launch
+\end{DoxyEnumerate}
+
+The filtered odometry message would be published on the topic /filtered/odometry 

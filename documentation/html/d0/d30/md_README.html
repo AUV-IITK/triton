@@ -69,14 +69,14 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p>The structure of this repository will follow the broadly be like that of Anahita, but with some changes.</p>
 <p>To run this repository:</p>
-<h2><a class="anchor" id="autotoc_md69"></a>
+<h2><a class="anchor" id="autotoc_md73"></a>
 Create a catkin worspace following the guidelines given here</h2>
 <div class="fragment"><div class="line">mkdir -p ~/auv_ws/src</div>
 <div class="line">cd ~/auv_ws/src</div>
 <div class="line">catkin_init_workspace</div>
 <div class="line">cd ..</div>
 <div class="line">catkin build</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md70"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md74"></a>
 Add the simulation repository also (uwsim)</h2>
 <p>Official installation instructions are <a href="http://www.irs.uji.es/uwsim/wiki/index.php?title=Installing_UWSim">here</a>. This should resemble source-based install, since we only want to change the core files, and not the external repositories. If you face any issue during building this project, please file an issue, or contact the admin. We are in development phase.</p>
 <div class="fragment"><div class="line">cd ~/auv_ws/src</div>
@@ -84,7 +84,7 @@ Add the simulation repository also (uwsim)</h2>
 <div class="line">cd ~/auv_ws/</div>
 <div class="line">rosdep install --from-paths src --ignore-src --rosdistro melodic -y</div>
 <div class="line">catkin build install -j2</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md71"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md75"></a>
 Clone this repository to your catkin workspace</h2>
 <div class="fragment"><div class="line">cd ~/auv_ws/src</div>
 <div class="line">git clone https://github.com/AUV-IITK/triton.git</div>
@@ -93,7 +93,7 @@ Clone this repository to your catkin workspace</h2>
 <p>You can build and install those packages from their respective sources or you can use the following command in Ubuntu 16.04 to install them. If you are building from source or using a different package manager, make sure you are building the melodic version of these packages to ensure maximum compatibility.</p>
 <div class="fragment"><div class="line">cd ~/catkin_ws</div>
 <div class="line">catkin build</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md72"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md76"></a>
 Workspace structure</h2>
 <div class="fragment"><div class="line">.</div>
 <div class="line">├── CMakeLists.txt -&gt; /opt/ros/melodic/share/catkin/cmake/toplevel.cmake</div>
@@ -112,7 +112,7 @@ Workspace structure</h2>
 <div class="line">    ├── underwater_vehicle_dynamics</div>
 <div class="line">    └── uwsim</div>
 </div><!-- fragment --><p>The branches when not doing any development work would be <code>master</code> on <code>triton</code> and <code>auv-master</code> on <code>underwater_simulation</code>. </p>
-<h2><a class="anchor" id="autotoc_md73"></a>
+<h2><a class="anchor" id="autotoc_md77"></a>
 Contribution Guidelines</h2>
 <p>To get started with contributing to this repository, look out for open issues here. Kindly read the Developer's Guide before sending a pull request! :) </p>
 </div></div><!-- contents -->

@@ -67,11 +67,11 @@ $(function() {
 <div class="title">Vision-layer </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md96"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md100"></a>
 Overview</h1>
 <p>This is a template: replace, remove, and add where required. Describe here what this package does and what it's meant for in a few sentences.</p>
 <p><b>Keywords:</b> example, package, template</p>
-<h2><a class="anchor" id="autotoc_md97"></a>
+<h2><a class="anchor" id="autotoc_md101"></a>
 License</h2>
 <p>The source code is released under a <a href="../../ros_package_template/LICENSE">BSD 3-Clause license</a>.</p>
 <p>**Author: Péter Fankhauser<br  />
@@ -80,7 +80,7 @@ License</h2>
 <p>The PACKAGE NAME package has been tested under <a href="http://www.ros.org">ROS</a> Indigo and Ubuntu 14.04. This is research code, expect that it changes often and any fitness for a particular purpose is disclaimed.</p>
 <p><a href="http://rsl-ci.ethz.ch/job/ros_best_practices/"><img src="http://rsl-ci.ethz.ch/buildStatus/icon?job=ros_best_practices" alt="Build Status" class="inline"/></a></p>
 <p><img src="../../doc/example.jpg" alt="Example image" class="inline"/></p>
-<h2><a class="anchor" id="autotoc_md98"></a>
+<h2><a class="anchor" id="autotoc_md102"></a>
 Publications</h2>
 <p>If you use this work in an academic context, please cite the following publication(s):</p>
 <ul>
@@ -93,34 +93,34 @@ Publications</h2>
   }
 </pre></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md99"></a>
+<h1><a class="anchor" id="autotoc_md103"></a>
 Installation</h1>
-<h2><a class="anchor" id="autotoc_md100"></a>
+<h2><a class="anchor" id="autotoc_md104"></a>
 Installation from Packages</h2>
 <p>To install all packages from the this repository as Debian packages use </p><pre class="fragment">sudo apt-get install ros-indigo-...
-</pre><h2><a class="anchor" id="autotoc_md101"></a>
+</pre><h2><a class="anchor" id="autotoc_md105"></a>
 Building from Source</h2>
-<h3><a class="anchor" id="autotoc_md102"></a>
+<h3><a class="anchor" id="autotoc_md106"></a>
 Dependencies</h3>
 <ul>
 <li><a href="http://wiki.ros.org">Robot Operating System (ROS)</a> (middleware for robotics),</li>
 <li>[Eigen] (linear algebra library)</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md103"></a>
+<h3><a class="anchor" id="autotoc_md107"></a>
 Building</h3>
 <p>To build from source, clone the latest version from this repository into your catkin workspace and compile the package using </p><pre class="fragment">cd catkin_workspace/src
 git clone https://github.com/ethz-asl/ros_package_template.git
 cd ../
 rosdep install --from-paths . --ignore-src
 catkin_make
-</pre><h2><a class="anchor" id="autotoc_md104"></a>
+</pre><h2><a class="anchor" id="autotoc_md108"></a>
 Unit Tests</h2>
 <p>Run the unit tests with </p><pre class="fragment">catkin_make run_tests_ros_package_template
-</pre><h1><a class="anchor" id="autotoc_md105"></a>
+</pre><h1><a class="anchor" id="autotoc_md109"></a>
 Usage</h1>
 <p>Describe the quickest way to run this software, for example:</p>
 <p>Run the main node with </p><pre class="fragment">roslaunch ros_package_template ros_package_template.launch
-</pre><h1><a class="anchor" id="autotoc_md106"></a>
+</pre><h1><a class="anchor" id="autotoc_md110"></a>
 Config files</h1>
 <p>Config file folder/set 1</p>
 <ul>
@@ -130,7 +130,7 @@ Config files</h1>
 <ul>
 <li>**...**</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md107"></a>
+<h1><a class="anchor" id="autotoc_md111"></a>
 Launch files</h1>
 <ul>
 <li><p class="startli"><b>launch_file_1.launch:</b> shortly explain what is launched (e.g standard simulation, simulation with gdb,...)</p>
@@ -143,29 +143,29 @@ Launch files</h1>
 </li>
 <li>**...**</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md108"></a>
+<h1><a class="anchor" id="autotoc_md112"></a>
 Nodes</h1>
-<h2><a class="anchor" id="autotoc_md109"></a>
+<h2><a class="anchor" id="autotoc_md113"></a>
 ros_package_template</h2>
 <p>Reads temperature measurements and computed the average.</p>
-<h3><a class="anchor" id="autotoc_md110"></a>
+<h3><a class="anchor" id="autotoc_md114"></a>
 Subscribed Topics</h3>
 <ul>
 <li><p class="startli">**<code>/temperature</code>** (<a href="http://docs.ros.org/api/sensor_msgs/html/msg/Temperature.html">sensor_msgs/Temperature</a>)</p>
 <p class="startli">The temperature measurements from which the average is computed.</p>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md111"></a>
+<h3><a class="anchor" id="autotoc_md115"></a>
 Published Topics</h3>
 <p>...</p>
-<h3><a class="anchor" id="autotoc_md112"></a>
+<h3><a class="anchor" id="autotoc_md116"></a>
 Services</h3>
 <ul>
 <li><p class="startli">**<code>get_average</code>** (<a href="http://docs.ros.org/api/std_srvs/html/srv/Trigger.html">std_srvs/Trigger</a>)</p>
 <p class="startli">Returns information about the current average. For example, you can trigger the computation from the console with </p><pre class="fragment">rosservice call /ros_package_template/get_average
 </pre></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md113"></a>
+<h3><a class="anchor" id="autotoc_md117"></a>
 Parameters</h3>
 <ul>
 <li><p class="startli">**<code>subscriber_topic</code>** (string, default: "/temperature")</p>
@@ -175,10 +175,10 @@ Parameters</h3>
 <p class="startli">The size of the cache.</p>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md114"></a>
+<h2><a class="anchor" id="autotoc_md118"></a>
 NODE_B_NAME</h2>
 <p>...</p>
-<h1><a class="anchor" id="autotoc_md115"></a>
+<h1><a class="anchor" id="autotoc_md119"></a>
 Bugs &amp; Feature Requests</h1>
 <p>Please report bugs and request features using the <a href="https://github.com/ethz-asl/ros_best_practices/issues">Issue Tracker</a>. </p>
 </div></div><!-- contents -->
