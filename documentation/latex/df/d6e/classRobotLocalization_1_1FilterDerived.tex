@@ -1,0 +1,106 @@
+\hypertarget{classRobotLocalization_1_1FilterDerived}{}\doxysection{Robot\+Localization\+::Filter\+Derived Class Reference}
+\label{classRobotLocalization_1_1FilterDerived}\index{RobotLocalization::FilterDerived@{RobotLocalization::FilterDerived}}
+Inheritance diagram for Robot\+Localization\+::Filter\+Derived\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{df/d6e/classRobotLocalization_1_1FilterDerived}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterDerived_ab44ec98cf11eca5356bb1f153753cac1}{correct}} (const \mbox{\hyperlink{structRobotLocalization_1_1Measurement}{Measurement}} \&measurement)
+\begin{DoxyCompactList}\small\item\em Carries out the correct step in the predict/update cycle. This method must be implemented by subclasses. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterDerived_ab661899869b8845c138ac161ca71c9dd}{predict}} (const double ref\+Time, const double delta)
+\begin{DoxyCompactList}\small\item\em Carries out the predict step in the predict/update cycle. Projects the state and error matrices forward using a model of the vehicle\textquotesingle{}s motion. This method must be implemented by subclasses. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterDerived_a4de26fd690f70cc71bdd14bdea3876dd}\label{classRobotLocalization_1_1FilterDerived_a4de26fd690f70cc71bdd14bdea3876dd}} 
+double {\bfseries val}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 50 of file test\+\_\+filter\+\_\+base.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterDerived_ab44ec98cf11eca5356bb1f153753cac1}\label{classRobotLocalization_1_1FilterDerived_ab44ec98cf11eca5356bb1f153753cac1}} 
+\index{RobotLocalization::FilterDerived@{RobotLocalization::FilterDerived}!correct@{correct}}
+\index{correct@{correct}!RobotLocalization::FilterDerived@{RobotLocalization::FilterDerived}}
+\doxysubsubsection{\texorpdfstring{correct()}{correct()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Derived\+::correct (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structRobotLocalization_1_1Measurement}{Measurement}} \&}]{measurement }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Carries out the correct step in the predict/update cycle. This method must be implemented by subclasses. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em measurement} & -\/ The measurement to fuse with the state estimate \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a7c53dd83aa72e9a46f2d406c6431215e}{Robot\+Localization\+::\+Filter\+Base}}.
+
+
+
+Definition at line 57 of file test\+\_\+filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{58     \{}
+\DoxyCodeLine{59       EXPECT\_EQ(val, measurement.time\_);}
+\DoxyCodeLine{60       EXPECT\_EQ(measurement.topicName\_, \textcolor{stringliteral}{"topic"});}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62       EXPECT\_EQ(measurement.updateVector\_.size(), 10u);}
+\DoxyCodeLine{63       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < measurement.updateVector\_.size(); ++i)}
+\DoxyCodeLine{64       \{}
+\DoxyCodeLine{65         EXPECT\_EQ(measurement.updateVector\_[i], \textcolor{keyword}{true});}
+\DoxyCodeLine{66       \}}
+\DoxyCodeLine{67     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterDerived_ab661899869b8845c138ac161ca71c9dd}\label{classRobotLocalization_1_1FilterDerived_ab661899869b8845c138ac161ca71c9dd}} 
+\index{RobotLocalization::FilterDerived@{RobotLocalization::FilterDerived}!predict@{predict}}
+\index{predict@{predict}!RobotLocalization::FilterDerived@{RobotLocalization::FilterDerived}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Derived\+::predict (\begin{DoxyParamCaption}\item[{const double}]{reference\+Time,  }\item[{const double}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Carries out the predict step in the predict/update cycle. Projects the state and error matrices forward using a model of the vehicle\textquotesingle{}s motion. This method must be implemented by subclasses. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em reference\+Time} & -\/ The time at which the prediction is being made \\
+\hline
+\mbox{\texttt{ in}}  & {\em delta} & -\/ The time step over which to predict. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a75c6282d2136ef591d9c4bae58292480}{Robot\+Localization\+::\+Filter\+Base}}.
+
+
+
+Definition at line 69 of file test\+\_\+filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{70     \{}
+\DoxyCodeLine{71       val = delta;}
+\DoxyCodeLine{72     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+mapping/robot\+\_\+localization/test/test\+\_\+filter\+\_\+base.\+cpp\end{DoxyCompactItemize}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pidregulator_11',['PIDRegulator',['../da/dd7/classsrc_1_1PID_1_1PIDRegulator.html',1,'src::PID']]]
+  ['diagnosticshelper_198',['DiagnosticsHelper',['../d2/d04/classRobotLocalization_1_1DiagnosticsHelper.html',1,'RobotLocalization']]]
 ];
