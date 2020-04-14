@@ -21,11 +21,15 @@ catkin build
 
 Official installation instructions are [here](http://www.irs.uji.es/uwsim/wiki/index.php?title=Installing_UWSim). This should resemble source-based install, since we only want to change the core files, and not the external repositories. If you face any issue during building this project, please file an issue, or contact the admin. We are in development phase.
 
+We are using `create_scenes.sh` to place a `pool.osgt` file in the `.uwsim` directory. 
+
 ```
 cd ~/auv_ws/src
 git clone https://github.com/AUV-IITK/underwater_simulation
 cd ~/auv_ws/
 rosdep install --from-paths src --ignore-src --rosdistro melodic -y
+bash create_scenes.sh
+catkin config --install
 catkin build -j2
 ```
 
