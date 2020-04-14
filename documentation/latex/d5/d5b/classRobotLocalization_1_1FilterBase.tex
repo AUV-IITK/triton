@@ -1,0 +1,1089 @@
+\hypertarget{classRobotLocalization_1_1FilterBase}{}\doxysection{Robot\+Localization\+::Filter\+Base Class Reference}
+\label{classRobotLocalization_1_1FilterBase}\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+Inheritance diagram for Robot\+Localization\+::Filter\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.359223cm]{d5/d5b/classRobotLocalization_1_1FilterBase}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a61b2196799bf6c765b4694adcf215250}\label{classRobotLocalization_1_1FilterBase_a61b2196799bf6c765b4694adcf215250}} 
+\mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a61b2196799bf6c765b4694adcf215250}{Filter\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{classRobotLocalization_1_1FilterBase}{Filter\+Base}} class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a972a814ed40ea2d44758f0eab15b4555}\label{classRobotLocalization_1_1FilterBase_a972a814ed40ea2d44758f0eab15b4555}} 
+virtual \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a972a814ed40ea2d44758f0eab15b4555}{$\sim$\+Filter\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \mbox{\hyperlink{classRobotLocalization_1_1FilterBase}{Filter\+Base}} class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a8ad75ff9f186f53b63d607e2c1776786}\label{classRobotLocalization_1_1FilterBase_a8ad75ff9f186f53b63d607e2c1776786}} 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a8ad75ff9f186f53b63d607e2c1776786}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Resets filter to its unintialized state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a027315e64db2c8d0f6ecc83d5ffd83a5}{compute\+Dynamic\+Process\+Noise\+Covariance}} (const Eigen\+::\+Vector\+Xd \&state, const double delta)
+\begin{DoxyCompactList}\small\item\em Computes a dynamic process noise covariance matrix using the parameterized state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a7c53dd83aa72e9a46f2d406c6431215e}{correct}} (const \mbox{\hyperlink{structRobotLocalization_1_1Measurement}{Measurement}} \&measurement)=0
+\begin{DoxyCompactList}\small\item\em Carries out the correct step in the predict/update cycle. This method must be implemented by subclasses. \end{DoxyCompactList}\item 
+const Eigen\+::\+Vector\+Xd \& \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_aabccb8d70d8079c6e7f8729a99801a91}{get\+Control}} ()
+\begin{DoxyCompactList}\small\item\em Returns the control vector currently being used. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_add286a89740495361b0ec66c42f9a1d1}{get\+Control\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Returns the time at which the control term was issued. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a92af68ffd2d5cbe69629ac063c0dd298}{get\+Debug}} ()
+\begin{DoxyCompactList}\small\item\em Gets the value of the debug\+\_\+ variable. \end{DoxyCompactList}\item 
+const Eigen\+::\+Matrix\+Xd \& \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_abf2cb6ee6f3c6b633b76cb964699f329}{get\+Estimate\+Error\+Covariance}} ()
+\begin{DoxyCompactList}\small\item\em Gets the estimate error covariance. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a30b9039bb7c6fcb7deabe8ae13dc4aa6}{get\+Initialized\+Status}} ()
+\begin{DoxyCompactList}\small\item\em Gets the filter\textquotesingle{}s initialized status. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a784fdd478f61021d08c51a232119017e}{get\+Last\+Measurement\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Gets the most recent measurement time. \end{DoxyCompactList}\item 
+const Eigen\+::\+Vector\+Xd \& \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a57e2935abd66403b75a41536406fa725}{get\+Predicted\+State}} ()
+\begin{DoxyCompactList}\small\item\em Gets the filter\textquotesingle{}s predicted state, i.\+e., the state estimate before \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a7c53dd83aa72e9a46f2d406c6431215e}{correct()}} is called. \end{DoxyCompactList}\item 
+const Eigen\+::\+Matrix\+Xd \& \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_af2d40802da4e79812eb1ac814c0729ac}{get\+Process\+Noise\+Covariance}} ()
+\begin{DoxyCompactList}\small\item\em Gets the filter\textquotesingle{}s process noise covariance. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_ad0f19bd7681b76b444b93505e4d346c5}{get\+Sensor\+Timeout}} ()
+\begin{DoxyCompactList}\small\item\em Gets the sensor timeout value (in seconds) \end{DoxyCompactList}\item 
+const Eigen\+::\+Vector\+Xd \& \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a498b37ce2aed090aafd5c83882f36007}{get\+State}} ()
+\begin{DoxyCompactList}\small\item\em Gets the filter state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a75c6282d2136ef591d9c4bae58292480}{predict}} (const double reference\+Time, const double delta)=0
+\begin{DoxyCompactList}\small\item\em Carries out the predict step in the predict/update cycle. Projects the state and error matrices forward using a model of the vehicle\textquotesingle{}s motion. This method must be implemented by subclasses. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_ad0a9719c436072e48bf25a3261d7d3a8}{process\+Measurement}} (const \mbox{\hyperlink{structRobotLocalization_1_1Measurement}{Measurement}} \&measurement)
+\begin{DoxyCompactList}\small\item\em Does some final preprocessing, carries out the predict/update cycle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a753783342154dcbe8f78fc3b4c09c952}{set\+Control}} (const Eigen\+::\+Vector\+Xd \&control, const double control\+Time)
+\begin{DoxyCompactList}\small\item\em Sets the most recent control term. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a7527ef0ecf28d974c5e30eaa377423db}{set\+Control\+Params}} (const std\+::vector$<$ int $>$ \&update\+Vector, const double control\+Timeout, const std\+::vector$<$ double $>$ \&acceleration\+Limits, const std\+::vector$<$ double $>$ \&acceleration\+Gains, const std\+::vector$<$ double $>$ \&deceleration\+Limits, const std\+::vector$<$ double $>$ \&deceleration\+Gains)
+\begin{DoxyCompactList}\small\item\em Sets the control update vector and acceleration limits. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a3163de0aa4688edeb0d7b71c8f2d4a13}{set\+Debug}} (const bool debug, std\+::ostream $\ast$out\+Stream=N\+U\+LL)
+\begin{DoxyCompactList}\small\item\em Sets the filter into debug mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a76b52ad591a79e710efc8773323d13b8}{set\+Use\+Dynamic\+Process\+Noise\+Covariance}} (const bool dynamic\+Process\+Noise\+Covariance)
+\begin{DoxyCompactList}\small\item\em Enables dynamic process noise covariance calculation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a757bddc7b2637a6f413433f09c966c63}{set\+Estimate\+Error\+Covariance}} (const Eigen\+::\+Matrix\+Xd \&estimate\+Error\+Covariance)
+\begin{DoxyCompactList}\small\item\em Manually sets the filter\textquotesingle{}s estimate error covariance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a1e7cff7711626a26f04429ab9029913f}{set\+Last\+Measurement\+Time}} (const double last\+Measurement\+Time)
+\begin{DoxyCompactList}\small\item\em Sets the filter\textquotesingle{}s last measurement time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a0a8c02b5e93b21f2bb5124344e3bac73}{set\+Process\+Noise\+Covariance}} (const Eigen\+::\+Matrix\+Xd \&process\+Noise\+Covariance)
+\begin{DoxyCompactList}\small\item\em Sets the process noise covariance for the filter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_acb88e845fd8fbbe332800761a797bb20}{set\+Sensor\+Timeout}} (const double sensor\+Timeout)
+\begin{DoxyCompactList}\small\item\em Sets the sensor timeout. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_ad0c637026af5e7be8c01ccf7ba92bc7f}{set\+State}} (const Eigen\+::\+Vector\+Xd \&state)
+\begin{DoxyCompactList}\small\item\em Manually sets the filter\textquotesingle{}s state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_adf2e6645dc4ad7264c6cd0a86eb93f6a}{validate\+Delta}} (double \&delta)
+\begin{DoxyCompactList}\small\item\em Ensures a given time delta is valid (helps with bag file playback issues) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_ac5e86ef9c07927aee60bf5b7404148b2}{compute\+Control\+Acceleration}} (const double state, const double control, const double acceleration\+Limit, const double acceleration\+Gain, const double deceleration\+Limit, const double deceleration\+Gain)
+\begin{DoxyCompactList}\small\item\em Method for settings bounds on acceleration values derived from controls. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a76f3971d5c07e068ea1aa50e934b7c31}\label{classRobotLocalization_1_1FilterBase_a76f3971d5c07e068ea1aa50e934b7c31}} 
+virtual void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a76f3971d5c07e068ea1aa50e934b7c31}{wrap\+State\+Angles}} ()
+\begin{DoxyCompactList}\small\item\em Keeps the state Euler angles in the range \mbox{[}-\/pi, pi\mbox{]}. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a580584882a77061dab91746fb670a7be}{check\+Mahalanobis\+Threshold}} (const Eigen\+::\+Vector\+Xd \&innovation, const Eigen\+::\+Matrix\+Xd \&inv\+Covariance, const double nsigmas)
+\begin{DoxyCompactList}\small\item\em Tests if innovation is within N-\/sigmas of covariance. Returns true if passed the test. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a99c42d2973233e855a67ce4a052aeef4}{prepare\+Control}} (const double reference\+Time, const double prediction\+Delta)
+\begin{DoxyCompactList}\small\item\em Converts the control term to an acceleration to be applied in the prediction step. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a647ee11d77943fa0929e11a4fd811f99}\label{classRobotLocalization_1_1FilterBase_a647ee11d77943fa0929e11a4fd811f99}} 
+bool \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a647ee11d77943fa0929e11a4fd811f99}{initialized\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Whether or not we\textquotesingle{}ve received any measurements. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a80b7d9ce4f2069656691963a67ec5cdd}\label{classRobotLocalization_1_1FilterBase_a80b7d9ce4f2069656691963a67ec5cdd}} 
+bool \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a80b7d9ce4f2069656691963a67ec5cdd}{use\+Control\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Whether or not we apply the control term. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a93d04e061304bd001d604c9a28db40d8}\label{classRobotLocalization_1_1FilterBase_a93d04e061304bd001d604c9a28db40d8}} 
+bool \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a93d04e061304bd001d604c9a28db40d8}{use\+Dynamic\+Process\+Noise\+Covariance\+\_\+}}
+\begin{DoxyCompactList}\small\item\em If true, uses the robot\textquotesingle{}s vehicle state and the static process noise covariance matrix to generate a dynamic process noise covariance matrix. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a43c5a5d45c64674671d520c643f8f6bc}{last\+Measurement\+Time\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Tracks the time the filter was last updated using a measurement. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a9538a804f85ae6815e4451210b504389}\label{classRobotLocalization_1_1FilterBase_a9538a804f85ae6815e4451210b504389}} 
+double \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a9538a804f85ae6815e4451210b504389}{latest\+Control\+Time\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The time of reception of the most recent control term. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a0692690053cdd1f0c66acf9a6f01e54b}\label{classRobotLocalization_1_1FilterBase_a0692690053cdd1f0c66acf9a6f01e54b}} 
+double \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a0692690053cdd1f0c66acf9a6f01e54b}{control\+Timeout\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Timeout value, in seconds, after which a control is considered stale. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_aaa2fbbc1efa3391f58b44df46e752e01}\label{classRobotLocalization_1_1FilterBase_aaa2fbbc1efa3391f58b44df46e752e01}} 
+double \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_aaa2fbbc1efa3391f58b44df46e752e01}{sensor\+Timeout\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The updates to the filter -\/ both predict and correct -\/ are driven by measurements. If we get a gap in measurements for some reason, we want the filter to continue estimating. When this gap occurs, as specified by this timeout, we will continue to call \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a75c6282d2136ef591d9c4bae58292480}{predict()}} at the filter\textquotesingle{}s frequency. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_ac52608c95ed579d0388515ad9941676a}\label{classRobotLocalization_1_1FilterBase_ac52608c95ed579d0388515ad9941676a}} 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_ac52608c95ed579d0388515ad9941676a}{control\+Update\+Vector\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Which control variables are being used (e.\+g., not every vehicle is controllable in Y or Z) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a698611a016533ccdc4e27809ff74af0a}\label{classRobotLocalization_1_1FilterBase_a698611a016533ccdc4e27809ff74af0a}} 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a698611a016533ccdc4e27809ff74af0a}{acceleration\+Gains\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Gains applied to acceleration derived from control term. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a07b3eefdb6fe8c39b2bec74aa38b0afd}\label{classRobotLocalization_1_1FilterBase_a07b3eefdb6fe8c39b2bec74aa38b0afd}} 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a07b3eefdb6fe8c39b2bec74aa38b0afd}{acceleration\+Limits\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Caps the acceleration we apply from control input. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a7a8d0d66d24bd6cf731917078fa5f3c3}\label{classRobotLocalization_1_1FilterBase_a7a8d0d66d24bd6cf731917078fa5f3c3}} 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a7a8d0d66d24bd6cf731917078fa5f3c3}{deceleration\+Gains\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Gains applied to deceleration derived from control term. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a7ec1655d410f14f06cf4cbaa172556b5}\label{classRobotLocalization_1_1FilterBase_a7ec1655d410f14f06cf4cbaa172556b5}} 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a7ec1655d410f14f06cf4cbaa172556b5}{deceleration\+Limits\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Caps the deceleration we apply from control input. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a0f0d4a852a6538a86721f3e7c003b1b4}\label{classRobotLocalization_1_1FilterBase_a0f0d4a852a6538a86721f3e7c003b1b4}} 
+Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a0f0d4a852a6538a86721f3e7c003b1b4}{control\+Acceleration\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Variable that gets updated every time we process a measurement and we have a valid control. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a63aa09d50d0b67c24286f7512b010e2d}\label{classRobotLocalization_1_1FilterBase_a63aa09d50d0b67c24286f7512b010e2d}} 
+Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a63aa09d50d0b67c24286f7512b010e2d}{latest\+Control\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Latest control term. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a44f07aa8262c389d2c8e7c95fd758e9a}\label{classRobotLocalization_1_1FilterBase_a44f07aa8262c389d2c8e7c95fd758e9a}} 
+Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a44f07aa8262c389d2c8e7c95fd758e9a}{predicted\+State\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Holds the last predicted state of the filter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}\label{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}} 
+Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\+\_\+}}
+\begin{DoxyCompactList}\small\item\em This is the robot\textquotesingle{}s state vector, which is what we are trying to filter. The values in this vector are what get reported by the node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_afc1537aa0e906f7d5a01c26f0e1bdf37}\label{classRobotLocalization_1_1FilterBase_afc1537aa0e906f7d5a01c26f0e1bdf37}} 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_afc1537aa0e906f7d5a01c26f0e1bdf37}{covariance\+Epsilon\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Covariance matrices can be incredibly unstable. We can add a small value to it at each iteration to help maintain its positive-\/definite property. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a949fabe1bd9f06eeae1b79b40e19fd92}\label{classRobotLocalization_1_1FilterBase_a949fabe1bd9f06eeae1b79b40e19fd92}} 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a949fabe1bd9f06eeae1b79b40e19fd92}{dynamic\+Process\+Noise\+Covariance\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Gets updated when use\+Dynamic\+Process\+Noise\+\_\+ is true. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}\label{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}} 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}{estimate\+Error\+Covariance\+\_\+}}
+\begin{DoxyCompactList}\small\item\em This matrix stores the total error in our position estimate (the state\+\_\+ variable). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a86346ff3edea596b9381d27e94a4e908}\label{classRobotLocalization_1_1FilterBase_a86346ff3edea596b9381d27e94a4e908}} 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a86346ff3edea596b9381d27e94a4e908}{identity\+\_\+}}
+\begin{DoxyCompactList}\small\item\em We need the identity for a few operations. Better to store it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_ae309020ee3466e4e73de7ab711b0f695}\label{classRobotLocalization_1_1FilterBase_ae309020ee3466e4e73de7ab711b0f695}} 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_ae309020ee3466e4e73de7ab711b0f695}{process\+Noise\+Covariance\+\_\+}}
+\begin{DoxyCompactList}\small\item\em As we move through the world, we follow a predict/update cycle. If one were to imagine a scenario where all we did was make predictions without correcting, the error in our position estimate would grow without bound. This error is stored in the state\+Estimate\+Covariance\+\_\+ matrix. However, this matrix doesn\textquotesingle{}t answer the question of {\itshape how much} our error should grow for each time step. That\textquotesingle{}s where the process\+Noise\+Covariance matrix comes in. When we make a prediction using the transfer function, we add this matrix (times deltaT) to the state estimate covariance matrix. \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transfer\+Function\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The Kalman filter transfer function. \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a9635224445b700f87c56cf1ed42b8b66}{transfer\+Function\+Jacobian\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The Kalman filter transfer function Jacobian. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a8971637ad6a6a2652e84b1b503238e2e}\label{classRobotLocalization_1_1FilterBase_a8971637ad6a6a2652e84b1b503238e2e}} 
+std\+::ostream $\ast$ \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a8971637ad6a6a2652e84b1b503238e2e}{debug\+Stream\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Used for outputting debug messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 147 of file filter\+\_\+base.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a580584882a77061dab91746fb670a7be}\label{classRobotLocalization_1_1FilterBase_a580584882a77061dab91746fb670a7be}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!checkMahalanobisThreshold@{checkMahalanobisThreshold}}
+\index{checkMahalanobisThreshold@{checkMahalanobisThreshold}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{checkMahalanobisThreshold()}{checkMahalanobisThreshold()}}
+{\footnotesize\ttfamily bool Robot\+Localization\+::\+Filter\+Base\+::check\+Mahalanobis\+Threshold (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{innovation,  }\item[{const Eigen\+::\+Matrix\+Xd \&}]{inv\+Covariance,  }\item[{const double}]{nsigmas }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Tests if innovation is within N-\/sigmas of covariance. Returns true if passed the test. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em innovation} & -\/ The difference between the measurement and the state \\
+\hline
+\mbox{\texttt{ in}}  & {\em inv\+Covariance} & -\/ The innovation error \\
+\hline
+\mbox{\texttt{ in}}  & {\em nsigmas} & -\/ Number of standard deviations that are considered acceptable \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 384 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{387   \{}
+\DoxyCodeLine{388     \textcolor{keywordtype}{double} sqMahalanobis = innovation.dot(invCovariance * innovation);}
+\DoxyCodeLine{389     \textcolor{keywordtype}{double} threshold = nsigmas * nsigmas;}
+\DoxyCodeLine{390 }
+\DoxyCodeLine{391     \textcolor{keywordflow}{if} (sqMahalanobis >= threshold)}
+\DoxyCodeLine{392     \{}
+\DoxyCodeLine{393       FB\_DEBUG(\textcolor{stringliteral}{"Innovation mahalanobis distance test failed. Squared Mahalanobis is: "} << sqMahalanobis << \textcolor{stringliteral}{"\(\backslash\)n"} <<}
+\DoxyCodeLine{394                \textcolor{stringliteral}{"Threshold is: "} << threshold << \textcolor{stringliteral}{"\(\backslash\)n"} <<}
+\DoxyCodeLine{395                \textcolor{stringliteral}{"Innovation is: "} << innovation << \textcolor{stringliteral}{"\(\backslash\)n"} <<}
+\DoxyCodeLine{396                \textcolor{stringliteral}{"Innovation covariance is:\(\backslash\)n"} << invCovariance << \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{397 }
+\DoxyCodeLine{398       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{399     \}}
+\DoxyCodeLine{400 }
+\DoxyCodeLine{401     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{402   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_ac5e86ef9c07927aee60bf5b7404148b2}\label{classRobotLocalization_1_1FilterBase_ac5e86ef9c07927aee60bf5b7404148b2}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!computeControlAcceleration@{computeControlAcceleration}}
+\index{computeControlAcceleration@{computeControlAcceleration}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{computeControlAcceleration()}{computeControlAcceleration()}}
+{\footnotesize\ttfamily double Robot\+Localization\+::\+Filter\+Base\+::compute\+Control\+Acceleration (\begin{DoxyParamCaption}\item[{const double}]{state,  }\item[{const double}]{control,  }\item[{const double}]{acceleration\+Limit,  }\item[{const double}]{acceleration\+Gain,  }\item[{const double}]{deceleration\+Limit,  }\item[{const double}]{deceleration\+Gain }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Method for settings bounds on acceleration values derived from controls. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em state} & -\/ The current state variable (e.\+g., linear X velocity) \\
+\hline
+\mbox{\texttt{ in}}  & {\em control} & -\/ The current control commanded velocity corresponding to the state variable \\
+\hline
+\mbox{\texttt{ in}}  & {\em acceleration\+Limit} & -\/ Limit for acceleration (regardless of driving direction) \\
+\hline
+\mbox{\texttt{ in}}  & {\em acceleration\+Gain} & -\/ Gain applied to acceleration control error \\
+\hline
+\mbox{\texttt{ in}}  & {\em deceleration\+Limit} & -\/ Limit for deceleration (moving towards zero, regardless of driving direction) \\
+\hline
+\mbox{\texttt{ in}}  & {\em deceleration\+Gain} & -\/ Gain applied to deceleration control error \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a usable acceleration estimate for the control vector 
+\end{DoxyReturn}
+
+
+Definition at line 342 of file filter\+\_\+base.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{344     \{}
+\DoxyCodeLine{345       FB\_DEBUG(\textcolor{stringliteral}{"-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ FilterBase::computeControlAcceleration -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"});}
+\DoxyCodeLine{346 }
+\DoxyCodeLine{347       \textcolor{keyword}{const} \textcolor{keywordtype}{double} error = control -\/ state;}
+\DoxyCodeLine{348       \textcolor{keyword}{const} \textcolor{keywordtype}{bool} sameSign = (::fabs(error) <= ::fabs(control) + 0.01);}
+\DoxyCodeLine{349       \textcolor{keyword}{const} \textcolor{keywordtype}{double} setPoint = (sameSign ? control : 0.0);}
+\DoxyCodeLine{350       \textcolor{keyword}{const} \textcolor{keywordtype}{bool} decelerating = ::fabs(setPoint) < ::fabs(state);}
+\DoxyCodeLine{351       \textcolor{keywordtype}{double} limit = accelerationLimit;}
+\DoxyCodeLine{352       \textcolor{keywordtype}{double} gain = accelerationGain;}
+\DoxyCodeLine{353 }
+\DoxyCodeLine{354       \textcolor{keywordflow}{if} (decelerating)}
+\DoxyCodeLine{355       \{}
+\DoxyCodeLine{356         limit = decelerationLimit;}
+\DoxyCodeLine{357         gain = decelerationGain;}
+\DoxyCodeLine{358       \}}
+\DoxyCodeLine{359 }
+\DoxyCodeLine{360       \textcolor{keyword}{const} \textcolor{keywordtype}{double} finalAccel = std::min(std::max(gain * error, -\/limit), limit);}
+\DoxyCodeLine{361 }
+\DoxyCodeLine{362       FB\_DEBUG(\textcolor{stringliteral}{"Control value: "} << control << \textcolor{stringliteral}{"\(\backslash\)n"} <<}
+\DoxyCodeLine{363                \textcolor{stringliteral}{"State value: "} << state << \textcolor{stringliteral}{"\(\backslash\)n"} <<}
+\DoxyCodeLine{364                \textcolor{stringliteral}{"Error: "} << error << \textcolor{stringliteral}{"\(\backslash\)n"} <<}
+\DoxyCodeLine{365                \textcolor{stringliteral}{"Same sign: "} << (sameSign ? \textcolor{stringliteral}{"true"} : \textcolor{stringliteral}{"false"}) << \textcolor{stringliteral}{"\(\backslash\)n"} <<}
+\DoxyCodeLine{366                \textcolor{stringliteral}{"Set point: "} << setPoint << \textcolor{stringliteral}{"\(\backslash\)n"} <<}
+\DoxyCodeLine{367                \textcolor{stringliteral}{"Decelerating: "} << (decelerating ? \textcolor{stringliteral}{"true"} : \textcolor{stringliteral}{"false"}) << \textcolor{stringliteral}{"\(\backslash\)n"} <<}
+\DoxyCodeLine{368                \textcolor{stringliteral}{"Limit: "} << limit << \textcolor{stringliteral}{"\(\backslash\)n"} <<}
+\DoxyCodeLine{369                \textcolor{stringliteral}{"Gain: "} << gain << \textcolor{stringliteral}{"\(\backslash\)n"} <<}
+\DoxyCodeLine{370                \textcolor{stringliteral}{"Final is "} << finalAccel << \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{371 }
+\DoxyCodeLine{372       \textcolor{keywordflow}{return} finalAccel;}
+\DoxyCodeLine{373     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a027315e64db2c8d0f6ecc83d5ffd83a5}\label{classRobotLocalization_1_1FilterBase_a027315e64db2c8d0f6ecc83d5ffd83a5}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!computeDynamicProcessNoiseCovariance@{computeDynamicProcessNoiseCovariance}}
+\index{computeDynamicProcessNoiseCovariance@{computeDynamicProcessNoiseCovariance}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{computeDynamicProcessNoiseCovariance()}{computeDynamicProcessNoiseCovariance()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Base\+::compute\+Dynamic\+Process\+Noise\+Covariance (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{state,  }\item[{const double}]{delta }\end{DoxyParamCaption})}
+
+
+
+Computes a dynamic process noise covariance matrix using the parameterized state. 
+
+This allows us to, e.\+g., not increase the pose covariance values when the vehicle is not moving
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em state} & -\/ The S\+T\+A\+T\+E\+\_\+\+S\+I\+ZE state vector that is used to generate the dynamic process noise covariance \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 136 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{137   \{}
+\DoxyCodeLine{138     \textcolor{comment}{// A more principled approach would be to get the current velocity from the state, make a diagonal matrix from it,}}
+\DoxyCodeLine{139     \textcolor{comment}{// and then rotate it to be in the world frame (i.e., the same frame as the pose data). We could then use this}}
+\DoxyCodeLine{140     \textcolor{comment}{// rotated velocity matrix to scale the process noise covariance for the pose variables as}}
+\DoxyCodeLine{141     \textcolor{comment}{// rotatedVelocityMatrix * poseCovariance * rotatedVelocityMatrix'}}
+\DoxyCodeLine{142     \textcolor{comment}{// However, this presents trouble for robots that may incur rotational error as a result of linear motion (and}}
+\DoxyCodeLine{143     \textcolor{comment}{// vice-\/versa). Instead, we create a diagonal matrix whose diagonal values are the vector norm of the state's}}
+\DoxyCodeLine{144     \textcolor{comment}{// velocity. We use that to scale the process noise covariance.}}
+\DoxyCodeLine{145     Eigen::MatrixXd velocityMatrix(TWIST\_SIZE, TWIST\_SIZE);}
+\DoxyCodeLine{146     velocityMatrix.setIdentity();}
+\DoxyCodeLine{147     velocityMatrix.diagonal() *= state.segment(POSITION\_V\_OFFSET, TWIST\_SIZE).norm();}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a949fabe1bd9f06eeae1b79b40e19fd92}{dynamicProcessNoiseCovariance\_}}.block<TWIST\_SIZE, TWIST\_SIZE>(POSITION\_OFFSET, POSITION\_OFFSET) =}
+\DoxyCodeLine{150       velocityMatrix *}
+\DoxyCodeLine{151       \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_ae309020ee3466e4e73de7ab711b0f695}{processNoiseCovariance\_}}.block<TWIST\_SIZE, TWIST\_SIZE>(POSITION\_OFFSET, POSITION\_OFFSET) *}
+\DoxyCodeLine{152       velocityMatrix.transpose();}
+\DoxyCodeLine{153   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a7c53dd83aa72e9a46f2d406c6431215e}\label{classRobotLocalization_1_1FilterBase_a7c53dd83aa72e9a46f2d406c6431215e}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!correct@{correct}}
+\index{correct@{correct}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{correct()}{correct()}}
+{\footnotesize\ttfamily virtual void Robot\+Localization\+::\+Filter\+Base\+::correct (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structRobotLocalization_1_1Measurement}{Measurement}} \&}]{measurement }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Carries out the correct step in the predict/update cycle. This method must be implemented by subclasses. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em measurement} & -\/ The measurement to fuse with the state estimate \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classRobotLocalization_1_1FilterDerived2_a9b9eee947b830c0b4b17269f670428f4}{Robot\+Localization\+::\+Filter\+Derived2}}, \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a5c4c4f4c821d7a4c5aa00f4b25464406}{Robot\+Localization\+::\+Ukf}}, \mbox{\hyperlink{classRobotLocalization_1_1Ekf_a99c978378ac9e3e96f7a940de3501d06}{Robot\+Localization\+::\+Ekf}}, and \mbox{\hyperlink{classRobotLocalization_1_1FilterDerived_ab44ec98cf11eca5356bb1f153753cac1}{Robot\+Localization\+::\+Filter\+Derived}}.
+
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_aabccb8d70d8079c6e7f8729a99801a91}\label{classRobotLocalization_1_1FilterBase_aabccb8d70d8079c6e7f8729a99801a91}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!getControl@{getControl}}
+\index{getControl@{getControl}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{getControl()}{getControl()}}
+{\footnotesize\ttfamily const Eigen\+::\+Vector\+Xd \& Robot\+Localization\+::\+Filter\+Base\+::get\+Control (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the control vector currently being used. 
+
+\begin{DoxyReturn}{Returns}
+The control vector 
+\end{DoxyReturn}
+
+
+Definition at line 155 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{156   \{}
+\DoxyCodeLine{157     \textcolor{keywordflow}{return} \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a63aa09d50d0b67c24286f7512b010e2d}{latestControl\_}};}
+\DoxyCodeLine{158   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_add286a89740495361b0ec66c42f9a1d1}\label{classRobotLocalization_1_1FilterBase_add286a89740495361b0ec66c42f9a1d1}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!getControlTime@{getControlTime}}
+\index{getControlTime@{getControlTime}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{getControlTime()}{getControlTime()}}
+{\footnotesize\ttfamily double Robot\+Localization\+::\+Filter\+Base\+::get\+Control\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the time at which the control term was issued. 
+
+\begin{DoxyReturn}{Returns}
+The time the control vector was issued 
+\end{DoxyReturn}
+
+
+Definition at line 160 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{161   \{}
+\DoxyCodeLine{162     \textcolor{keywordflow}{return} \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a9538a804f85ae6815e4451210b504389}{latestControlTime\_}};}
+\DoxyCodeLine{163   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a92af68ffd2d5cbe69629ac063c0dd298}\label{classRobotLocalization_1_1FilterBase_a92af68ffd2d5cbe69629ac063c0dd298}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!getDebug@{getDebug}}
+\index{getDebug@{getDebug}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{getDebug()}{getDebug()}}
+{\footnotesize\ttfamily bool Robot\+Localization\+::\+Filter\+Base\+::get\+Debug (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the value of the debug\+\_\+ variable. 
+
+\begin{DoxyReturn}{Returns}
+True if in debug mode, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 165 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{166   \{}
+\DoxyCodeLine{167     \textcolor{keywordflow}{return} debug\_;}
+\DoxyCodeLine{168   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_abf2cb6ee6f3c6b633b76cb964699f329}\label{classRobotLocalization_1_1FilterBase_abf2cb6ee6f3c6b633b76cb964699f329}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!getEstimateErrorCovariance@{getEstimateErrorCovariance}}
+\index{getEstimateErrorCovariance@{getEstimateErrorCovariance}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{getEstimateErrorCovariance()}{getEstimateErrorCovariance()}}
+{\footnotesize\ttfamily const Eigen\+::\+Matrix\+Xd \& Robot\+Localization\+::\+Filter\+Base\+::get\+Estimate\+Error\+Covariance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the estimate error covariance. 
+
+\begin{DoxyReturn}{Returns}
+A copy of the estimate error covariance matrix 
+\end{DoxyReturn}
+
+
+Definition at line 170 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{171   \{}
+\DoxyCodeLine{172     \textcolor{keywordflow}{return} \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}{estimateErrorCovariance\_}};}
+\DoxyCodeLine{173   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a30b9039bb7c6fcb7deabe8ae13dc4aa6}\label{classRobotLocalization_1_1FilterBase_a30b9039bb7c6fcb7deabe8ae13dc4aa6}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!getInitializedStatus@{getInitializedStatus}}
+\index{getInitializedStatus@{getInitializedStatus}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{getInitializedStatus()}{getInitializedStatus()}}
+{\footnotesize\ttfamily bool Robot\+Localization\+::\+Filter\+Base\+::get\+Initialized\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the filter\textquotesingle{}s initialized status. 
+
+\begin{DoxyReturn}{Returns}
+True if we\textquotesingle{}ve received our first measurement, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 175 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{176   \{}
+\DoxyCodeLine{177     \textcolor{keywordflow}{return} \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a647ee11d77943fa0929e11a4fd811f99}{initialized\_}};}
+\DoxyCodeLine{178   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a784fdd478f61021d08c51a232119017e}\label{classRobotLocalization_1_1FilterBase_a784fdd478f61021d08c51a232119017e}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!getLastMeasurementTime@{getLastMeasurementTime}}
+\index{getLastMeasurementTime@{getLastMeasurementTime}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{getLastMeasurementTime()}{getLastMeasurementTime()}}
+{\footnotesize\ttfamily double Robot\+Localization\+::\+Filter\+Base\+::get\+Last\+Measurement\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the most recent measurement time. 
+
+\begin{DoxyReturn}{Returns}
+The time at which we last received a measurement 
+\end{DoxyReturn}
+
+
+Definition at line 180 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{181   \{}
+\DoxyCodeLine{182     \textcolor{keywordflow}{return} \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a43c5a5d45c64674671d520c643f8f6bc}{lastMeasurementTime\_}};}
+\DoxyCodeLine{183   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a57e2935abd66403b75a41536406fa725}\label{classRobotLocalization_1_1FilterBase_a57e2935abd66403b75a41536406fa725}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!getPredictedState@{getPredictedState}}
+\index{getPredictedState@{getPredictedState}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{getPredictedState()}{getPredictedState()}}
+{\footnotesize\ttfamily const Eigen\+::\+Vector\+Xd \& Robot\+Localization\+::\+Filter\+Base\+::get\+Predicted\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the filter\textquotesingle{}s predicted state, i.\+e., the state estimate before \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a7c53dd83aa72e9a46f2d406c6431215e}{correct()}} is called. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the predicted state 
+\end{DoxyReturn}
+
+
+Definition at line 185 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{186   \{}
+\DoxyCodeLine{187     \textcolor{keywordflow}{return} \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a44f07aa8262c389d2c8e7c95fd758e9a}{predictedState\_}};}
+\DoxyCodeLine{188   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_af2d40802da4e79812eb1ac814c0729ac}\label{classRobotLocalization_1_1FilterBase_af2d40802da4e79812eb1ac814c0729ac}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!getProcessNoiseCovariance@{getProcessNoiseCovariance}}
+\index{getProcessNoiseCovariance@{getProcessNoiseCovariance}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{getProcessNoiseCovariance()}{getProcessNoiseCovariance()}}
+{\footnotesize\ttfamily const Eigen\+::\+Matrix\+Xd \& Robot\+Localization\+::\+Filter\+Base\+::get\+Process\+Noise\+Covariance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the filter\textquotesingle{}s process noise covariance. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the process noise covariance 
+\end{DoxyReturn}
+
+
+Definition at line 190 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{191   \{}
+\DoxyCodeLine{192     \textcolor{keywordflow}{return} \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_ae309020ee3466e4e73de7ab711b0f695}{processNoiseCovariance\_}};}
+\DoxyCodeLine{193   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_ad0f19bd7681b76b444b93505e4d346c5}\label{classRobotLocalization_1_1FilterBase_ad0f19bd7681b76b444b93505e4d346c5}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!getSensorTimeout@{getSensorTimeout}}
+\index{getSensorTimeout@{getSensorTimeout}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{getSensorTimeout()}{getSensorTimeout()}}
+{\footnotesize\ttfamily double Robot\+Localization\+::\+Filter\+Base\+::get\+Sensor\+Timeout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the sensor timeout value (in seconds) 
+
+\begin{DoxyReturn}{Returns}
+The sensor timeout value 
+\end{DoxyReturn}
+
+
+Definition at line 195 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{196   \{}
+\DoxyCodeLine{197     \textcolor{keywordflow}{return} \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_aaa2fbbc1efa3391f58b44df46e752e01}{sensorTimeout\_}};}
+\DoxyCodeLine{198   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a498b37ce2aed090aafd5c83882f36007}\label{classRobotLocalization_1_1FilterBase_a498b37ce2aed090aafd5c83882f36007}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!getState@{getState}}
+\index{getState@{getState}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily const Eigen\+::\+Vector\+Xd \& Robot\+Localization\+::\+Filter\+Base\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the filter state. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the current state 
+\end{DoxyReturn}
+
+
+Definition at line 200 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{201   \{}
+\DoxyCodeLine{202     \textcolor{keywordflow}{return} \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}};}
+\DoxyCodeLine{203   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a75c6282d2136ef591d9c4bae58292480}\label{classRobotLocalization_1_1FilterBase_a75c6282d2136ef591d9c4bae58292480}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!predict@{predict}}
+\index{predict@{predict}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily virtual void Robot\+Localization\+::\+Filter\+Base\+::predict (\begin{DoxyParamCaption}\item[{const double}]{reference\+Time,  }\item[{const double}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Carries out the predict step in the predict/update cycle. Projects the state and error matrices forward using a model of the vehicle\textquotesingle{}s motion. This method must be implemented by subclasses. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em reference\+Time} & -\/ The time at which the prediction is being made \\
+\hline
+\mbox{\texttt{ in}}  & {\em delta} & -\/ The time step over which to predict. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classRobotLocalization_1_1FilterDerived2_a7033983e46fbf1a71b69287ecc55916f}{Robot\+Localization\+::\+Filter\+Derived2}}, \mbox{\hyperlink{classRobotLocalization_1_1FilterDerived_ab661899869b8845c138ac161ca71c9dd}{Robot\+Localization\+::\+Filter\+Derived}}, \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a2ac9abfd27df070d46a5c6d768fdf41f}{Robot\+Localization\+::\+Ukf}}, and \mbox{\hyperlink{classRobotLocalization_1_1Ekf_adecf63c473cd51da4f7346cd4bfd6a13}{Robot\+Localization\+::\+Ekf}}.
+
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a99c42d2973233e855a67ce4a052aeef4}\label{classRobotLocalization_1_1FilterBase_a99c42d2973233e855a67ce4a052aeef4}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!prepareControl@{prepareControl}}
+\index{prepareControl@{prepareControl}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{prepareControl()}{prepareControl()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Base\+::prepare\+Control (\begin{DoxyParamCaption}\item[{const double}]{reference\+Time,  }\item[{const double}]{prediction\+Delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Converts the control term to an acceleration to be applied in the prediction step. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em reference\+Time} & -\/ The time of the update (measurement used in the prediction step) \\
+\hline
+\mbox{\texttt{ in}}  & {\em prediction\+Delta} & -\/ The amount of time over which we are carrying out our prediction \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 351 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{352   \{}
+\DoxyCodeLine{353     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a0f0d4a852a6538a86721f3e7c003b1b4}{controlAcceleration\_}}.setZero();}
+\DoxyCodeLine{354 }
+\DoxyCodeLine{355     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a80b7d9ce4f2069656691963a67ec5cdd}{useControl\_}})}
+\DoxyCodeLine{356     \{}
+\DoxyCodeLine{357       \textcolor{keywordtype}{bool} timedOut = ::fabs(referenceTime -\/ \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a9538a804f85ae6815e4451210b504389}{latestControlTime\_}}) >= \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a0692690053cdd1f0c66acf9a6f01e54b}{controlTimeout\_}};}
+\DoxyCodeLine{358 }
+\DoxyCodeLine{359       \textcolor{keywordflow}{if} (timedOut)}
+\DoxyCodeLine{360       \{}
+\DoxyCodeLine{361         FB\_DEBUG(\textcolor{stringliteral}{"Control timed out. Reference time was "} << referenceTime << \textcolor{stringliteral}{", latest control time was "} <<}
+\DoxyCodeLine{362           \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a9538a804f85ae6815e4451210b504389}{latestControlTime\_}} << \textcolor{stringliteral}{", control timeout was "} << \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a0692690053cdd1f0c66acf9a6f01e54b}{controlTimeout\_}} << \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{363       \}}
+\DoxyCodeLine{364 }
+\DoxyCodeLine{365       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} controlInd = 0; controlInd < TWIST\_SIZE; ++controlInd)}
+\DoxyCodeLine{366       \{}
+\DoxyCodeLine{367         \textcolor{keywordflow}{if} (\mbox{\hyperlink{classRobotLocalization_1_1FilterBase_ac52608c95ed579d0388515ad9941676a}{controlUpdateVector\_}}[controlInd])}
+\DoxyCodeLine{368         \{}
+\DoxyCodeLine{369           \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a0f0d4a852a6538a86721f3e7c003b1b4}{controlAcceleration\_}}(controlInd) = \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_ac5e86ef9c07927aee60bf5b7404148b2}{computeControlAcceleration}}(\mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}}(controlInd + POSITION\_V\_OFFSET),}
+\DoxyCodeLine{370             (timedOut ? 0.0 : \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a63aa09d50d0b67c24286f7512b010e2d}{latestControl\_}}(controlInd)), \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a07b3eefdb6fe8c39b2bec74aa38b0afd}{accelerationLimits\_}}[controlInd],}
+\DoxyCodeLine{371             \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a698611a016533ccdc4e27809ff74af0a}{accelerationGains\_}}[controlInd], \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a7ec1655d410f14f06cf4cbaa172556b5}{decelerationLimits\_}}[controlInd], \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a7a8d0d66d24bd6cf731917078fa5f3c3}{decelerationGains\_}}[controlInd]);}
+\DoxyCodeLine{372         \}}
+\DoxyCodeLine{373       \}}
+\DoxyCodeLine{374     \}}
+\DoxyCodeLine{375   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_ad0a9719c436072e48bf25a3261d7d3a8}\label{classRobotLocalization_1_1FilterBase_ad0a9719c436072e48bf25a3261d7d3a8}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!processMeasurement@{processMeasurement}}
+\index{processMeasurement@{processMeasurement}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{processMeasurement()}{processMeasurement()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Base\+::process\+Measurement (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structRobotLocalization_1_1Measurement}{Measurement}} \&}]{measurement }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Does some final preprocessing, carries out the predict/update cycle. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em measurement} & -\/ The measurement object to fuse into the filter \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classRobotLocalization_1_1FilterDerived2_aaa1c5a6cf1b7ec4c4420b25272d7bbfe}{Robot\+Localization\+::\+Filter\+Derived2}}.
+
+
+
+Definition at line 205 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{206   \{}
+\DoxyCodeLine{207     FB\_DEBUG(\textcolor{stringliteral}{"-\/-\/-\/-\/-\/-\/ FilterBase::processMeasurement ("} << measurement.topicName\_ << \textcolor{stringliteral}{") -\/-\/-\/-\/-\/-\/\(\backslash\)n"});}
+\DoxyCodeLine{208 }
+\DoxyCodeLine{209     \textcolor{keywordtype}{double} delta = 0.0;}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211     \textcolor{comment}{// If we've had a previous reading, then go through the predict/update}}
+\DoxyCodeLine{212     \textcolor{comment}{// cycle. Otherwise, set our state and covariance to whatever we get}}
+\DoxyCodeLine{213     \textcolor{comment}{// from this measurement.}}
+\DoxyCodeLine{214     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a647ee11d77943fa0929e11a4fd811f99}{initialized\_}})}
+\DoxyCodeLine{215     \{}
+\DoxyCodeLine{216       \textcolor{comment}{// Determine how much time has passed since our last measurement}}
+\DoxyCodeLine{217       delta = measurement.time\_ -\/ \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a43c5a5d45c64674671d520c643f8f6bc}{lastMeasurementTime\_}};}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219       FB\_DEBUG(\textcolor{stringliteral}{"Filter is already initialized. Carrying out predict/correct loop...\(\backslash\)n"}}
+\DoxyCodeLine{220                \textcolor{stringliteral}{"Measurement time is "} << std::setprecision(20) << measurement.time\_ <<}
+\DoxyCodeLine{221                \textcolor{stringliteral}{", last measurement time is "} << \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a43c5a5d45c64674671d520c643f8f6bc}{lastMeasurementTime\_}} << \textcolor{stringliteral}{", delta is "} << delta << \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{222 }
+\DoxyCodeLine{223       \textcolor{comment}{// Only want to carry out a prediction if it's}}
+\DoxyCodeLine{224       \textcolor{comment}{// forward in time. Otherwise, just correct.}}
+\DoxyCodeLine{225       \textcolor{keywordflow}{if} (delta > 0)}
+\DoxyCodeLine{226       \{}
+\DoxyCodeLine{227         \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_adf2e6645dc4ad7264c6cd0a86eb93f6a}{validateDelta}}(delta);}
+\DoxyCodeLine{228         \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a75c6282d2136ef591d9c4bae58292480}{predict}}(measurement.time\_, delta);}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230         \textcolor{comment}{// Return this to the user}}
+\DoxyCodeLine{231         \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a44f07aa8262c389d2c8e7c95fd758e9a}{predictedState\_}} = \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}};}
+\DoxyCodeLine{232       \}}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234       \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a7c53dd83aa72e9a46f2d406c6431215e}{correct}}(measurement);}
+\DoxyCodeLine{235     \}}
+\DoxyCodeLine{236     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{237     \{}
+\DoxyCodeLine{238       FB\_DEBUG(\textcolor{stringliteral}{"First measurement. Initializing filter.\(\backslash\)n"});}
+\DoxyCodeLine{239 }
+\DoxyCodeLine{240       \textcolor{comment}{// Initialize the filter, but only with the values we're using}}
+\DoxyCodeLine{241       \textcolor{keywordtype}{size\_t} measurementLength = measurement.updateVector\_.size();}
+\DoxyCodeLine{242       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < measurementLength; ++i)}
+\DoxyCodeLine{243       \{}
+\DoxyCodeLine{244         \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}}[i] = (measurement.updateVector\_[i] ? measurement.measurement\_[i] : \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}}[i]);}
+\DoxyCodeLine{245       \}}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{247       \textcolor{comment}{// Same for covariance}}
+\DoxyCodeLine{248       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < measurementLength; ++i)}
+\DoxyCodeLine{249       \{}
+\DoxyCodeLine{250         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 0; j < measurementLength; ++j)}
+\DoxyCodeLine{251         \{}
+\DoxyCodeLine{252           \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}{estimateErrorCovariance\_}}(i, j) = (measurement.updateVector\_[i] \&\& measurement.updateVector\_[j] ?}
+\DoxyCodeLine{253                                             measurement.covariance\_(i, j) :}
+\DoxyCodeLine{254                                             \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}{estimateErrorCovariance\_}}(i, j));}
+\DoxyCodeLine{255         \}}
+\DoxyCodeLine{256       \}}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258       \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a647ee11d77943fa0929e11a4fd811f99}{initialized\_}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{259     \}}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{261     \textcolor{keywordflow}{if} (delta >= 0.0)}
+\DoxyCodeLine{262     \{}
+\DoxyCodeLine{263       \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a43c5a5d45c64674671d520c643f8f6bc}{lastMeasurementTime\_}} = measurement.time\_;}
+\DoxyCodeLine{264     \}}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{266     FB\_DEBUG(\textcolor{stringliteral}{"-\/-\/-\/-\/-\/-\/ /FilterBase::processMeasurement ("} << measurement.topicName\_ << \textcolor{stringliteral}{") -\/-\/-\/-\/-\/-\/\(\backslash\)n"});}
+\DoxyCodeLine{267   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a753783342154dcbe8f78fc3b4c09c952}\label{classRobotLocalization_1_1FilterBase_a753783342154dcbe8f78fc3b4c09c952}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!setControl@{setControl}}
+\index{setControl@{setControl}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{setControl()}{setControl()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Base\+::set\+Control (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{control,  }\item[{const double}]{control\+Time }\end{DoxyParamCaption})}
+
+
+
+Sets the most recent control term. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em control} & -\/ The control term to be applied \\
+\hline
+\mbox{\texttt{ in}}  & {\em control\+Time} & -\/ The time at which the control in question was received \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 269 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{270   \{}
+\DoxyCodeLine{271     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a63aa09d50d0b67c24286f7512b010e2d}{latestControl\_}} = control;}
+\DoxyCodeLine{272     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a9538a804f85ae6815e4451210b504389}{latestControlTime\_}} = controlTime;}
+\DoxyCodeLine{273   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a7527ef0ecf28d974c5e30eaa377423db}\label{classRobotLocalization_1_1FilterBase_a7527ef0ecf28d974c5e30eaa377423db}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!setControlParams@{setControlParams}}
+\index{setControlParams@{setControlParams}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{setControlParams()}{setControlParams()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Base\+::set\+Control\+Params (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ int $>$ \&}]{update\+Vector,  }\item[{const double}]{control\+Timeout,  }\item[{const std\+::vector$<$ double $>$ \&}]{acceleration\+Limits,  }\item[{const std\+::vector$<$ double $>$ \&}]{acceleration\+Gains,  }\item[{const std\+::vector$<$ double $>$ \&}]{deceleration\+Limits,  }\item[{const std\+::vector$<$ double $>$ \&}]{deceleration\+Gains }\end{DoxyParamCaption})}
+
+
+
+Sets the control update vector and acceleration limits. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em update\+Vector} & -\/ The values the control term affects \\
+\hline
+\mbox{\texttt{ in}}  & {\em control\+Timeout} & -\/ Timeout value, in seconds, after which a control is considered stale \\
+\hline
+\mbox{\texttt{ in}}  & {\em acceleration\+Limits} & -\/ The acceleration limits for the control variables \\
+\hline
+\mbox{\texttt{ in}}  & {\em acceleration\+Gains} & -\/ Gains applied to the control term-\/derived acceleration \\
+\hline
+\mbox{\texttt{ in}}  & {\em deceleration\+Limits} & -\/ The deceleration limits for the control variables \\
+\hline
+\mbox{\texttt{ in}}  & {\em deceleration\+Gains} & -\/ Gains applied to the control term-\/derived deceleration \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 275 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{278   \{}
+\DoxyCodeLine{279     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a80b7d9ce4f2069656691963a67ec5cdd}{useControl\_}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{280     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_ac52608c95ed579d0388515ad9941676a}{controlUpdateVector\_}} = updateVector;}
+\DoxyCodeLine{281     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a0692690053cdd1f0c66acf9a6f01e54b}{controlTimeout\_}} = controlTimeout;}
+\DoxyCodeLine{282     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a07b3eefdb6fe8c39b2bec74aa38b0afd}{accelerationLimits\_}} = accelerationLimits;}
+\DoxyCodeLine{283     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a698611a016533ccdc4e27809ff74af0a}{accelerationGains\_}} = accelerationGains;}
+\DoxyCodeLine{284     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a7ec1655d410f14f06cf4cbaa172556b5}{decelerationLimits\_}} = decelerationLimits;}
+\DoxyCodeLine{285     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a7a8d0d66d24bd6cf731917078fa5f3c3}{decelerationGains\_}} = decelerationGains;}
+\DoxyCodeLine{286   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a3163de0aa4688edeb0d7b71c8f2d4a13}\label{classRobotLocalization_1_1FilterBase_a3163de0aa4688edeb0d7b71c8f2d4a13}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!setDebug@{setDebug}}
+\index{setDebug@{setDebug}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{setDebug()}{setDebug()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Base\+::set\+Debug (\begin{DoxyParamCaption}\item[{const bool}]{debug,  }\item[{std\+::ostream $\ast$}]{out\+Stream = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+
+
+Sets the filter into debug mode. 
+
+N\+O\+TE\+: this will generates a lot of debug output to the provided stream. The value must be a pointer to a valid ostream object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em debug} & -\/ Whether or not to place the filter in debug mode \\
+\hline
+\mbox{\texttt{ in}}  & {\em out\+Stream} & -\/ If debug is true, then this must have a valid pointer. If the pointer is invalid, the filter will not enter debug mode. If debug is false, out\+Stream is ignored. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 288 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{289   \{}
+\DoxyCodeLine{290     \textcolor{keywordflow}{if} (debug)}
+\DoxyCodeLine{291     \{}
+\DoxyCodeLine{292       \textcolor{keywordflow}{if} (outStream != NULL)}
+\DoxyCodeLine{293       \{}
+\DoxyCodeLine{294         \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a8971637ad6a6a2652e84b1b503238e2e}{debugStream\_}} = outStream;}
+\DoxyCodeLine{295         debug\_ = \textcolor{keyword}{true};}
+\DoxyCodeLine{296       \}}
+\DoxyCodeLine{297       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{298       \{}
+\DoxyCodeLine{299         debug\_ = \textcolor{keyword}{false};}
+\DoxyCodeLine{300       \}}
+\DoxyCodeLine{301     \}}
+\DoxyCodeLine{302     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{303     \{}
+\DoxyCodeLine{304       debug\_ = \textcolor{keyword}{false};}
+\DoxyCodeLine{305     \}}
+\DoxyCodeLine{306   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a757bddc7b2637a6f413433f09c966c63}\label{classRobotLocalization_1_1FilterBase_a757bddc7b2637a6f413433f09c966c63}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!setEstimateErrorCovariance@{setEstimateErrorCovariance}}
+\index{setEstimateErrorCovariance@{setEstimateErrorCovariance}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{setEstimateErrorCovariance()}{setEstimateErrorCovariance()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Base\+::set\+Estimate\+Error\+Covariance (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{estimate\+Error\+Covariance }\end{DoxyParamCaption})}
+
+
+
+Manually sets the filter\textquotesingle{}s estimate error covariance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em estimate\+Error\+Covariance} & -\/ The state to set as the filter\textquotesingle{}s current state \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 313 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{314   \{}
+\DoxyCodeLine{315     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}{estimateErrorCovariance\_}} = estimateErrorCovariance;}
+\DoxyCodeLine{316   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a1e7cff7711626a26f04429ab9029913f}\label{classRobotLocalization_1_1FilterBase_a1e7cff7711626a26f04429ab9029913f}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!setLastMeasurementTime@{setLastMeasurementTime}}
+\index{setLastMeasurementTime@{setLastMeasurementTime}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{setLastMeasurementTime()}{setLastMeasurementTime()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Base\+::set\+Last\+Measurement\+Time (\begin{DoxyParamCaption}\item[{const double}]{last\+Measurement\+Time }\end{DoxyParamCaption})}
+
+
+
+Sets the filter\textquotesingle{}s last measurement time. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em last\+Measurement\+Time} & -\/ The last measurement time of the filter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 318 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{319   \{}
+\DoxyCodeLine{320     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a43c5a5d45c64674671d520c643f8f6bc}{lastMeasurementTime\_}} = lastMeasurementTime;}
+\DoxyCodeLine{321   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a0a8c02b5e93b21f2bb5124344e3bac73}\label{classRobotLocalization_1_1FilterBase_a0a8c02b5e93b21f2bb5124344e3bac73}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!setProcessNoiseCovariance@{setProcessNoiseCovariance}}
+\index{setProcessNoiseCovariance@{setProcessNoiseCovariance}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{setProcessNoiseCovariance()}{setProcessNoiseCovariance()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Base\+::set\+Process\+Noise\+Covariance (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{process\+Noise\+Covariance }\end{DoxyParamCaption})}
+
+
+
+Sets the process noise covariance for the filter. 
+
+This enables external initialization, which is important, as this matrix can be difficult to tune for a given implementation.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em process\+Noise\+Covariance} & -\/ The S\+T\+A\+T\+E\+\_\+\+S\+I\+Z\+Ex\+S\+T\+A\+T\+E\+\_\+\+S\+I\+ZE process noise covariance matrix to use for the filter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 323 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{324   \{}
+\DoxyCodeLine{325     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_ae309020ee3466e4e73de7ab711b0f695}{processNoiseCovariance\_}} = processNoiseCovariance;}
+\DoxyCodeLine{326     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a949fabe1bd9f06eeae1b79b40e19fd92}{dynamicProcessNoiseCovariance\_}} = \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_ae309020ee3466e4e73de7ab711b0f695}{processNoiseCovariance\_}};}
+\DoxyCodeLine{327   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_acb88e845fd8fbbe332800761a797bb20}\label{classRobotLocalization_1_1FilterBase_acb88e845fd8fbbe332800761a797bb20}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!setSensorTimeout@{setSensorTimeout}}
+\index{setSensorTimeout@{setSensorTimeout}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{setSensorTimeout()}{setSensorTimeout()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Base\+::set\+Sensor\+Timeout (\begin{DoxyParamCaption}\item[{const double}]{sensor\+Timeout }\end{DoxyParamCaption})}
+
+
+
+Sets the sensor timeout. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em sensor\+Timeout} & -\/ The time, in seconds, for a sensor to be considered having timed out \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 329 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{330   \{}
+\DoxyCodeLine{331     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_aaa2fbbc1efa3391f58b44df46e752e01}{sensorTimeout\_}} = sensorTimeout;}
+\DoxyCodeLine{332   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_ad0c637026af5e7be8c01ccf7ba92bc7f}\label{classRobotLocalization_1_1FilterBase_ad0c637026af5e7be8c01ccf7ba92bc7f}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!setState@{setState}}
+\index{setState@{setState}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{setState()}{setState()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Base\+::set\+State (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{state }\end{DoxyParamCaption})}
+
+
+
+Manually sets the filter\textquotesingle{}s state. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em state} & -\/ The state to set as the filter\textquotesingle{}s current state \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 334 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{335   \{}
+\DoxyCodeLine{336     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}} = state;}
+\DoxyCodeLine{337   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a76b52ad591a79e710efc8773323d13b8}\label{classRobotLocalization_1_1FilterBase_a76b52ad591a79e710efc8773323d13b8}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!setUseDynamicProcessNoiseCovariance@{setUseDynamicProcessNoiseCovariance}}
+\index{setUseDynamicProcessNoiseCovariance@{setUseDynamicProcessNoiseCovariance}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{setUseDynamicProcessNoiseCovariance()}{setUseDynamicProcessNoiseCovariance()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Base\+::set\+Use\+Dynamic\+Process\+Noise\+Covariance (\begin{DoxyParamCaption}\item[{const bool}]{dynamic\+Process\+Noise\+Covariance }\end{DoxyParamCaption})}
+
+
+
+Enables dynamic process noise covariance calculation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dynamic\+Process\+Noise\+Covariance} & -\/ Whether or not to compute dynamic process noise covariance matrices \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 308 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{309   \{}
+\DoxyCodeLine{310     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a93d04e061304bd001d604c9a28db40d8}{useDynamicProcessNoiseCovariance\_}} = useDynamicProcessNoiseCovariance;}
+\DoxyCodeLine{311   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_adf2e6645dc4ad7264c6cd0a86eb93f6a}\label{classRobotLocalization_1_1FilterBase_adf2e6645dc4ad7264c6cd0a86eb93f6a}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!validateDelta@{validateDelta}}
+\index{validateDelta@{validateDelta}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{validateDelta()}{validateDelta()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Filter\+Base\+::validate\+Delta (\begin{DoxyParamCaption}\item[{double \&}]{delta }\end{DoxyParamCaption})}
+
+
+
+Ensures a given time delta is valid (helps with bag file playback issues) 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em delta} & -\/ The time delta, in seconds, to validate \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 339 of file filter\+\_\+base.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{340   \{}
+\DoxyCodeLine{341     \textcolor{comment}{// This handles issues with ROS time when use\_sim\_time is on and we're playing from bags.}}
+\DoxyCodeLine{342     \textcolor{keywordflow}{if} (delta > 100000.0)}
+\DoxyCodeLine{343     \{}
+\DoxyCodeLine{344       FB\_DEBUG(\textcolor{stringliteral}{"Delta was very large. Suspect playing from bag file. Setting to 0.01\(\backslash\)n"});}
+\DoxyCodeLine{345 }
+\DoxyCodeLine{346       delta = 0.01;}
+\DoxyCodeLine{347     \}}
+\DoxyCodeLine{348   \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a43c5a5d45c64674671d520c643f8f6bc}\label{classRobotLocalization_1_1FilterBase_a43c5a5d45c64674671d520c643f8f6bc}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!lastMeasurementTime\_@{lastMeasurementTime\_}}
+\index{lastMeasurementTime\_@{lastMeasurementTime\_}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{lastMeasurementTime\_}{lastMeasurementTime\_}}
+{\footnotesize\ttfamily double Robot\+Localization\+::\+Filter\+Base\+::last\+Measurement\+Time\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Tracks the time the filter was last updated using a measurement. 
+
+This value is used to monitor sensor readings with respect to the sensor\+Timeout\+\_\+. We also use it to compute the time delta values for our prediction step. 
+
+Definition at line 412 of file filter\+\_\+base.\+h.
+
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}\label{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!transferFunction\_@{transferFunction\_}}
+\index{transferFunction\_@{transferFunction\_}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{transferFunction\_}{transferFunction\_}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix\+Xd Robot\+Localization\+::\+Filter\+Base\+::transfer\+Function\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The Kalman filter transfer function. 
+
+Kalman filters and extended Kalman filters project the current state forward in time. This is the \char`\"{}predict\char`\"{} part of the predict/correct cycle. A Kalman filter has a (typically constant) matrix A that defines how to turn the current state, x, into the predicted next state. For an E\+KF, this matrix becomes a function f(x). However, this function can still be expressed as a matrix to make the math a little cleaner, which is what we do here. Technically, each row in the matrix is actually a function. Some rows will contain many trigonometric functions, which are of course non-\/linear. In any case, you can think of this as the \textquotesingle{}A\textquotesingle{} matrix in the Kalman filter formulation. 
+
+Definition at line 510 of file filter\+\_\+base.\+h.
+
+\mbox{\Hypertarget{classRobotLocalization_1_1FilterBase_a9635224445b700f87c56cf1ed42b8b66}\label{classRobotLocalization_1_1FilterBase_a9635224445b700f87c56cf1ed42b8b66}} 
+\index{RobotLocalization::FilterBase@{RobotLocalization::FilterBase}!transferFunctionJacobian\_@{transferFunctionJacobian\_}}
+\index{transferFunctionJacobian\_@{transferFunctionJacobian\_}!RobotLocalization::FilterBase@{RobotLocalization::FilterBase}}
+\doxysubsubsection{\texorpdfstring{transferFunctionJacobian\_}{transferFunctionJacobian\_}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix\+Xd Robot\+Localization\+::\+Filter\+Base\+::transfer\+Function\+Jacobian\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The Kalman filter transfer function Jacobian. 
+
+The transfer function is allowed to be non-\/linear in an E\+KF, but for propagating (predicting) the covariance matrix, we need to linearize it about the current mean (i.\+e., state). This is done via a Jacobian, which calculates partial derivatives of each row of the transfer function matrix with respect to each state variable. 
+
+Definition at line 520 of file filter\+\_\+base.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mapping/robot\+\_\+localization/include/robot\+\_\+localization/filter\+\_\+base.\+h\item 
+mapping/robot\+\_\+localization/src/filter\+\_\+base.\+cpp\end{DoxyCompactItemize}

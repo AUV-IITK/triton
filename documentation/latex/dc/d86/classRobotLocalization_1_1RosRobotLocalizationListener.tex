@@ -1,0 +1,510 @@
+\hypertarget{classRobotLocalization_1_1RosRobotLocalizationListener}{}\doxysection{Robot\+Localization\+::Ros\+Robot\+Localization\+Listener Class Reference}
+\label{classRobotLocalization_1_1RosRobotLocalizationListener}\index{RobotLocalization::RosRobotLocalizationListener@{RobotLocalization::RosRobotLocalizationListener}}
+
+
+\mbox{\hyperlink{classRobotLocalization_1_1RosRobotLocalizationListener}{Ros\+Robot\+Localization\+Listener}} class.  
+
+
+
+
+{\ttfamily \#include $<$ros\+\_\+robot\+\_\+localization\+\_\+listener.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRobotLocalization_1_1RosRobotLocalizationListener_a00174efe36e882688cc540596805f5c7}{Ros\+Robot\+Localization\+Listener}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRobotLocalization_1_1RosRobotLocalizationListener_aa714cd48842fb0903302f3b29ba050b2}{$\sim$\+Ros\+Robot\+Localization\+Listener}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRobotLocalization_1_1RosRobotLocalizationListener_ad4dcf440da80c70379a40269d2d22240}{get\+State}} (const double time, const std\+::string \&frame\+\_\+id, Eigen\+::\+Vector\+Xd \&state, Eigen\+::\+Matrix\+Xd \&covariance, std\+::string world\+\_\+frame\+\_\+id=\char`\"{}\char`\"{}) const
+\begin{DoxyCompactList}\small\item\em Get a state from the localization estimator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRobotLocalization_1_1RosRobotLocalizationListener_a404571394695364823a37a34136e65cd}{get\+State}} (const ros\+::\+Time \&ros\+\_\+time, const std\+::string \&frame\+\_\+id, Eigen\+::\+Vector\+Xd \&state, Eigen\+::\+Matrix\+Xd \&covariance, const std\+::string \&world\+\_\+frame\+\_\+id=\char`\"{}\char`\"{}) const
+\begin{DoxyCompactList}\small\item\em Get a state from the localization estimator. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classRobotLocalization_1_1RosRobotLocalizationListener_a42a47884261a5d5dfde215f39fffee57}{get\+Base\+Frame\+Id}} () const
+\begin{DoxyCompactList}\small\item\em get\+Base\+Frame\+Id Returns the base frame id of the localization listener \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classRobotLocalization_1_1RosRobotLocalizationListener_abd28a0a552943710aa239aa7f9d32089}{get\+World\+Frame\+Id}} () const
+\begin{DoxyCompactList}\small\item\em get\+World\+Frame\+Id Returns the world frame id of the localization listener \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classRobotLocalization_1_1RosRobotLocalizationListener}{Ros\+Robot\+Localization\+Listener}} class. 
+
+This class wraps the \mbox{\hyperlink{classRobotLocalization_1_1RobotLocalizationEstimator}{Robot\+Localization\+Estimator}}. It listens to topics over which the (filtered) robot state is published (odom and accel) and pushes them into its instance of the \mbox{\hyperlink{classRobotLocalization_1_1RobotLocalizationEstimator}{Robot\+Localization\+Estimator}}. It exposes a get\+State method to offer the user the estimated state at a requested time. This class offers the option to run this listener without the need to run a separate node. If you do wish to run this functionality in a separate node, consider the robot localization listener node. 
+
+Definition at line 58 of file ros\+\_\+robot\+\_\+localization\+\_\+listener.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRobotLocalization_1_1RosRobotLocalizationListener_a00174efe36e882688cc540596805f5c7}\label{classRobotLocalization_1_1RosRobotLocalizationListener_a00174efe36e882688cc540596805f5c7}} 
+\index{RobotLocalization::RosRobotLocalizationListener@{RobotLocalization::RosRobotLocalizationListener}!RosRobotLocalizationListener@{RosRobotLocalizationListener}}
+\index{RosRobotLocalizationListener@{RosRobotLocalizationListener}!RobotLocalization::RosRobotLocalizationListener@{RobotLocalization::RosRobotLocalizationListener}}
+\doxysubsubsection{\texorpdfstring{RosRobotLocalizationListener()}{RosRobotLocalizationListener()}}
+{\footnotesize\ttfamily Robot\+Localization\+::\+Ros\+Robot\+Localization\+Listener\+::\+Ros\+Robot\+Localization\+Listener (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+The \mbox{\hyperlink{classRobotLocalization_1_1RosRobotLocalizationListener}{Ros\+Robot\+Localization\+Listener}} constructor initializes nodehandles, subscribers, a filter for synchronized listening to the topics it subscribes to, and an instance of the \mbox{\hyperlink{classRobotLocalization_1_1RobotLocalizationEstimator}{Robot\+Localization\+Estimator}}. 
+
+Definition at line 68 of file ros\+\_\+robot\+\_\+localization\+\_\+listener.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{68                                                           :}
+\DoxyCodeLine{69   nh\_p\_(\textcolor{stringliteral}{"robot\_localization"}),}
+\DoxyCodeLine{70   odom\_sub\_(nh\_, \textcolor{stringliteral}{"odometry/filtered"}, 1),}
+\DoxyCodeLine{71   accel\_sub\_(nh\_, \textcolor{stringliteral}{"accel/filtered"}, 1),}
+\DoxyCodeLine{72   sync\_(odom\_sub\_, accel\_sub\_, 10),}
+\DoxyCodeLine{73   base\_frame\_id\_(\textcolor{stringliteral}{""}),}
+\DoxyCodeLine{74   world\_frame\_id\_(\textcolor{stringliteral}{""}),}
+\DoxyCodeLine{75   tf\_listener\_(tf\_buffer\_)}
+\DoxyCodeLine{76 \{}
+\DoxyCodeLine{77   \textcolor{keywordtype}{int} buffer\_size;}
+\DoxyCodeLine{78   nh\_p\_.param(\textcolor{stringliteral}{"buffer\_size"}, buffer\_size, 10);}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80   std::string param\_ns;}
+\DoxyCodeLine{81   nh\_p\_.param(\textcolor{stringliteral}{"parameter\_namespace"}, param\_ns, nh\_p\_.getNamespace());}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83   ros::NodeHandle nh\_param(param\_ns);}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85   std::string filter\_type\_str;}
+\DoxyCodeLine{86   nh\_param.param(\textcolor{stringliteral}{"filter\_type"}, filter\_type\_str, std::string(\textcolor{stringliteral}{"ekf"}));}
+\DoxyCodeLine{87   FilterType filter\_type = filterTypeFromString(filter\_type\_str);}
+\DoxyCodeLine{88   \textcolor{keywordflow}{if} ( filter\_type == FilterTypes::NotDefined )}
+\DoxyCodeLine{89   \{}
+\DoxyCodeLine{90     ROS\_ERROR(\textcolor{stringliteral}{"RosRobotLocalizationListener: Parameter filter\_type invalid"});}
+\DoxyCodeLine{91     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{92   \}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94   \textcolor{comment}{// Load up the process noise covariance (from the launch file/parameter server)}}
+\DoxyCodeLine{95   \textcolor{comment}{// TODO(reinzor): this code is copied from ros\_filter. In a refactor, this could be moved to a function in}}
+\DoxyCodeLine{96   \textcolor{comment}{// ros\_filter\_utilities}}
+\DoxyCodeLine{97   Eigen::MatrixXd process\_noise\_covariance(STATE\_SIZE, STATE\_SIZE);}
+\DoxyCodeLine{98   process\_noise\_covariance.setZero();}
+\DoxyCodeLine{99   XmlRpc::XmlRpcValue process\_noise\_covar\_config;}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101   \textcolor{keywordflow}{if} (!nh\_param.hasParam(\textcolor{stringliteral}{"process\_noise\_covariance"}))}
+\DoxyCodeLine{102   \{}
+\DoxyCodeLine{103     ROS\_FATAL\_STREAM(\textcolor{stringliteral}{"Process noise covariance not found in the robot localization listener config (namespace "} <<}
+\DoxyCodeLine{104                      nh\_param.getNamespace() << \textcolor{stringliteral}{")! Use the \string~parameter\_namespace to specify the parameter namespace."});}
+\DoxyCodeLine{105   \}}
+\DoxyCodeLine{106   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{107   \{}
+\DoxyCodeLine{108     \textcolor{keywordflow}{try}}
+\DoxyCodeLine{109     \{}
+\DoxyCodeLine{110       nh\_param.getParam(\textcolor{stringliteral}{"process\_noise\_covariance"}, process\_noise\_covar\_config);}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112       ROS\_ASSERT(process\_noise\_covar\_config.getType() == XmlRpc::XmlRpcValue::TypeArray);}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114       \textcolor{keywordtype}{int} mat\_size = process\_noise\_covariance.rows();}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < mat\_size; i++)}
+\DoxyCodeLine{117       \{}
+\DoxyCodeLine{118         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < mat\_size; j++)}
+\DoxyCodeLine{119         \{}
+\DoxyCodeLine{120           \textcolor{keywordflow}{try}}
+\DoxyCodeLine{121           \{}
+\DoxyCodeLine{122             \textcolor{comment}{// These matrices can cause problems if all the types}}
+\DoxyCodeLine{123             \textcolor{comment}{// aren't specified with decimal points. Handle that}}
+\DoxyCodeLine{124             \textcolor{comment}{// using string streams.}}
+\DoxyCodeLine{125             std::ostringstream ostr;}
+\DoxyCodeLine{126             process\_noise\_covar\_config[mat\_size * i + j].write(ostr);}
+\DoxyCodeLine{127             std::istringstream istr(ostr.str());}
+\DoxyCodeLine{128             istr >> process\_noise\_covariance(i, j);}
+\DoxyCodeLine{129           \}}
+\DoxyCodeLine{130           \textcolor{keywordflow}{catch}(XmlRpc::XmlRpcException \&e)}
+\DoxyCodeLine{131           \{}
+\DoxyCodeLine{132             \textcolor{keywordflow}{throw} e;}
+\DoxyCodeLine{133           \}}
+\DoxyCodeLine{134           \textcolor{keywordflow}{catch}(...)}
+\DoxyCodeLine{135           \{}
+\DoxyCodeLine{136             \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{137           \}}
+\DoxyCodeLine{138         \}}
+\DoxyCodeLine{139       \}}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141       ROS\_DEBUG\_STREAM(\textcolor{stringliteral}{"Process noise covariance is:\(\backslash\)n"} << process\_noise\_covariance << \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{142     \}}
+\DoxyCodeLine{143     \textcolor{keywordflow}{catch} (XmlRpc::XmlRpcException \&e)}
+\DoxyCodeLine{144     \{}
+\DoxyCodeLine{145       ROS\_ERROR\_STREAM(\textcolor{stringliteral}{"ERROR reading robot localization listener config: "} <<}
+\DoxyCodeLine{146                        e.getMessage() <<}
+\DoxyCodeLine{147                        \textcolor{stringliteral}{" for process\_noise\_covariance (type: "} <<}
+\DoxyCodeLine{148                        process\_noise\_covar\_config.getType() << \textcolor{stringliteral}{")"});}
+\DoxyCodeLine{149     \}}
+\DoxyCodeLine{150   \}}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152   std::vector<double> filter\_args;}
+\DoxyCodeLine{153   nh\_param.param(\textcolor{stringliteral}{"filter\_args"}, filter\_args, std::vector<double>());}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155   estimator\_ = \textcolor{keyword}{new} RobotLocalizationEstimator(buffer\_size, filter\_type, process\_noise\_covariance, filter\_args);}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157   sync\_.registerCallback(\&RosRobotLocalizationListener::odomAndAccelCallback, \textcolor{keyword}{this});}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159   ROS\_INFO\_STREAM(\textcolor{stringliteral}{"Ros Robot Localization Listener: Listening to topics "} <<}
+\DoxyCodeLine{160                   odom\_sub\_.getTopic() << \textcolor{stringliteral}{" and "} << accel\_sub\_.getTopic());}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162   \textcolor{comment}{// Wait until the base and world frames are set by the incoming messages}}
+\DoxyCodeLine{163   \textcolor{keywordflow}{while} (ros::ok() \&\& base\_frame\_id\_.empty())}
+\DoxyCodeLine{164   \{}
+\DoxyCodeLine{165     ros::spinOnce();}
+\DoxyCodeLine{166     ROS\_INFO\_STREAM\_THROTTLE(1.0, \textcolor{stringliteral}{"Ros Robot Localization Listener: Waiting for incoming messages on topics "} <<}
+\DoxyCodeLine{167                              odom\_sub\_.getTopic() << \textcolor{stringliteral}{" and "} << accel\_sub\_.getTopic());}
+\DoxyCodeLine{168     ros::Duration(0.1).sleep();}
+\DoxyCodeLine{169   \}}
+\DoxyCodeLine{170 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1RosRobotLocalizationListener_aa714cd48842fb0903302f3b29ba050b2}\label{classRobotLocalization_1_1RosRobotLocalizationListener_aa714cd48842fb0903302f3b29ba050b2}} 
+\index{RobotLocalization::RosRobotLocalizationListener@{RobotLocalization::RosRobotLocalizationListener}!````~RosRobotLocalizationListener@{$\sim$RosRobotLocalizationListener}}
+\index{````~RosRobotLocalizationListener@{$\sim$RosRobotLocalizationListener}!RobotLocalization::RosRobotLocalizationListener@{RobotLocalization::RosRobotLocalizationListener}}
+\doxysubsubsection{\texorpdfstring{$\sim$RosRobotLocalizationListener()}{~RosRobotLocalizationListener()}}
+{\footnotesize\ttfamily Robot\+Localization\+::\+Ros\+Robot\+Localization\+Listener\+::$\sim$\+Ros\+Robot\+Localization\+Listener (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+Empty destructor 
+
+Definition at line 172 of file ros\+\_\+robot\+\_\+localization\+\_\+listener.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{173 \{}
+\DoxyCodeLine{174   \textcolor{keyword}{delete} estimator\_;}
+\DoxyCodeLine{175 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRobotLocalization_1_1RosRobotLocalizationListener_a42a47884261a5d5dfde215f39fffee57}\label{classRobotLocalization_1_1RosRobotLocalizationListener_a42a47884261a5d5dfde215f39fffee57}} 
+\index{RobotLocalization::RosRobotLocalizationListener@{RobotLocalization::RosRobotLocalizationListener}!getBaseFrameId@{getBaseFrameId}}
+\index{getBaseFrameId@{getBaseFrameId}!RobotLocalization::RosRobotLocalizationListener@{RobotLocalization::RosRobotLocalizationListener}}
+\doxysubsubsection{\texorpdfstring{getBaseFrameId()}{getBaseFrameId()}}
+{\footnotesize\ttfamily const std\+::string \& Robot\+Localization\+::\+Ros\+Robot\+Localization\+Listener\+::get\+Base\+Frame\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Base\+Frame\+Id Returns the base frame id of the localization listener 
+
+\begin{DoxyReturn}{Returns}
+The base frame id 
+\end{DoxyReturn}
+
+
+Definition at line 528 of file ros\+\_\+robot\+\_\+localization\+\_\+listener.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{529 \{}
+\DoxyCodeLine{530   \textcolor{keywordflow}{return} base\_frame\_id\_;}
+\DoxyCodeLine{531 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1RosRobotLocalizationListener_ad4dcf440da80c70379a40269d2d22240}\label{classRobotLocalization_1_1RosRobotLocalizationListener_ad4dcf440da80c70379a40269d2d22240}} 
+\index{RobotLocalization::RosRobotLocalizationListener@{RobotLocalization::RosRobotLocalizationListener}!getState@{getState}}
+\index{getState@{getState}!RobotLocalization::RosRobotLocalizationListener@{RobotLocalization::RosRobotLocalizationListener}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Robot\+Localization\+::\+Ros\+Robot\+Localization\+Listener\+::get\+State (\begin{DoxyParamCaption}\item[{const double}]{time,  }\item[{const std\+::string \&}]{frame\+\_\+id,  }\item[{Eigen\+::\+Vector\+Xd \&}]{state,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{covariance,  }\item[{std\+::string}]{world\+\_\+frame\+\_\+id = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption}) const}
+
+
+
+Get a state from the localization estimator. 
+
+Requests the predicted state and covariance at a given time from the Robot Localization Estimator.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em time} & -\/ time of the requested state \\
+\hline
+\mbox{\texttt{ in}}  & {\em frame\+\_\+id} & -\/ frame id of which the state is requested. \\
+\hline
+\mbox{\texttt{ out}}  & {\em state} & -\/ state at the requested time \\
+\hline
+\mbox{\texttt{ out}}  & {\em covariance} & -\/ covariance at the requested time\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if buffer is empty, true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 313 of file ros\+\_\+robot\+\_\+localization\+\_\+listener.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{318 \{}
+\DoxyCodeLine{319   EstimatorState estimator\_state;}
+\DoxyCodeLine{320   state.resize(STATE\_SIZE);}
+\DoxyCodeLine{321   state.setZero();}
+\DoxyCodeLine{322   covariance.resize(STATE\_SIZE, STATE\_SIZE);}
+\DoxyCodeLine{323   covariance.setZero();}
+\DoxyCodeLine{324 }
+\DoxyCodeLine{325   \textcolor{keywordflow}{if} ( base\_frame\_id\_.empty() || world\_frame\_id\_.empty()  )}
+\DoxyCodeLine{326   \{}
+\DoxyCodeLine{327     \textcolor{keywordflow}{if} ( estimator\_-\/>\mbox{\hyperlink{classRobotLocalization_1_1RobotLocalizationEstimator_a4ca33df66f59bd617dce836718863655}{getSize}}() == 0 )}
+\DoxyCodeLine{328     \{}
+\DoxyCodeLine{329       ROS\_WARN(\textcolor{stringliteral}{"Ros Robot Localization Listener: The base or world frame id is not set. "}}
+\DoxyCodeLine{330                \textcolor{stringliteral}{"No odom/accel messages have come in."});}
+\DoxyCodeLine{331     \}}
+\DoxyCodeLine{332     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{333     \{}
+\DoxyCodeLine{334       ROS\_ERROR(\textcolor{stringliteral}{"Ros Robot Localization Listener: The base or world frame id is not set. "}}
+\DoxyCodeLine{335                 \textcolor{stringliteral}{"Are the child\_frame\_id and the header.frame\_id in the odom messages set?"});}
+\DoxyCodeLine{336     \}}
+\DoxyCodeLine{337 }
+\DoxyCodeLine{338     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{339   \}}
+\DoxyCodeLine{340 }
+\DoxyCodeLine{341   \textcolor{keywordflow}{if} ( estimator\_-\/>\mbox{\hyperlink{classRobotLocalization_1_1RobotLocalizationEstimator_ac34301dfd4a7cbaee5e9cad8d3fae4d5}{getState}}(time, estimator\_state) == EstimatorResults::ExtrapolationIntoPast )}
+\DoxyCodeLine{342   \{}
+\DoxyCodeLine{343     ROS\_WARN(\textcolor{stringliteral}{"Ros Robot Localization Listener: A state is requested at a time stamp older than the oldest in the "}}
+\DoxyCodeLine{344              \textcolor{stringliteral}{"estimator buffer. The result is an extrapolation into the past. Maybe you should increase the buffer "}}
+\DoxyCodeLine{345              \textcolor{stringliteral}{"size?"});}
+\DoxyCodeLine{346   \}}
+\DoxyCodeLine{347 }
+\DoxyCodeLine{348   \textcolor{comment}{// If no world\_frame\_id is specified, we will default to the world frame\_id of the received odometry message}}
+\DoxyCodeLine{349   \textcolor{keywordflow}{if} (world\_frame\_id.empty())}
+\DoxyCodeLine{350   \{}
+\DoxyCodeLine{351     world\_frame\_id = world\_frame\_id\_;}
+\DoxyCodeLine{352   \}}
+\DoxyCodeLine{353 }
+\DoxyCodeLine{354   \textcolor{keywordflow}{if} ( frame\_id == base\_frame\_id\_ \&\& world\_frame\_id == world\_frame\_id\_ )}
+\DoxyCodeLine{355   \{}
+\DoxyCodeLine{356     \textcolor{comment}{// If the state of the base frame is requested and the world frame equals the world frame of the robot\_localization}}
+\DoxyCodeLine{357     \textcolor{comment}{// estimator, we can simply return the state we got from the state estimator}}
+\DoxyCodeLine{358     state = estimator\_state.state;}
+\DoxyCodeLine{359     covariance = estimator\_state.covariance;}
+\DoxyCodeLine{360     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{361   \}}
+\DoxyCodeLine{362 }
+\DoxyCodeLine{363   \textcolor{comment}{// -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/}}
+\DoxyCodeLine{364   \textcolor{comment}{// Get the transformation between the requested world frame and the world\_frame of the estimator}}
+\DoxyCodeLine{365   \textcolor{comment}{// -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/}}
+\DoxyCodeLine{366   Eigen::Affine3d world\_pose\_requested\_frame;}
+\DoxyCodeLine{367 }
+\DoxyCodeLine{368   \textcolor{comment}{// If the requested frame is the same as the tracker, set to identity}}
+\DoxyCodeLine{369   \textcolor{keywordflow}{if} (world\_frame\_id == world\_frame\_id\_)}
+\DoxyCodeLine{370   \{}
+\DoxyCodeLine{371     world\_pose\_requested\_frame.setIdentity();}
+\DoxyCodeLine{372   \}}
+\DoxyCodeLine{373   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{374   \{}
+\DoxyCodeLine{375     geometry\_msgs::TransformStamped world\_requested\_to\_world\_transform;}
+\DoxyCodeLine{376     \textcolor{keywordflow}{try}}
+\DoxyCodeLine{377     \{}
+\DoxyCodeLine{378       \textcolor{comment}{// TODO(reinzor): magic number}}
+\DoxyCodeLine{379       world\_requested\_to\_world\_transform = tf\_buffer\_.lookupTransform(world\_frame\_id,}
+\DoxyCodeLine{380                                                                       world\_frame\_id\_,}
+\DoxyCodeLine{381                                                                       ros::Time(time),}
+\DoxyCodeLine{382                                                                       ros::Duration(0.1));}
+\DoxyCodeLine{383 }
+\DoxyCodeLine{384       \textcolor{keywordflow}{if} ( findAncestor(tf\_buffer\_, world\_frame\_id, base\_frame\_id\_) )}
+\DoxyCodeLine{385       \{}
+\DoxyCodeLine{386         ROS\_ERROR\_STREAM(\textcolor{stringliteral}{"You are trying to get the state with respect to world frame "} << world\_frame\_id <<}
+\DoxyCodeLine{387                          \textcolor{stringliteral}{", but this frame is a child of robot base frame "} << base\_frame\_id\_ <<}
+\DoxyCodeLine{388                          \textcolor{stringliteral}{", so this doesn't make sense."});}
+\DoxyCodeLine{389         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{390       \}}
+\DoxyCodeLine{391     \}}
+\DoxyCodeLine{392     \textcolor{keywordflow}{catch} ( \textcolor{keyword}{const} tf2::TransformException \&e )}
+\DoxyCodeLine{393     \{}
+\DoxyCodeLine{394       ROS\_WARN\_STREAM(\textcolor{stringliteral}{"Ros Robot Localization Listener: Could not look up transform: "} << e.what());}
+\DoxyCodeLine{395       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{396     \}}
+\DoxyCodeLine{397 }
+\DoxyCodeLine{398     \textcolor{comment}{// Convert to pose}}
+\DoxyCodeLine{399     tf::transformMsgToEigen(world\_requested\_to\_world\_transform.transform, world\_pose\_requested\_frame);}
+\DoxyCodeLine{400   \}}
+\DoxyCodeLine{401 }
+\DoxyCodeLine{402   \textcolor{comment}{// -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/}}
+\DoxyCodeLine{403   \textcolor{comment}{// Calculate the state of the requested frame from the state of the base frame.}}
+\DoxyCodeLine{404   \textcolor{comment}{// -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/ -\/}}
+\DoxyCodeLine{405 }
+\DoxyCodeLine{406   \textcolor{comment}{// First get the transform from base to target}}
+\DoxyCodeLine{407   geometry\_msgs::TransformStamped base\_to\_target\_transform;}
+\DoxyCodeLine{408   \textcolor{keywordflow}{try}}
+\DoxyCodeLine{409   \{}
+\DoxyCodeLine{410     base\_to\_target\_transform = tf\_buffer\_.lookupTransform(base\_frame\_id\_,}
+\DoxyCodeLine{411                                                           frame\_id,}
+\DoxyCodeLine{412                                                           ros::Time(time),}
+\DoxyCodeLine{413                                                           ros::Duration(0.1));  \textcolor{comment}{// TODO(reinzor): magic number}}
+\DoxyCodeLine{414 }
+\DoxyCodeLine{415     \textcolor{comment}{// Check that frame\_id is a child of the base frame. If it is not, it does not make sense to request its state.}}
+\DoxyCodeLine{416     \textcolor{comment}{// Do this after tf lookup, so we know that there is a connection.}}
+\DoxyCodeLine{417     \textcolor{keywordflow}{if} ( !findAncestor(tf\_buffer\_, frame\_id, base\_frame\_id\_) )}
+\DoxyCodeLine{418     \{}
+\DoxyCodeLine{419       ROS\_ERROR\_STREAM(\textcolor{stringliteral}{"You are trying to get the state of "} << frame\_id << \textcolor{stringliteral}{", but this frame is not a child of the "}}
+\DoxyCodeLine{420                                                                             \textcolor{stringliteral}{"base frame: "} << base\_frame\_id\_ << \textcolor{stringliteral}{"."});}
+\DoxyCodeLine{421       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{422     \}}
+\DoxyCodeLine{423   \}}
+\DoxyCodeLine{424   \textcolor{keywordflow}{catch} ( \textcolor{keyword}{const} tf2::TransformException \&e )}
+\DoxyCodeLine{425   \{}
+\DoxyCodeLine{426     ROS\_WARN\_STREAM(\textcolor{stringliteral}{"Ros Robot Localization Listener: Could not look up transform: "} << e.what());}
+\DoxyCodeLine{427     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{428   \}}
+\DoxyCodeLine{429 }
+\DoxyCodeLine{430   \textcolor{comment}{// And convert it to an eigen Affine transformation}}
+\DoxyCodeLine{431   Eigen::Affine3d target\_pose\_base;}
+\DoxyCodeLine{432   tf::transformMsgToEigen(base\_to\_target\_transform.transform, target\_pose\_base);}
+\DoxyCodeLine{433 }
+\DoxyCodeLine{434   \textcolor{comment}{// Then convert the base pose to an Eigen Affine transformation}}
+\DoxyCodeLine{435   Eigen::Vector3d base\_position(estimator\_state.state(StateMemberX),}
+\DoxyCodeLine{436                                 estimator\_state.state(StateMemberY),}
+\DoxyCodeLine{437                                 estimator\_state.state(StateMemberZ));}
+\DoxyCodeLine{438 }
+\DoxyCodeLine{439   Eigen::AngleAxisd roll\_angle(estimator\_state.state(StateMemberRoll), Eigen::Vector3d::UnitX());}
+\DoxyCodeLine{440   Eigen::AngleAxisd pitch\_angle(estimator\_state.state(StateMemberPitch), Eigen::Vector3d::UnitY());}
+\DoxyCodeLine{441   Eigen::AngleAxisd yaw\_angle(estimator\_state.state(StateMemberYaw), Eigen::Vector3d::UnitZ());}
+\DoxyCodeLine{442 }
+\DoxyCodeLine{443   Eigen::Quaterniond base\_orientation(yaw\_angle * pitch\_angle * roll\_angle);}
+\DoxyCodeLine{444 }
+\DoxyCodeLine{445   Eigen::Affine3d base\_pose(Eigen::Translation3d(base\_position) * base\_orientation);}
+\DoxyCodeLine{446 }
+\DoxyCodeLine{447   \textcolor{comment}{// Now we can calculate the transform from odom to the requested frame (target)...}}
+\DoxyCodeLine{448   Eigen::Affine3d target\_pose\_odom = world\_pose\_requested\_frame * base\_pose * target\_pose\_base;}
+\DoxyCodeLine{449 }
+\DoxyCodeLine{450   \textcolor{comment}{// ... and put it in the output state}}
+\DoxyCodeLine{451   state(StateMemberX) = target\_pose\_odom.translation().x();}
+\DoxyCodeLine{452   state(StateMemberY) = target\_pose\_odom.translation().y();}
+\DoxyCodeLine{453   state(StateMemberZ) = target\_pose\_odom.translation().z();}
+\DoxyCodeLine{454 }
+\DoxyCodeLine{455   Eigen::Vector3d ypr = target\_pose\_odom.rotation().eulerAngles(2, 1, 0);}
+\DoxyCodeLine{456 }
+\DoxyCodeLine{457   state(StateMemberRoll)  = ypr[2];}
+\DoxyCodeLine{458   state(StateMemberPitch) = ypr[1];}
+\DoxyCodeLine{459   state(StateMemberYaw)   = ypr[0];}
+\DoxyCodeLine{460 }
+\DoxyCodeLine{461   \textcolor{comment}{// Now let's calculate the twist of the target frame}}
+\DoxyCodeLine{462   \textcolor{comment}{// First get the base's twist}}
+\DoxyCodeLine{463   Twist base\_velocity;}
+\DoxyCodeLine{464   Twist target\_velocity\_base;}
+\DoxyCodeLine{465   base\_velocity.linear = Eigen::Vector3d(estimator\_state.state(StateMemberVx),}
+\DoxyCodeLine{466                                          estimator\_state.state(StateMemberVy),}
+\DoxyCodeLine{467                                          estimator\_state.state(StateMemberVz));}
+\DoxyCodeLine{468   base\_velocity.angular = Eigen::Vector3d(estimator\_state.state(StateMemberVroll),}
+\DoxyCodeLine{469                                           estimator\_state.state(StateMemberVpitch),}
+\DoxyCodeLine{470                                           estimator\_state.state(StateMemberVyaw));}
+\DoxyCodeLine{471 }
+\DoxyCodeLine{472   \textcolor{comment}{// Then calculate the target frame's twist as a result of the base's twist.}}
+\DoxyCodeLine{473   \textcolor{comment}{/*}}
+\DoxyCodeLine{474 \textcolor{comment}{   * We first calculate the coordinates of the velocity vectors (linear and angular) in the base frame. We have to keep}}
+\DoxyCodeLine{475 \textcolor{comment}{   * in mind that a rotation of the base frame, together with the translational offset of the target frame from the base}}
+\DoxyCodeLine{476 \textcolor{comment}{   * frame, induces a translational velocity of the target frame.}}
+\DoxyCodeLine{477 \textcolor{comment}{   */}}
+\DoxyCodeLine{478   target\_velocity\_base.linear = base\_velocity.linear + base\_velocity.angular.cross(target\_pose\_base.translation());}
+\DoxyCodeLine{479   target\_velocity\_base.angular = base\_velocity.angular;}
+\DoxyCodeLine{480 }
+\DoxyCodeLine{481   \textcolor{comment}{// Now we can transform that to the target frame}}
+\DoxyCodeLine{482   Twist target\_velocity;}
+\DoxyCodeLine{483   target\_velocity.linear = target\_pose\_base.rotation().transpose() * target\_velocity\_base.linear;}
+\DoxyCodeLine{484   target\_velocity.angular = target\_pose\_base.rotation().transpose() * target\_velocity\_base.angular;}
+\DoxyCodeLine{485 }
+\DoxyCodeLine{486   state(StateMemberVx) = target\_velocity.linear(0);}
+\DoxyCodeLine{487   state(StateMemberVy) = target\_velocity.linear(1);}
+\DoxyCodeLine{488   state(StateMemberVz) = target\_velocity.linear(2);}
+\DoxyCodeLine{489 }
+\DoxyCodeLine{490   state(StateMemberVroll) = target\_velocity.angular(0);}
+\DoxyCodeLine{491   state(StateMemberVpitch) = target\_velocity.angular(1);}
+\DoxyCodeLine{492   state(StateMemberVyaw) = target\_velocity.angular(2);}
+\DoxyCodeLine{493 }
+\DoxyCodeLine{494   \textcolor{comment}{// Rotate the covariance as well}}
+\DoxyCodeLine{495   Eigen::MatrixXd rot\_6d(POSE\_SIZE, POSE\_SIZE);}
+\DoxyCodeLine{496   rot\_6d.setIdentity();}
+\DoxyCodeLine{497 }
+\DoxyCodeLine{498   rot\_6d.block<POSITION\_SIZE, POSITION\_SIZE>(POSITION\_OFFSET, POSITION\_OFFSET) = target\_pose\_base.rotation();}
+\DoxyCodeLine{499   rot\_6d.block<ORIENTATION\_SIZE, ORIENTATION\_SIZE>(ORIENTATION\_OFFSET, ORIENTATION\_OFFSET) =}
+\DoxyCodeLine{500     target\_pose\_base.rotation();}
+\DoxyCodeLine{501 }
+\DoxyCodeLine{502   \textcolor{comment}{// Rotate the covariance}}
+\DoxyCodeLine{503   covariance.block<POSE\_SIZE, POSE\_SIZE>(POSITION\_OFFSET, POSITION\_OFFSET) =}
+\DoxyCodeLine{504       rot\_6d * estimator\_state.covariance.block<POSE\_SIZE, POSE\_SIZE>(POSITION\_OFFSET, POSITION\_OFFSET) *}
+\DoxyCodeLine{505       rot\_6d.transpose();}
+\DoxyCodeLine{506 }
+\DoxyCodeLine{507   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{508 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1RosRobotLocalizationListener_a404571394695364823a37a34136e65cd}\label{classRobotLocalization_1_1RosRobotLocalizationListener_a404571394695364823a37a34136e65cd}} 
+\index{RobotLocalization::RosRobotLocalizationListener@{RobotLocalization::RosRobotLocalizationListener}!getState@{getState}}
+\index{getState@{getState}!RobotLocalization::RosRobotLocalizationListener@{RobotLocalization::RosRobotLocalizationListener}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Robot\+Localization\+::\+Ros\+Robot\+Localization\+Listener\+::get\+State (\begin{DoxyParamCaption}\item[{const ros\+::\+Time \&}]{ros\+\_\+time,  }\item[{const std\+::string \&}]{frame\+\_\+id,  }\item[{Eigen\+::\+Vector\+Xd \&}]{state,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{covariance,  }\item[{const std\+::string \&}]{world\+\_\+frame\+\_\+id = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption}) const}
+
+
+
+Get a state from the localization estimator. 
+
+Overload of get\+State method for using ros\+::\+Time.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ros\+\_\+time} & -\/ ros time of the requested state \\
+\hline
+\mbox{\texttt{ in}}  & {\em frame\+\_\+id} & -\/ frame id of which the state is requested. \\
+\hline
+\mbox{\texttt{ out}}  & {\em state} & -\/ state at the requested time \\
+\hline
+\mbox{\texttt{ out}}  & {\em covariance} & -\/ covariance at the requested time\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if buffer is empty, true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 510 of file ros\+\_\+robot\+\_\+localization\+\_\+listener.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{513 \{}
+\DoxyCodeLine{514   \textcolor{keywordtype}{double} time;}
+\DoxyCodeLine{515   \textcolor{keywordflow}{if} ( ros\_time.isZero() )}
+\DoxyCodeLine{516   \{}
+\DoxyCodeLine{517     ROS\_INFO(\textcolor{stringliteral}{"Ros Robot Localization Listener: State requested at time = zero, returning state at current time"});}
+\DoxyCodeLine{518     time = ros::Time::now().toSec();}
+\DoxyCodeLine{519   \}}
+\DoxyCodeLine{520   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{521   \{}
+\DoxyCodeLine{522     time = ros\_time.toSec();}
+\DoxyCodeLine{523   \}}
+\DoxyCodeLine{524 }
+\DoxyCodeLine{525   \textcolor{keywordflow}{return} \mbox{\hyperlink{classRobotLocalization_1_1RosRobotLocalizationListener_ad4dcf440da80c70379a40269d2d22240}{getState}}(time, frame\_id, state, covariance, world\_frame\_id);}
+\DoxyCodeLine{526 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1RosRobotLocalizationListener_abd28a0a552943710aa239aa7f9d32089}\label{classRobotLocalization_1_1RosRobotLocalizationListener_abd28a0a552943710aa239aa7f9d32089}} 
+\index{RobotLocalization::RosRobotLocalizationListener@{RobotLocalization::RosRobotLocalizationListener}!getWorldFrameId@{getWorldFrameId}}
+\index{getWorldFrameId@{getWorldFrameId}!RobotLocalization::RosRobotLocalizationListener@{RobotLocalization::RosRobotLocalizationListener}}
+\doxysubsubsection{\texorpdfstring{getWorldFrameId()}{getWorldFrameId()}}
+{\footnotesize\ttfamily const std\+::string \& Robot\+Localization\+::\+Ros\+Robot\+Localization\+Listener\+::get\+World\+Frame\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+World\+Frame\+Id Returns the world frame id of the localization listener 
+
+\begin{DoxyReturn}{Returns}
+The world frame id 
+\end{DoxyReturn}
+
+
+Definition at line 533 of file ros\+\_\+robot\+\_\+localization\+\_\+listener.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{534 \{}
+\DoxyCodeLine{535   \textcolor{keywordflow}{return} world\_frame\_id\_;}
+\DoxyCodeLine{536 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mapping/robot\+\_\+localization/include/robot\+\_\+localization/ros\+\_\+robot\+\_\+localization\+\_\+listener.\+h\item 
+mapping/robot\+\_\+localization/src/ros\+\_\+robot\+\_\+localization\+\_\+listener.\+cpp\end{DoxyCompactItemize}

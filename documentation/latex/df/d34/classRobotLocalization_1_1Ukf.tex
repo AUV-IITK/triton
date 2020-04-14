@@ -1,0 +1,503 @@
+\hypertarget{classRobotLocalization_1_1Ukf}{}\doxysection{Robot\+Localization\+::Ukf Class Reference}
+\label{classRobotLocalization_1_1Ukf}\index{RobotLocalization::Ukf@{RobotLocalization::Ukf}}
+
+
+Unscented Kalman filter class.  
+
+
+
+
+{\ttfamily \#include $<$ukf.\+h$>$}
+
+Inheritance diagram for Robot\+Localization\+::Ukf\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{df/d34/classRobotLocalization_1_1Ukf}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRobotLocalization_1_1Ukf_aef95f0e827ce8fcfafb20bc3edc6a285}{Ukf}} (std\+::vector$<$ double $>$ args)
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{classRobotLocalization_1_1Ukf}{Ukf}} class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1Ukf_a8c9004ef31274a63df4b76e77e979aa8}\label{classRobotLocalization_1_1Ukf_a8c9004ef31274a63df4b76e77e979aa8}} 
+\mbox{\hyperlink{classRobotLocalization_1_1Ukf_a8c9004ef31274a63df4b76e77e979aa8}{$\sim$\+Ukf}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \mbox{\hyperlink{classRobotLocalization_1_1Ukf}{Ukf}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a5c4c4f4c821d7a4c5aa00f4b25464406}{correct}} (const \mbox{\hyperlink{structRobotLocalization_1_1Measurement}{Measurement}} \&measurement)
+\begin{DoxyCompactList}\small\item\em Carries out the correct step in the predict/update cycle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a2ac9abfd27df070d46a5c6d768fdf41f}{predict}} (const double reference\+Time, const double delta)
+\begin{DoxyCompactList}\small\item\em Carries out the predict step in the predict/update cycle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$ \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigma\+Points\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The U\+KF sigma points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1Ukf_ab799461d74ccc6d549b851b35a6c8b58}\label{classRobotLocalization_1_1Ukf_ab799461d74ccc6d549b851b35a6c8b58}} 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classRobotLocalization_1_1Ukf_ab799461d74ccc6d549b851b35a6c8b58}{weighted\+Covar\+Sqrt\+\_\+}}
+\begin{DoxyCompactList}\small\item\em This matrix is used to generate the sigma\+Points\+\_\+. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1Ukf_accc1aa6bea22b59d807e78a1ef6dc5e3}\label{classRobotLocalization_1_1Ukf_accc1aa6bea22b59d807e78a1ef6dc5e3}} 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classRobotLocalization_1_1Ukf_accc1aa6bea22b59d807e78a1ef6dc5e3}{state\+Weights\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The weights associated with each sigma point when generating a new state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1Ukf_a9d1f619ba256adc3c60f551935bb9867}\label{classRobotLocalization_1_1Ukf_a9d1f619ba256adc3c60f551935bb9867}} 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a9d1f619ba256adc3c60f551935bb9867}{covar\+Weights\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The weights associated with each sigma point when calculating a predicted estimate\+Error\+Covariance\+\_\+. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1Ukf_ae31c11e5261fe14c1b660d941afcb74e}\label{classRobotLocalization_1_1Ukf_ae31c11e5261fe14c1b660d941afcb74e}} 
+double \mbox{\hyperlink{classRobotLocalization_1_1Ukf_ae31c11e5261fe14c1b660d941afcb74e}{lambda\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Used in weight generation for the sigma points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotLocalization_1_1Ukf_adaca72b6315ba4c8159de1ae156ea7b1}\label{classRobotLocalization_1_1Ukf_adaca72b6315ba4c8159de1ae156ea7b1}} 
+bool \mbox{\hyperlink{classRobotLocalization_1_1Ukf_adaca72b6315ba4c8159de1ae156ea7b1}{uncorrected\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Used to determine if we need to re-\/compute the sigma points when carrying out multiple corrections. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Unscented Kalman filter class. 
+
+Implementation of an unscenter Kalman filter (U\+KF). This class derives from \mbox{\hyperlink{classRobotLocalization_1_1FilterBase}{Filter\+Base}} and overrides the \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a2ac9abfd27df070d46a5c6d768fdf41f}{predict()}} and \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a5c4c4f4c821d7a4c5aa00f4b25464406}{correct()}} methods in keeping with the discrete time U\+KF algorithm. The algorithm was derived from the U\+KF Wikipedia article at (\href{http://en.wikipedia.org/wiki/Kalman_filter\#Unscented_Kalman_filter}{\texttt{ http\+://en.\+wikipedia.\+org/wiki/\+Kalman\+\_\+filter\#\+Unscented\+\_\+\+Kalman\+\_\+filter}}) ...and this paper\+: J. J. La\+Viola, Jr., “A comparison of unscented and extended Kalman filtering for estimating quaternion motion,” in Proc. American Control Conf., Denver, CO, June 4–6, 2003, pp. 2435–2440 Obtained here\+: \href{http://www.cs.ucf.edu/~jjl/pubs/laviola_acc2003.pdf}{\texttt{ http\+://www.\+cs.\+ucf.\+edu/$\sim$jjl/pubs/laviola\+\_\+acc2003.\+pdf}} 
+
+Definition at line 60 of file ukf.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRobotLocalization_1_1Ukf_aef95f0e827ce8fcfafb20bc3edc6a285}\label{classRobotLocalization_1_1Ukf_aef95f0e827ce8fcfafb20bc3edc6a285}} 
+\index{RobotLocalization::Ukf@{RobotLocalization::Ukf}!Ukf@{Ukf}}
+\index{Ukf@{Ukf}!RobotLocalization::Ukf@{RobotLocalization::Ukf}}
+\doxysubsubsection{\texorpdfstring{Ukf()}{Ukf()}}
+{\footnotesize\ttfamily Robot\+Localization\+::\+Ukf\+::\+Ukf (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for the \mbox{\hyperlink{classRobotLocalization_1_1Ukf}{Ukf}} class. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em args} & -\/ Generic argument container. It is assumed that args\mbox{[}0\mbox{]} constains the alpha parameter, args\mbox{[}1\mbox{]} contains the kappa parameter, and args\mbox{[}2\mbox{]} contains the beta parameter. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 51 of file ukf.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{51                                  :}
+\DoxyCodeLine{52     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a61b2196799bf6c765b4694adcf215250}{FilterBase}}(),  \textcolor{comment}{// Must initialize filter base!}}
+\DoxyCodeLine{53     \mbox{\hyperlink{classRobotLocalization_1_1Ukf_adaca72b6315ba4c8159de1ae156ea7b1}{uncorrected\_}}(\textcolor{keyword}{true})}
+\DoxyCodeLine{54   \{}
+\DoxyCodeLine{55     assert(args.size() == 3);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     \textcolor{keywordtype}{double} alpha = args[0];}
+\DoxyCodeLine{58     \textcolor{keywordtype}{double} kappa = args[1];}
+\DoxyCodeLine{59     \textcolor{keywordtype}{double} beta = args[2];}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \textcolor{keywordtype}{size\_t} sigmaCount = (STATE\_SIZE << 1) + 1;}
+\DoxyCodeLine{62     \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}.resize(sigmaCount, Eigen::VectorXd(STATE\_SIZE));}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     \textcolor{comment}{// Prepare constants}}
+\DoxyCodeLine{65     \mbox{\hyperlink{classRobotLocalization_1_1Ukf_ae31c11e5261fe14c1b660d941afcb74e}{lambda\_}} = alpha * alpha * (STATE\_SIZE + kappa) -\/ STATE\_SIZE;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     \mbox{\hyperlink{classRobotLocalization_1_1Ukf_accc1aa6bea22b59d807e78a1ef6dc5e3}{stateWeights\_}}.resize(sigmaCount);}
+\DoxyCodeLine{68     \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a9d1f619ba256adc3c60f551935bb9867}{covarWeights\_}}.resize(sigmaCount);}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \mbox{\hyperlink{classRobotLocalization_1_1Ukf_accc1aa6bea22b59d807e78a1ef6dc5e3}{stateWeights\_}}[0] = \mbox{\hyperlink{classRobotLocalization_1_1Ukf_ae31c11e5261fe14c1b660d941afcb74e}{lambda\_}} / (STATE\_SIZE + \mbox{\hyperlink{classRobotLocalization_1_1Ukf_ae31c11e5261fe14c1b660d941afcb74e}{lambda\_}});}
+\DoxyCodeLine{71     \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a9d1f619ba256adc3c60f551935bb9867}{covarWeights\_}}[0] = \mbox{\hyperlink{classRobotLocalization_1_1Ukf_accc1aa6bea22b59d807e78a1ef6dc5e3}{stateWeights\_}}[0] + (1 -\/ (alpha * alpha) + beta);}
+\DoxyCodeLine{72     \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}[0].setZero();}
+\DoxyCodeLine{73     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 1; i < sigmaCount; ++i)}
+\DoxyCodeLine{74     \{}
+\DoxyCodeLine{75       \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}[i].setZero();}
+\DoxyCodeLine{76       \mbox{\hyperlink{classRobotLocalization_1_1Ukf_accc1aa6bea22b59d807e78a1ef6dc5e3}{stateWeights\_}}[i] =  1 / (2 * (STATE\_SIZE + \mbox{\hyperlink{classRobotLocalization_1_1Ukf_ae31c11e5261fe14c1b660d941afcb74e}{lambda\_}}));}
+\DoxyCodeLine{77       \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a9d1f619ba256adc3c60f551935bb9867}{covarWeights\_}}[i] = \mbox{\hyperlink{classRobotLocalization_1_1Ukf_accc1aa6bea22b59d807e78a1ef6dc5e3}{stateWeights\_}}[i];}
+\DoxyCodeLine{78     \}}
+\DoxyCodeLine{79   \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRobotLocalization_1_1Ukf_a5c4c4f4c821d7a4c5aa00f4b25464406}\label{classRobotLocalization_1_1Ukf_a5c4c4f4c821d7a4c5aa00f4b25464406}} 
+\index{RobotLocalization::Ukf@{RobotLocalization::Ukf}!correct@{correct}}
+\index{correct@{correct}!RobotLocalization::Ukf@{RobotLocalization::Ukf}}
+\doxysubsubsection{\texorpdfstring{correct()}{correct()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Ukf\+::correct (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structRobotLocalization_1_1Measurement}{Measurement}} \&}]{measurement }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Carries out the correct step in the predict/update cycle. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em measurement} & -\/ The measurement to fuse with our estimate \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a7c53dd83aa72e9a46f2d406c6431215e}{Robot\+Localization\+::\+Filter\+Base}}.
+
+
+
+Definition at line 85 of file ukf.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{86   \{}
+\DoxyCodeLine{87     FB\_DEBUG(\textcolor{stringliteral}{"-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Ukf::correct -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"} <<}
+\DoxyCodeLine{88              \textcolor{stringliteral}{"State is:\(\backslash\)n"} << \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}} <<}
+\DoxyCodeLine{89              \textcolor{stringliteral}{"\(\backslash\)nMeasurement is:\(\backslash\)n"} << measurement.measurement\_ <<}
+\DoxyCodeLine{90              \textcolor{stringliteral}{"\(\backslash\)nMeasurement covariance is:\(\backslash\)n"} << measurement.covariance\_ << \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \textcolor{comment}{// In our implementation, it may be that after we call predict once, we call correct}}
+\DoxyCodeLine{93     \textcolor{comment}{// several times in succession (multiple measurements with different time stamps). In}}
+\DoxyCodeLine{94     \textcolor{comment}{// that event, the sigma points need to be updated to reflect the current state.}}
+\DoxyCodeLine{95     \textcolor{comment}{// Throughout prediction and correction, we attempt to maximize efficiency in Eigen.}}
+\DoxyCodeLine{96     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classRobotLocalization_1_1Ukf_adaca72b6315ba4c8159de1ae156ea7b1}{uncorrected\_}})}
+\DoxyCodeLine{97     \{}
+\DoxyCodeLine{98       \textcolor{comment}{// Take the square root of a small fraction of the estimateErrorCovariance\_ using LL' decomposition}}
+\DoxyCodeLine{99       \mbox{\hyperlink{classRobotLocalization_1_1Ukf_ab799461d74ccc6d549b851b35a6c8b58}{weightedCovarSqrt\_}} = ((STATE\_SIZE + \mbox{\hyperlink{classRobotLocalization_1_1Ukf_ae31c11e5261fe14c1b660d941afcb74e}{lambda\_}}) * \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}{estimateErrorCovariance\_}}).llt().matrixL();}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101       \textcolor{comment}{// Compute sigma points}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103       \textcolor{comment}{// First sigma point is the current state}}
+\DoxyCodeLine{104       \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}[0] = \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}};}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106       \textcolor{comment}{// Next STATE\_SIZE sigma points are state + weightedCovarSqrt\_[ith column]}}
+\DoxyCodeLine{107       \textcolor{comment}{// STATE\_SIZE sigma points after that are state -\/ weightedCovarSqrt\_[ith column]}}
+\DoxyCodeLine{108       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} sigmaInd = 0; sigmaInd < STATE\_SIZE; ++sigmaInd)}
+\DoxyCodeLine{109       \{}
+\DoxyCodeLine{110         \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}[sigmaInd + 1] = \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}} + \mbox{\hyperlink{classRobotLocalization_1_1Ukf_ab799461d74ccc6d549b851b35a6c8b58}{weightedCovarSqrt\_}}.col(sigmaInd);}
+\DoxyCodeLine{111         \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}[sigmaInd + 1 + STATE\_SIZE] = \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}} -\/ \mbox{\hyperlink{classRobotLocalization_1_1Ukf_ab799461d74ccc6d549b851b35a6c8b58}{weightedCovarSqrt\_}}.col(sigmaInd);}
+\DoxyCodeLine{112       \}}
+\DoxyCodeLine{113     \}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115     \textcolor{comment}{// We don't want to update everything, so we need to build matrices that only update}}
+\DoxyCodeLine{116     \textcolor{comment}{// the measured parts of our state vector}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     \textcolor{comment}{// First, determine how many state vector values we're updating}}
+\DoxyCodeLine{119     std::vector<size\_t> updateIndices;}
+\DoxyCodeLine{120     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < measurement.updateVector\_.size(); ++i)}
+\DoxyCodeLine{121     \{}
+\DoxyCodeLine{122       \textcolor{keywordflow}{if} (measurement.updateVector\_[i])}
+\DoxyCodeLine{123       \{}
+\DoxyCodeLine{124         \textcolor{comment}{// Handle nan and inf values in measurements}}
+\DoxyCodeLine{125         \textcolor{keywordflow}{if} (std::isnan(measurement.measurement\_(i)))}
+\DoxyCodeLine{126         \{}
+\DoxyCodeLine{127           FB\_DEBUG(\textcolor{stringliteral}{"Value at index "} << i << \textcolor{stringliteral}{" was nan. Excluding from update.\(\backslash\)n"});}
+\DoxyCodeLine{128         \}}
+\DoxyCodeLine{129         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (std::isinf(measurement.measurement\_(i)))}
+\DoxyCodeLine{130         \{}
+\DoxyCodeLine{131           FB\_DEBUG(\textcolor{stringliteral}{"Value at index "} << i << \textcolor{stringliteral}{" was inf. Excluding from update.\(\backslash\)n"});}
+\DoxyCodeLine{132         \}}
+\DoxyCodeLine{133         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{134         \{}
+\DoxyCodeLine{135           updateIndices.push\_back(i);}
+\DoxyCodeLine{136         \}}
+\DoxyCodeLine{137       \}}
+\DoxyCodeLine{138     \}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140     FB\_DEBUG(\textcolor{stringliteral}{"Update indices are:\(\backslash\)n"} << updateIndices << \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142     \textcolor{keywordtype}{size\_t} updateSize = updateIndices.size();}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144     \textcolor{comment}{// Now set up the relevant matrices}}
+\DoxyCodeLine{145     Eigen::VectorXd stateSubset(updateSize);                              \textcolor{comment}{// x (in most literature)}}
+\DoxyCodeLine{146     Eigen::VectorXd measurementSubset(updateSize);                        \textcolor{comment}{// z}}
+\DoxyCodeLine{147     Eigen::MatrixXd measurementCovarianceSubset(updateSize, updateSize);  \textcolor{comment}{// R}}
+\DoxyCodeLine{148     Eigen::MatrixXd stateToMeasurementSubset(updateSize, STATE\_SIZE);     \textcolor{comment}{// H}}
+\DoxyCodeLine{149     Eigen::MatrixXd kalmanGainSubset(STATE\_SIZE, updateSize);             \textcolor{comment}{// K}}
+\DoxyCodeLine{150     Eigen::VectorXd innovationSubset(updateSize);                         \textcolor{comment}{// z -\/ Hx}}
+\DoxyCodeLine{151     Eigen::VectorXd predictedMeasurement(updateSize);}
+\DoxyCodeLine{152     Eigen::VectorXd sigmaDiff(updateSize);}
+\DoxyCodeLine{153     Eigen::MatrixXd predictedMeasCovar(updateSize, updateSize);}
+\DoxyCodeLine{154     Eigen::MatrixXd crossCovar(STATE\_SIZE, updateSize);}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156     std::vector<Eigen::VectorXd> sigmaPointMeasurements(\mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}.size(), Eigen::VectorXd(updateSize));}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158     stateSubset.setZero();}
+\DoxyCodeLine{159     measurementSubset.setZero();}
+\DoxyCodeLine{160     measurementCovarianceSubset.setZero();}
+\DoxyCodeLine{161     stateToMeasurementSubset.setZero();}
+\DoxyCodeLine{162     kalmanGainSubset.setZero();}
+\DoxyCodeLine{163     innovationSubset.setZero();}
+\DoxyCodeLine{164     predictedMeasurement.setZero();}
+\DoxyCodeLine{165     predictedMeasCovar.setZero();}
+\DoxyCodeLine{166     crossCovar.setZero();}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168     \textcolor{comment}{// Now build the sub-\/matrices from the full-\/sized matrices}}
+\DoxyCodeLine{169     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < updateSize; ++i)}
+\DoxyCodeLine{170     \{}
+\DoxyCodeLine{171       measurementSubset(i) = measurement.measurement\_(updateIndices[i]);}
+\DoxyCodeLine{172       stateSubset(i) = \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}}(updateIndices[i]);}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 0; j < updateSize; ++j)}
+\DoxyCodeLine{175       \{}
+\DoxyCodeLine{176         measurementCovarianceSubset(i, j) = measurement.covariance\_(updateIndices[i], updateIndices[j]);}
+\DoxyCodeLine{177       \}}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179       \textcolor{comment}{// Handle negative (read: bad) covariances in the measurement. Rather}}
+\DoxyCodeLine{180       \textcolor{comment}{// than exclude the measurement or make up a covariance, just take}}
+\DoxyCodeLine{181       \textcolor{comment}{// the absolute value.}}
+\DoxyCodeLine{182       \textcolor{keywordflow}{if} (measurementCovarianceSubset(i, i) < 0)}
+\DoxyCodeLine{183       \{}
+\DoxyCodeLine{184         FB\_DEBUG(\textcolor{stringliteral}{"WARNING: Negative covariance for index "} << i <<}
+\DoxyCodeLine{185                  \textcolor{stringliteral}{" of measurement (value is"} << measurementCovarianceSubset(i, i) <<}
+\DoxyCodeLine{186                  \textcolor{stringliteral}{"). Using absolute value...\(\backslash\)n"});}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188         measurementCovarianceSubset(i, i) = ::fabs(measurementCovarianceSubset(i, i));}
+\DoxyCodeLine{189       \}}
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191       \textcolor{comment}{// If the measurement variance for a given variable is very}}
+\DoxyCodeLine{192       \textcolor{comment}{// near 0 (as in e-\/50 or so) and the variance for that}}
+\DoxyCodeLine{193       \textcolor{comment}{// variable in the covariance matrix is also near zero, then}}
+\DoxyCodeLine{194       \textcolor{comment}{// the Kalman gain computation will blow up. Really, no}}
+\DoxyCodeLine{195       \textcolor{comment}{// measurement can be completely without error, so add a small}}
+\DoxyCodeLine{196       \textcolor{comment}{// amount in that case.}}
+\DoxyCodeLine{197       \textcolor{keywordflow}{if} (measurementCovarianceSubset(i, i) < 1e-\/9)}
+\DoxyCodeLine{198       \{}
+\DoxyCodeLine{199         measurementCovarianceSubset(i, i) = 1e-\/9;}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201         FB\_DEBUG(\textcolor{stringliteral}{"WARNING: measurement had very small error covariance for index "} <<}
+\DoxyCodeLine{202                  updateIndices[i] <<}
+\DoxyCodeLine{203                  \textcolor{stringliteral}{". Adding some noise to maintain filter stability.\(\backslash\)n"});}
+\DoxyCodeLine{204       \}}
+\DoxyCodeLine{205     \}}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207     \textcolor{comment}{// The state-\/to-\/measurement function, h, will now be a measurement\_size x full\_state\_size}}
+\DoxyCodeLine{208     \textcolor{comment}{// matrix, with ones in the (i, i) locations of the values to be updated}}
+\DoxyCodeLine{209     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < updateSize; ++i)}
+\DoxyCodeLine{210     \{}
+\DoxyCodeLine{211       stateToMeasurementSubset(i, updateIndices[i]) = 1;}
+\DoxyCodeLine{212     \}}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214     FB\_DEBUG(\textcolor{stringliteral}{"Current state subset is:\(\backslash\)n"} << stateSubset <<}
+\DoxyCodeLine{215              \textcolor{stringliteral}{"\(\backslash\)nMeasurement subset is:\(\backslash\)n"} << measurementSubset <<}
+\DoxyCodeLine{216              \textcolor{stringliteral}{"\(\backslash\)nMeasurement covariance subset is:\(\backslash\)n"} << measurementCovarianceSubset <<}
+\DoxyCodeLine{217              \textcolor{stringliteral}{"\(\backslash\)nState-\/to-\/measurement subset is:\(\backslash\)n"} << stateToMeasurementSubset << \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219     \textcolor{comment}{// (1) Generate sigma points, use them to generate a predicted measurement}}
+\DoxyCodeLine{220     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} sigmaInd = 0; sigmaInd < \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}.size(); ++sigmaInd)}
+\DoxyCodeLine{221     \{}
+\DoxyCodeLine{222       sigmaPointMeasurements[sigmaInd] = stateToMeasurementSubset * \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}[sigmaInd];}
+\DoxyCodeLine{223       predictedMeasurement.noalias() += \mbox{\hyperlink{classRobotLocalization_1_1Ukf_accc1aa6bea22b59d807e78a1ef6dc5e3}{stateWeights\_}}[sigmaInd] * sigmaPointMeasurements[sigmaInd];}
+\DoxyCodeLine{224     \}}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{226     \textcolor{comment}{// (2) Use the sigma point measurements and predicted measurement to compute a predicted}}
+\DoxyCodeLine{227     \textcolor{comment}{// measurement covariance matrix P\_zz and a state/measurement cross-\/covariance matrix P\_xz.}}
+\DoxyCodeLine{228     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} sigmaInd = 0; sigmaInd < \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}.size(); ++sigmaInd)}
+\DoxyCodeLine{229     \{}
+\DoxyCodeLine{230       sigmaDiff = sigmaPointMeasurements[sigmaInd] -\/ predictedMeasurement;}
+\DoxyCodeLine{231       predictedMeasCovar.noalias() += \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a9d1f619ba256adc3c60f551935bb9867}{covarWeights\_}}[sigmaInd] * (sigmaDiff * sigmaDiff.transpose());}
+\DoxyCodeLine{232       crossCovar.noalias() += \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a9d1f619ba256adc3c60f551935bb9867}{covarWeights\_}}[sigmaInd] * ((\mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}[sigmaInd] -\/ \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}}) * sigmaDiff.transpose());}
+\DoxyCodeLine{233     \}}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235     \textcolor{comment}{// (3) Compute the Kalman gain, making sure to use the actual measurement covariance: K = P\_xz * (P\_zz + R)\string^-\/1}}
+\DoxyCodeLine{236     Eigen::MatrixXd invInnovCov = (predictedMeasCovar + measurementCovarianceSubset).inverse();}
+\DoxyCodeLine{237     kalmanGainSubset = crossCovar * invInnovCov;}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239     \textcolor{comment}{// (4) Apply the gain to the difference between the actual and predicted measurements: x = x + K(z -\/ z\_hat)}}
+\DoxyCodeLine{240     innovationSubset = (measurementSubset -\/ predictedMeasurement);}
+\DoxyCodeLine{241 }
+\DoxyCodeLine{242     \textcolor{comment}{// Wrap angles in the innovation}}
+\DoxyCodeLine{243     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < updateSize; ++i)}
+\DoxyCodeLine{244     \{}
+\DoxyCodeLine{245       \textcolor{keywordflow}{if} (updateIndices[i] == StateMemberRoll  ||}
+\DoxyCodeLine{246           updateIndices[i] == StateMemberPitch ||}
+\DoxyCodeLine{247           updateIndices[i] == StateMemberYaw)}
+\DoxyCodeLine{248       \{}
+\DoxyCodeLine{249         \textcolor{keywordflow}{while} (innovationSubset(i) < -\/PI)}
+\DoxyCodeLine{250         \{}
+\DoxyCodeLine{251           innovationSubset(i) += TAU;}
+\DoxyCodeLine{252         \}}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254         \textcolor{keywordflow}{while} (innovationSubset(i) > PI)}
+\DoxyCodeLine{255         \{}
+\DoxyCodeLine{256           innovationSubset(i) -\/= TAU;}
+\DoxyCodeLine{257         \}}
+\DoxyCodeLine{258       \}}
+\DoxyCodeLine{259     \}}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{261     \textcolor{comment}{// (5) Check Mahalanobis distance of innovation}}
+\DoxyCodeLine{262     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a580584882a77061dab91746fb670a7be}{checkMahalanobisThreshold}}(innovationSubset, invInnovCov, measurement.mahalanobisThresh\_))}
+\DoxyCodeLine{263     \{}
+\DoxyCodeLine{264       \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}}.noalias() += kalmanGainSubset * innovationSubset;}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{266       \textcolor{comment}{// (6) Compute the new estimate error covariance P = P -\/ (K * P\_zz * K')}}
+\DoxyCodeLine{267       \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}{estimateErrorCovariance\_}}.noalias() -\/= (kalmanGainSubset * predictedMeasCovar * kalmanGainSubset.transpose());}
+\DoxyCodeLine{268 }
+\DoxyCodeLine{269       \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a76f3971d5c07e068ea1aa50e934b7c31}{wrapStateAngles}}();}
+\DoxyCodeLine{270 }
+\DoxyCodeLine{271       \textcolor{comment}{// Mark that we need to re-\/compute sigma points for successive corrections}}
+\DoxyCodeLine{272       \mbox{\hyperlink{classRobotLocalization_1_1Ukf_adaca72b6315ba4c8159de1ae156ea7b1}{uncorrected\_}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{274       FB\_DEBUG(\textcolor{stringliteral}{"Predicated measurement covariance is:\(\backslash\)n"} << predictedMeasCovar <<}
+\DoxyCodeLine{275                \textcolor{stringliteral}{"\(\backslash\)nCross covariance is:\(\backslash\)n"} << crossCovar <<}
+\DoxyCodeLine{276                \textcolor{stringliteral}{"\(\backslash\)nKalman gain subset is:\(\backslash\)n"} << kalmanGainSubset <<}
+\DoxyCodeLine{277                \textcolor{stringliteral}{"\(\backslash\)nInnovation:\(\backslash\)n"} << innovationSubset <<}
+\DoxyCodeLine{278                \textcolor{stringliteral}{"\(\backslash\)nCorrected full state is:\(\backslash\)n"} << \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}} <<}
+\DoxyCodeLine{279                \textcolor{stringliteral}{"\(\backslash\)nCorrected full estimate error covariance is:\(\backslash\)n"} << \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}{estimateErrorCovariance\_}} <<}
+\DoxyCodeLine{280                \textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)n-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ /Ukf::correct -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"});}
+\DoxyCodeLine{281     \}}
+\DoxyCodeLine{282   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRobotLocalization_1_1Ukf_a2ac9abfd27df070d46a5c6d768fdf41f}\label{classRobotLocalization_1_1Ukf_a2ac9abfd27df070d46a5c6d768fdf41f}} 
+\index{RobotLocalization::Ukf@{RobotLocalization::Ukf}!predict@{predict}}
+\index{predict@{predict}!RobotLocalization::Ukf@{RobotLocalization::Ukf}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily void Robot\+Localization\+::\+Ukf\+::predict (\begin{DoxyParamCaption}\item[{const double}]{reference\+Time,  }\item[{const double}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Carries out the predict step in the predict/update cycle. 
+
+Projects the state and error matrices forward using a model of the vehicle\textquotesingle{}s motion.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em reference\+Time} & -\/ The time at which the prediction is being made \\
+\hline
+\mbox{\texttt{ in}}  & {\em delta} & -\/ The time step over which to predict. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a75c6282d2136ef591d9c4bae58292480}{Robot\+Localization\+::\+Filter\+Base}}.
+
+
+
+Definition at line 284 of file ukf.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{285   \{}
+\DoxyCodeLine{286     FB\_DEBUG(\textcolor{stringliteral}{"-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Ukf::predict -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"} <<}
+\DoxyCodeLine{287              \textcolor{stringliteral}{"delta is "} << delta <<}
+\DoxyCodeLine{288              \textcolor{stringliteral}{"\(\backslash\)nstate is "} << \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}} << \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{290     \textcolor{keywordtype}{double} roll = \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}}(StateMemberRoll);}
+\DoxyCodeLine{291     \textcolor{keywordtype}{double} pitch = \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}}(StateMemberPitch);}
+\DoxyCodeLine{292     \textcolor{keywordtype}{double} yaw = \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}}(StateMemberYaw);}
+\DoxyCodeLine{293 }
+\DoxyCodeLine{294     \textcolor{comment}{// We'll need these trig calculations a lot.}}
+\DoxyCodeLine{295     \textcolor{keywordtype}{double} sp = ::sin(pitch);}
+\DoxyCodeLine{296     \textcolor{keywordtype}{double} cp = ::cos(pitch);}
+\DoxyCodeLine{297     \textcolor{keywordtype}{double} cpi = 1.0 / cp;}
+\DoxyCodeLine{298     \textcolor{keywordtype}{double} tp = sp * cpi;}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{300     \textcolor{keywordtype}{double} sr = ::sin(roll);}
+\DoxyCodeLine{301     \textcolor{keywordtype}{double} cr = ::cos(roll);}
+\DoxyCodeLine{302 }
+\DoxyCodeLine{303     \textcolor{keywordtype}{double} sy = ::sin(yaw);}
+\DoxyCodeLine{304     \textcolor{keywordtype}{double} cy = ::cos(yaw);}
+\DoxyCodeLine{305 }
+\DoxyCodeLine{306     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a99c42d2973233e855a67ce4a052aeef4}{prepareControl}}(referenceTime, delta);}
+\DoxyCodeLine{307 }
+\DoxyCodeLine{308     \textcolor{comment}{// Prepare the transfer function}}
+\DoxyCodeLine{309     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberX, StateMemberVx) = cy * cp * delta;}
+\DoxyCodeLine{310     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberX, StateMemberVy) = (cy * sp * sr -\/ sy * cr) * delta;}
+\DoxyCodeLine{311     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberX, StateMemberVz) = (cy * sp * cr + sy * sr) * delta;}
+\DoxyCodeLine{312     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberX, StateMemberAx) = 0.5 * \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberX, StateMemberVx) * delta;}
+\DoxyCodeLine{313     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberX, StateMemberAy) = 0.5 * \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberX, StateMemberVy) * delta;}
+\DoxyCodeLine{314     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberX, StateMemberAz) = 0.5 * \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberX, StateMemberVz) * delta;}
+\DoxyCodeLine{315     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberY, StateMemberVx) = sy * cp * delta;}
+\DoxyCodeLine{316     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberY, StateMemberVy) = (sy * sp * sr + cy * cr) * delta;}
+\DoxyCodeLine{317     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberY, StateMemberVz) = (sy * sp * cr -\/ cy * sr) * delta;}
+\DoxyCodeLine{318     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberY, StateMemberAx) = 0.5 * \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberY, StateMemberVx) * delta;}
+\DoxyCodeLine{319     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberY, StateMemberAy) = 0.5 * \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberY, StateMemberVy) * delta;}
+\DoxyCodeLine{320     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberY, StateMemberAz) = 0.5 * \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberY, StateMemberVz) * delta;}
+\DoxyCodeLine{321     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberZ, StateMemberVx) = -\/sp * delta;}
+\DoxyCodeLine{322     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberZ, StateMemberVy) = cp * sr * delta;}
+\DoxyCodeLine{323     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberZ, StateMemberVz) = cp * cr * delta;}
+\DoxyCodeLine{324     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberZ, StateMemberAx) = 0.5 * \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberZ, StateMemberVx) * delta;}
+\DoxyCodeLine{325     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberZ, StateMemberAy) = 0.5 * \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberZ, StateMemberVy) * delta;}
+\DoxyCodeLine{326     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberZ, StateMemberAz) = 0.5 * \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberZ, StateMemberVz) * delta;}
+\DoxyCodeLine{327     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberRoll, StateMemberVroll) = delta;}
+\DoxyCodeLine{328     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberRoll, StateMemberVpitch) = sr * tp * delta;}
+\DoxyCodeLine{329     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberRoll, StateMemberVyaw) = cr * tp * delta;}
+\DoxyCodeLine{330     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberPitch, StateMemberVpitch) = cr * delta;}
+\DoxyCodeLine{331     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberPitch, StateMemberVyaw) = -\/sr * delta;}
+\DoxyCodeLine{332     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberYaw, StateMemberVpitch) = sr * cpi * delta;}
+\DoxyCodeLine{333     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberYaw, StateMemberVyaw) = cr * cpi * delta;}
+\DoxyCodeLine{334     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberVx, StateMemberAx) = delta;}
+\DoxyCodeLine{335     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberVy, StateMemberAy) = delta;}
+\DoxyCodeLine{336     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}}(StateMemberVz, StateMemberAz) = delta;}
+\DoxyCodeLine{337 }
+\DoxyCodeLine{338     \textcolor{comment}{// (1) Take the square root of a small fraction of the estimateErrorCovariance\_ using LL' decomposition}}
+\DoxyCodeLine{339     \mbox{\hyperlink{classRobotLocalization_1_1Ukf_ab799461d74ccc6d549b851b35a6c8b58}{weightedCovarSqrt\_}} = ((STATE\_SIZE + \mbox{\hyperlink{classRobotLocalization_1_1Ukf_ae31c11e5261fe14c1b660d941afcb74e}{lambda\_}}) * \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}{estimateErrorCovariance\_}}).llt().matrixL();}
+\DoxyCodeLine{340 }
+\DoxyCodeLine{341     \textcolor{comment}{// (2) Compute sigma points *and* pass them through the transfer function to save}}
+\DoxyCodeLine{342     \textcolor{comment}{// the extra loop}}
+\DoxyCodeLine{343 }
+\DoxyCodeLine{344     \textcolor{comment}{// First sigma point is the current state}}
+\DoxyCodeLine{345     \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}[0] = \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}} * \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}};}
+\DoxyCodeLine{346 }
+\DoxyCodeLine{347     \textcolor{comment}{// Next STATE\_SIZE sigma points are state + weightedCovarSqrt\_[ith column]}}
+\DoxyCodeLine{348     \textcolor{comment}{// STATE\_SIZE sigma points after that are state -\/ weightedCovarSqrt\_[ith column]}}
+\DoxyCodeLine{349     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} sigmaInd = 0; sigmaInd < STATE\_SIZE; ++sigmaInd)}
+\DoxyCodeLine{350     \{}
+\DoxyCodeLine{351       \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}[sigmaInd + 1] = \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}} * (\mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}} + \mbox{\hyperlink{classRobotLocalization_1_1Ukf_ab799461d74ccc6d549b851b35a6c8b58}{weightedCovarSqrt\_}}.col(sigmaInd));}
+\DoxyCodeLine{352       \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}[sigmaInd + 1 + STATE\_SIZE] = \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a5589e126890277eb435a07fd25871989}{transferFunction\_}} * (\mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}} -\/ \mbox{\hyperlink{classRobotLocalization_1_1Ukf_ab799461d74ccc6d549b851b35a6c8b58}{weightedCovarSqrt\_}}.col(sigmaInd));}
+\DoxyCodeLine{353     \}}
+\DoxyCodeLine{354 }
+\DoxyCodeLine{355     \textcolor{comment}{// (3) Sum the weighted sigma points to generate a new state prediction}}
+\DoxyCodeLine{356     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}}.setZero();}
+\DoxyCodeLine{357     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} sigmaInd = 0; sigmaInd < \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}.size(); ++sigmaInd)}
+\DoxyCodeLine{358     \{}
+\DoxyCodeLine{359       \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}}.noalias() += \mbox{\hyperlink{classRobotLocalization_1_1Ukf_accc1aa6bea22b59d807e78a1ef6dc5e3}{stateWeights\_}}[sigmaInd] * \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}[sigmaInd];}
+\DoxyCodeLine{360     \}}
+\DoxyCodeLine{361 }
+\DoxyCodeLine{362     \textcolor{comment}{// (4) Now us the sigma points and the predicted state to compute a predicted covariance}}
+\DoxyCodeLine{363     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}{estimateErrorCovariance\_}}.setZero();}
+\DoxyCodeLine{364     Eigen::VectorXd sigmaDiff(STATE\_SIZE);}
+\DoxyCodeLine{365     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} sigmaInd = 0; sigmaInd < \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}.size(); ++sigmaInd)}
+\DoxyCodeLine{366     \{}
+\DoxyCodeLine{367       sigmaDiff = (\mbox{\hyperlink{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}{sigmaPoints\_}}[sigmaInd] -\/ \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}});}
+\DoxyCodeLine{368       \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}{estimateErrorCovariance\_}}.noalias() += \mbox{\hyperlink{classRobotLocalization_1_1Ukf_a9d1f619ba256adc3c60f551935bb9867}{covarWeights\_}}[sigmaInd] * (sigmaDiff * sigmaDiff.transpose());}
+\DoxyCodeLine{369     \}}
+\DoxyCodeLine{370 }
+\DoxyCodeLine{371     \textcolor{comment}{// (5) Not strictly in the theoretical UKF formulation, but necessary here}}
+\DoxyCodeLine{372     \textcolor{comment}{// to ensure that we actually incorporate the processNoiseCovariance\_}}
+\DoxyCodeLine{373     Eigen::MatrixXd *processNoiseCovariance = \&\mbox{\hyperlink{classRobotLocalization_1_1FilterBase_ae309020ee3466e4e73de7ab711b0f695}{processNoiseCovariance\_}};}
+\DoxyCodeLine{374 }
+\DoxyCodeLine{375     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a93d04e061304bd001d604c9a28db40d8}{useDynamicProcessNoiseCovariance\_}})}
+\DoxyCodeLine{376     \{}
+\DoxyCodeLine{377       \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a027315e64db2c8d0f6ecc83d5ffd83a5}{computeDynamicProcessNoiseCovariance}}(\mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}}, delta);}
+\DoxyCodeLine{378       processNoiseCovariance = \&\mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a949fabe1bd9f06eeae1b79b40e19fd92}{dynamicProcessNoiseCovariance\_}};}
+\DoxyCodeLine{379     \}}
+\DoxyCodeLine{380 }
+\DoxyCodeLine{381     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}{estimateErrorCovariance\_}}.noalias() += delta * (*processNoiseCovariance);}
+\DoxyCodeLine{382 }
+\DoxyCodeLine{383     \textcolor{comment}{// Keep the angles bounded}}
+\DoxyCodeLine{384     \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a76f3971d5c07e068ea1aa50e934b7c31}{wrapStateAngles}}();}
+\DoxyCodeLine{385 }
+\DoxyCodeLine{386     \textcolor{comment}{// Mark that we can keep these sigma points}}
+\DoxyCodeLine{387     \mbox{\hyperlink{classRobotLocalization_1_1Ukf_adaca72b6315ba4c8159de1ae156ea7b1}{uncorrected\_}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{388 }
+\DoxyCodeLine{389     FB\_DEBUG(\textcolor{stringliteral}{"Predicted state is:\(\backslash\)n"} << \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a24e6fba6b9dceb9b581d5ac73ab0613f}{state\_}} <<}
+\DoxyCodeLine{390              \textcolor{stringliteral}{"\(\backslash\)nPredicted estimate error covariance is:\(\backslash\)n"} << \mbox{\hyperlink{classRobotLocalization_1_1FilterBase_a6422083129fa8c2bc7a2bafa5a412dc4}{estimateErrorCovariance\_}} <<}
+\DoxyCodeLine{391              \textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)n-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ /Ukf::predict -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"});}
+\DoxyCodeLine{392   \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}\label{classRobotLocalization_1_1Ukf_a769a2582a6c8c81066d498bc5d775645}} 
+\index{RobotLocalization::Ukf@{RobotLocalization::Ukf}!sigmaPoints\_@{sigmaPoints\_}}
+\index{sigmaPoints\_@{sigmaPoints\_}!RobotLocalization::Ukf@{RobotLocalization::Ukf}}
+\doxysubsubsection{\texorpdfstring{sigmaPoints\_}{sigmaPoints\_}}
+{\footnotesize\ttfamily std\+::vector$<$Eigen\+::\+Vector\+Xd$>$ Robot\+Localization\+::\+Ukf\+::sigma\+Points\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The U\+KF sigma points. 
+
+Used to sample possible next states during prediction. 
+
+Definition at line 96 of file ukf.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mapping/robot\+\_\+localization/include/robot\+\_\+localization/ukf.\+h\item 
+mapping/robot\+\_\+localization/src/ukf.\+cpp\end{DoxyCompactItemize}
