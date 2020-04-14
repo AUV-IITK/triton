@@ -1,4 +1,4 @@
 #!/bin/bash
 
-#catkin build "pkg name"
+catkin build vision_pipeline
 
