@@ -1,10 +1,20 @@
 
 # Triton: Software Stack
 
+<<<<<<< HEAD
+The structure of this repository will follow the broadly be like that of Anahita, but with some changes. 
+=======
+[![Build Status](https://travis-ci.org/AUV-IITK/triton.svg?branch=master)](https://travis-ci.org/AUV-IITK/triton)
+
+>>>>>>> upstream/master
+
 The structure of this repository will follow the broadly be like that of Anahita, but with some changes. 
 
-To run this repository:
+<<<<<<< HEAD
+=======
+# To run this repository:
 
+>>>>>>> upstream/master
 ### Create a catkin worspace following the guidelines given here
 ```
 mkdir -p ~/auv_ws/src
@@ -18,12 +28,23 @@ catkin build
 
 Official installation instructions are [here](http://www.irs.uji.es/uwsim/wiki/index.php?title=Installing_UWSim). This should resemble source-based install, since we only want to change the core files, and not the external repositories. If you face any issue during building this project, please file an issue, or contact the admin. We are in development phase.
 
+<<<<<<< HEAD
+=======
+We are using `create_scenes.sh` to place a `pool.osgt` file in the `.uwsim` directory. 
+
+>>>>>>> upstream/master
 ```
 cd ~/auv_ws/src
 git clone https://github.com/AUV-IITK/underwater_simulation
 cd ~/auv_ws/
 rosdep install --from-paths src --ignore-src --rosdistro melodic -y
+<<<<<<< HEAD
 catkin build install -j2
+=======
+bash create_scenes.sh
+catkin config --install
+catkin build -j2
+>>>>>>> upstream/master
 ```
 
 ### Clone this repository to your catkin workspace
