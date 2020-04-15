@@ -77,6 +77,8 @@ Describe the quickest way to run this software, for example:
 Run the main node with
 
 	rosrun vision_pipeline detect
+View the info published by output node
+>rostopic echo /image_converter/output_video
 
 ## Config files
 
