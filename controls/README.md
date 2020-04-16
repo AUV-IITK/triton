@@ -1,5 +1,16 @@
 # Controls
 
+### To run the PID-controller using scripts
+
+```bash
+$ roscore
+$ roslaunch underwater_vehicle_dynamics UWSim_g500_dynamics.launch
+```
+Running the PID controller
+```bash
+rosrun controls dynamic_control
+```
+
 ### To run the simulink model:
 
 1.  Clone the repository.
@@ -9,14 +20,3 @@
 $ roslaunch underwater_vehicle_dynamics UWSim_g500_dynamics.launch
 ```
 4. Finally run the model in simulink.
-
-### To run the PID-controller using scripts
-
-```bash
-$ roscore
-$ roslaunch underwater_vehicle_dynamics UWSim_g500_dynamics.launch
-```
-Running the PID controller
-```bash
-./pid_controller/scripts/dynamic_control.py
-```
