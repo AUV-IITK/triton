@@ -11,6 +11,9 @@
 static const std::string OPENCV_WINDOW = "Image window1";
 using namespace cv;
 using namespace std;
+
+//Calibrate the camera for correct distance estimation
+
 int maxContourId(vector <vector<Point>> contours) {
     double maxArea = 0;
     int maxAreaContourId = -1;
@@ -23,6 +26,7 @@ int maxContourId(vector <vector<Point>> contours) {
     } 
     return maxAreaContourId;
 }
+
 class ImageConverter
 {
   ros::NodeHandle nh_;
@@ -46,6 +50,19 @@ public:
   ~ImageConverter()
   {
     destroyWindow(OPENCV_WINDOW);
+  }
+
+  float find_distance(float radius){
+    if(radius==-1){
+      return -1;
+    }
+    float P_def = 88;           //Radius of the ball in image while calibration
+    float d_def = 20;           //Distance of ball while calibration
+    float l_def = 5;            //Actual Diameter of the ball
+    float f = P_def * d_def / l_def;  //Apparent Focal Length of the Camera
+    l_def = l_def/2;              //using radius insted of diameter of the ball
+    float distance = f * l_def / radius;
+    return distance;
   }
 
   void imageCb(const sensor_msgs::ImageConstPtr& msg)
@@ -96,10 +113,12 @@ public:
     waitKey(3);
 
     // Output modified video stream
+    float distance = ImageConverter::find_distance(radius);
     ret.data.push_back(radius);
     //std_msgs::Float32 x,y;
     ret.data.push_back(center.x);
     ret.data.push_back(center.y); 
+    ret.data.push_back(distance);
     image_pub_.publish(ret);
 
   }
