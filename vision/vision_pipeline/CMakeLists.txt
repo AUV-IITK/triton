@@ -162,3 +162,11 @@ target_link_libraries(detect ${catkin_LIBRARIES})
 find_package(OpenCV)
 include_directories(${OpenCV_INCLUDE_DIRS})
 target_link_libraries(detect ${OpenCV_LIBRARIES})
+
+
+add_executable(path_detect src/path_detect.cpp)
+target_link_libraries(path_detect ${catkin_LIBRARIES})
+
+find_package(OpenCV)
+include_directories(${OpenCV_INCLUDE_DIRS})
+target_link_libraries(path_detect ${OpenCV_LIBRARIES})
