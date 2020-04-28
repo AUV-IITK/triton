@@ -40,7 +40,7 @@ public:
     : it_(nh_)
   {
     // Subscrive to input video feed and publish output video feed
-    image_sub_ = it_.subscribe("/g500/camera1", 1,
+    image_sub_ = it_.subscribe("/uwsim/camera1", 1,
       &ImageConverter::imageCb, this);
     image_pub_ = nh_.advertise<std_msgs::Float32MultiArray>("/image_converter/output_video", 100);
 
