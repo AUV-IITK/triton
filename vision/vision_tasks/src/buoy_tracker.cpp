@@ -4,7 +4,7 @@
 #include "sensor_msgs/image_encodings.h"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
-#include "opencv2/tracking/tracking.hpp"
+#include <opencv2/tracking.hpp>
 //#include <opencv2/core/ocl.hpp>
 #include <vector>
 #include <iostream> 
@@ -17,12 +17,14 @@ Rect2d bboxG;
 Rect2d bboxR;
 Rect2d bboxY;
 int i,j,k;
-int a=0,count1=0;
+int a=0,count1=0,count2=0;
 string trackerTypes[8] = {"BOOSTING", "MIL", "KCF", "TLD","MEDIANFLOW", "GOTURN", "MOSSE", "CSRT"};
 string trackerType = trackerTypes[7];
-Ptr<Tracker> trackerG=TrackerCSRT::create();
-Ptr<Tracker> trackerR=TrackerCSRT::create();
-Ptr<Tracker> trackerY=TrackerCSRT::create();
+
+Ptr<Tracker> trackerG[1000];
+Ptr<Tracker> trackerR[1000];
+Ptr<Tracker> trackerY[1000];
+
 //tracker = TrackerCSRT::create();
 
 int maxContourId(vector <vector<Point>> contours) {
@@ -76,8 +78,11 @@ public:
     }
 
 
+
+
  if(a==0){ 
-    Mat invid, frame, frame_HSV, resG,resY,resR, framecol,resB,mask;
+
+Mat invid, frame, frame_HSV, resG,resY,resR, framecol,resB,mask;
 Rect2d boundRectG;
 Rect2d boundRectR;
 Rect2d boundRectY;
@@ -113,6 +118,8 @@ Rect2d boundRectY;
     float radiusG;
     float radiusY;
     float radiusR;
+bool ok1=false,ok2=false,ok3=false;
+
 std_msgs::Float32MultiArray ret;
 ret.data.clear();
     if(i>-1){
@@ -120,7 +127,7 @@ approxPolyDP( contoursG[i], ansG, 10, true);
 minEnclosingCircle(ansG, centerG, radiusG);
 boundRectG = boundingRect( ansG );
 bboxG=boundRectG;
-trackerG->init(frame, bboxG);
+ok3=trackerG[count1]->init(frame, bboxG);
 //circle( cv_ptr->image, centerG, radiusG, Scalar(0,255,0), 3, LINE_AA);
 }
 else{
@@ -130,7 +137,7 @@ centerG.y=-1;
 bboxG.x=-1;
 bboxG.y=-1;
 }
-a=1;
+
 
 
    if(j>-1){
@@ -138,7 +145,7 @@ a=1;
 minEnclosingCircle(ansY, centerY, radiusY);
  boundRectY = boundingRect( ansY );
 bboxY=boundRectY;
-trackerY->init(frame, bboxY);
+ok1=trackerY[count1]->init(frame, bboxY);
 //circle( cv_ptr->image, centerY, radiusY, Scalar(0,255,255), 3, LINE_AA);
  }
   else{
@@ -153,7 +160,7 @@ approxPolyDP( contoursR[k], ansR, 10, true);
 minEnclosingCircle(ansR, centerR, radiusR);
 boundRectR = boundingRect( ansR );
 bboxR=boundRectR;
-trackerR->init(frame, bboxR);
+ok2=trackerR[count1]->init(frame, bboxR);
 
  //circle( cv_ptr->image, centerR, radiusR, Scalar(0,0,255), 3, LINE_AA);
 }
@@ -165,17 +172,19 @@ bboxR.x=-1;
 bboxR.y=-1;
 }
 
-
+//cout<<count1<<" "<<a<<endl;
+a=1;
+//cout<<ok1<<ok2<<ok3;
 } 
 else{
        Mat frame=cv_ptr->image;
         double timer = (double)getTickCount();
         bool okG=false,okY=false,okR=false;
         // Update the tracking result
-       if(i>-1)  okG = trackerG->update(frame, bboxG);
-	if(k>-1) okR = trackerR->update(frame, bboxR);
-	if(j>-1) okY = trackerY->update(frame, bboxY);
-
+       if(i>-1)  okG = trackerG[count1]->update(frame, bboxG);
+	if(k>-1) okR = trackerR[count1]->update(frame, bboxR);
+	if(j>-1) okY = trackerY[count1]->update(frame, bboxY);
+       
         
         
         if (okG)
@@ -217,8 +226,17 @@ else{
         
         // Display FPS on frame
        // putText(frame, "FPS : " + SSTR(int(fps)), Point(100,50), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50,170,50), 2);
+count2++;
+//cout<<count1<<" "<<a<<endl;
+if(count2>10){
+a=0;
+delete trackerG[count1];
+delete trackerR[count1];
+delete trackerY[count1];
 count1++;
-if(count1>100){a=0;count1=0;}
+count2=0;
+
+}
         // Display frame.
         imshow("Tracking", frame);
         imshow(OPENCV_WINDOW, cv_ptr->image);
@@ -252,7 +270,9 @@ image_pub_.publish(ret);
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "image_converter");
-  
+  for(int i=0;i<1000;i++) trackerG[i] =TrackerCSRT::create();
+for(int i=0;i<1000;i++) trackerR[i] =TrackerCSRT::create();
+for(int i=0;i<1000;i++) trackerY[i] =TrackerCSRT::create();
   ImageConverter ic;
   ros::spin();
   return 0;
