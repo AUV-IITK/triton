@@ -77,7 +77,7 @@ install:
   # Create the devel/setup.bash (run catkin_make with an empty workspace) and
   # source it to set the path variables.
   - cd ~/auv_ws
-  - catkin build install
+  - catkin build
   - source devel/setup.bash
   # Add the package under integration to the workspace using a symlink.
   - cd ~/auv_ws/src
@@ -103,4 +103,4 @@ script:
   #-./src/triton/utils/travis_build.sh
   # Run the tests, ensuring the path is set correctly.
   - source devel/setup.bash
-  - catkin build install
+  - catkin build
